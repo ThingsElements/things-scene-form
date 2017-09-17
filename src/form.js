@@ -24,13 +24,33 @@ const NATURE = {
   }]
 }
 
+import reposition from './reposition'
+import { createForm, disposeForm } from './form-element'
 var { Container } = scene
 
 export default class Form extends Container {
 
-  get controls() {}
+  ready() {
+    // ready callback이 컨테이너를 바꿀 때마다 호출되서 계속 form을 생성하는 문제가 있음.
+    createForm(this);
+  }
 
-  get nature(){
+  _draw(ctx) {
+    reposition(this);
+  }
+
+  dispose() {
+    disposeForm(this);
+    super.dispose()
+  }
+
+  get hasTextProperty() {
+    return false
+  }
+
+  get controls() { }
+
+  get nature() {
     return NATURE;
   }
 }

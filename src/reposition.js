@@ -37,7 +37,8 @@ export default function reposition(component) {
     paddingLeft = 0,
     paddingRight = 0,
 
-    fontSize = DEFAULT.FONT_SIZE
+    fontSize = DEFAULT.FONT_SIZE,
+    backgroundColor
   } = component.model;
 
   var {
@@ -65,71 +66,56 @@ export default function reposition(component) {
   paddingLeft *= scale;
   paddingRight *= scale;
 
-  var inputWidth = width - paddingLeft - paddingRight;
-  var spanWidth = inputWidth;
-  var spanHeight = height - paddingTop - paddingBottom;
+  var elementWidth = width - paddingLeft - paddingRight;
+  var elementHeight = height - paddingTop - paddingBottom;
 
-  // 4. 컴포넌트의 위치와 패딩 정보를 span에 반영한다.
-  var span = component._span;
+  // 4. element의 기본 속성을 설정한다.
+  var element = component._element;
+  var gap = 4; // margin * 2 + 4, 4 means border width * 2
 
-  span.style.position = 'absolute';
-  span.style.width = spanWidth + 'px';
-  span.style.marginLeft = point.x + Math.min(paddingLeft, 0) + 'px';
-  span.style.marginTop = point.y + Math.min(paddingTop, 0) + 'px';
-  span.style.height = spanHeight + 'px';
-  span.style.paddingLeft = Math.max(paddingLeft, 0) + 'px';
-  span.style.paddingRight = paddingRight + 'px';
-  span.style.paddingTop = Math.max(paddingTop, 0) + 'px';
-  span.style.paddingBottom = paddingBottom + 'px';
+  element.style.fontFamily = fontFamily
+  element.style.fontSize = fontSize + 'px';
+  element.style.position = 'absolute';
+  element.style.left = point.x + paddingLeft + 'px';
+  element.style.top = point.y + paddingTop + 'px';
+  element.style.width = elementWidth + 'px';
+  element.style.height = (elementHeight - gap) + 'px';
+  element.style.outline = 'none';
+  // element.style.margin = '0px';
+  // element.style.border = 0;
+  element.style.backgroundColor = backgroundColor;
+  element.style.display = 'inline-block';
 
-  // 5. input의 기본 속성을 설정한다.
-  var input = component._input;
-  var gap = 14; // margin * 2 + 6
+  element.style.color = fontColor;
 
-  input.style.fontFamily = fontFamily
-  input.style.fontSize = fontSize + 'px';
-  input.style.position = 'relative';
-  input.style.lineHeight = (height - gap) + 'px';
-  input.style.overflow = 'hidden';
-  input.style.margin = '4px';
-  // input.style.resize = 'horizontal';
-  input.style.outline = 'none';
-  // input.style.outline = 'dotted'; // For debugging
-  // input.style.border = 0;
-  // input.style.backgroundColor = 'transparent';
-  // input.style.backgroundColor = '#999222'; // For debugging
-  input.style.display = 'inline-block';
+  element.style.width = (elementWidth - gap) + 'px';
 
-  input.style.color = fontColor;
+  if(bold)
+    element.style.fontWeight = 'bold';
+  if(italic)
+    element.style.fontStyle = 'italic';
 
-  input.style.width = (inputWidth - gap) + 'px';
-
-  if (bold)
-    input.style.fontWeight = 'bold';
-  if (italic)
-    input.style.fontStyle = 'italic';
-
-  switch (textAlign) {
+  switch(textAlign) {
     case 'right':
     case 'end':
-      input.style.textAlign = 'right';
+      element.style.textAlign = 'right';
       break;
 
     case 'justify':
     case 'left':
     case 'start':
-      input.style.textAlign = 'left';
+      element.style.textAlign = 'left';
       break;
 
     case 'center':
     default:
-      input.style.textAlign = 'center';
+      element.style.textAlign = 'center';
       break;
   }
 
   var rotate = `rotate(${rotation}rad)`;
   ['-webkit-', '-moz-', '-ms-', '-o-', ''].forEach(prefix => {
-    span.style[prefix + 'transform'] = rotate;
-    span.style[prefix + 'transform-origin'] = '0 0';
+    element.style[prefix + 'transform'] = rotate;
+    element.style[prefix + 'transform-origin'] = '0 0';
   })
 }

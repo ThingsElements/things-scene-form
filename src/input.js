@@ -22,6 +22,7 @@ var { Component, RectPath } = scene
 export default class Input extends RectPath(Component) {
 
   ready() {
+    // ready callback이 컨테이너를 바꿀 때마다 호출되서 계속 input을 생성하는 문제가 있음.
     createInput(this);
   }
 
