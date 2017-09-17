@@ -49,7 +49,7 @@ export default function reposition(component) {
   } = component.bounds
 
   // 1. 캔바스 위에서의 에디터 위치를 가져온다.
-  var point = component.transcoordS2C(left, top);
+  var point = component.transcoordS2C(left, top, component.parent);
 
   // 2. 캔바스 기준으로 컴포넌트의 스케일과 회전각을 구한다.
   var { rotation, scale } = scaleAndRotationToTop(component);
