@@ -25,6 +25,7 @@ const NATURE = {
 }
 
 import MixinHTMLElement from './mixin-html-element'
+import reposition from './reposition'
 
 var { Container } = scene
 
@@ -33,6 +34,11 @@ export default class Form extends MixinHTMLElement(Container) {
   setElementProperties() {
   }
 
+  _draw(ctx) {
+    super._draw(ctx);
+    reposition(this);
+  }
+  
   get nature() {
     return NATURE;
   }

@@ -5,18 +5,19 @@
 var { DEFAULT } = scene
 
 function scaleAndRotationToTop(component) {
-  var rotation = 0, scale = 1;
+  var rotation = 0, scale_x = 1, scale_y = 1;
   var parent = component;
 
   while (parent) {
     rotation += parent.get('rotation') || 0;
     let { x, y } = parent.get('scale') || { x: 1, y: 1 };
-    scale *= Math.max(x, y) || 1;
+    scale_x *= x || 1;
+    scale_y *= y || 1;
 
     parent = parent.parent
   }
 
-  return { rotation, scale };
+  return { rotation, scale_x, scale_y };
 }
 
 export default function reposition(component) {
@@ -52,19 +53,19 @@ export default function reposition(component) {
   var point = component.transcoordS2C(left, top, component.parent);
 
   // 2. 캔바스 기준으로 컴포넌트의 스케일과 회전각을 구한다.
-  var { rotation, scale } = scaleAndRotationToTop(component);
+  var { rotation, scale_x, scale_y } = scaleAndRotationToTop(component);
 
   // 3. document element들도 스케일이 적용될 수 있도록, 각 값이 스케일을 곱한다.
-  fontSize *= scale;
-  left *= scale;
-  top *= scale;
-  width *= scale;
-  height *= scale;
+  fontSize *= Math.min(scale_x, scale_y);
+  left *= scale_x;
+  top *= scale_y;
+  width *= scale_x;
+  height *= scale_y;
 
-  paddingTop *= scale;
-  paddingBottom *= scale;
-  paddingLeft *= scale;
-  paddingRight *= scale;
+  paddingTop *= scale_y;
+  paddingBottom *= scale_y;
+  paddingLeft *= scale_x;
+  paddingRight *= scale_x;
 
   var elementWidth = width - paddingLeft - paddingRight;
   var elementHeight = height - paddingTop - paddingBottom;

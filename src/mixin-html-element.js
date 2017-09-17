@@ -2,8 +2,6 @@
  * Copyright © HatioLab Inc. All rights reserved.
  */
 
-import reposition from './reposition'
-
 /**
  * Mixin HTMLElement
  */
@@ -35,8 +33,6 @@ export default (superclass) => {
   
       this.setElementProperties();
       
-      reposition(this);
-  
       if(this.parent.isHTMLElement && this.parent.isHTMLElement())
         this.parent.element.appendChild(this._element)
       else
@@ -66,10 +62,6 @@ export default (superclass) => {
         this.root.model_layer.overlay.appendChild(this._element);
     }
   
-    _draw(ctx) {
-      reposition(this);
-    }
-  
     dispose() {
       disposeElement(this);
       super.dispose()
@@ -80,7 +72,6 @@ export default (superclass) => {
     }
   
     onchange(after, before) {
-      // reposition(this);
       if (after.hasOwnProperty('htmlConfig') && this._element) {
         this.setElementProperties()
       }
