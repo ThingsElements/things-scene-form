@@ -46,8 +46,8 @@ export default class Input extends RectPath(Component) {
   }
 
   onchange(after, before) {
-    if (after.hasOwnProperty('value')) {
-      this._input.value = after.value
+    if (after.hasOwnProperty('value') && this._element) {
+      this._element.value = after.value;
     }
   }
 }
