@@ -24,8 +24,12 @@ Copyright © HatioLab Inc. All rights reserved.
   <style is="custom-style" include="things-theme">
     things-scene-viewer {
       display: block;
-      width: 800px;
+      width: 1200px;
       height: 600px;
+    }
+
+    input {
+      background-color: lightgray;
     }
   </style>
 </head>
@@ -35,7 +39,7 @@ Copyright © HatioLab Inc. All rights reserved.
   <template is="dom-bind" id="app">
     <p>An example of <code>&lt;form&gt;</code>:</p>
 
-    <things-scene-viewer id='scene' scene='{{scene}}' selected='{{selected}}' model='[[model]]' mode="1">
+    <things-scene-viewer id='scene' scene='{{scene}}' selected='{{selected}}' model='[[model]]' mode="1" fit="ratio">
       <things-scene-layer type="selection-layer"></things-scene-layer>
       <things-scene-layer type="modeling-layer"></things-scene-layer>
       <things-scene-layer type="guide-layer"></things-scene-layer>
@@ -77,14 +81,19 @@ Copyright © HatioLab Inc. All rights reserved.
       app.model = {
         width: 800,
         height: 600,
+        scale: {
+          x: 2,
+          y: 3
+        },
         components: [{
           type: 'rect',
-          id: 'rect',
+          id: 'a',
           top: 50,
           left: 50,
           width: 280,
-          height: 20,
+          height: 30,
           fontSize: 20,
+          text: '#{data}',
           fillStyle: '#00ff00',
           fontColor: '#FF0000',
           strokeStyle: '#000',
@@ -119,6 +128,7 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 5,
             value: 40,
+            textAlign: 'left',
             htmlConfig: {
               name: 'text',
               type: 'text'
@@ -166,6 +176,7 @@ Copyright © HatioLab Inc. All rights reserved.
             fontColor: 'navy',
             strokeStyle: '#000',
             lineWidth: 5,
+            rotation: 0.5,
             value: 'form',
             htmlConfig: {
               name: 'search',

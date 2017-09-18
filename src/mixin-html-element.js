@@ -2,12 +2,11 @@
  * Copyright © HatioLab Inc. All rights reserved.
  */
 
+import reposition from './reposition'
+
 /**
  * Mixin HTMLElement
  */
-
-import reposition from './reposition'
-
 export default (superclass) => {
   var A = class extends superclass {
     isHTMLElement() {

@@ -43,7 +43,13 @@ export default class Form extends MixinHTMLElement(Container) {
   }
 
   onload(e) {
-    console.log(e.target.response)
+    var result = JSON.parse(e.target.response)
+    console.log(result)
+
+    Object.keys(result).forEach(id => {
+      console.log(id, result[id])
+      this.root.variable(id, result[id])
+    })
   }
 
   oncreate_element(form) {
@@ -59,27 +65,31 @@ export default class Form extends MixinHTMLElement(Container) {
         return true;
         // return typeof(el.checked) === 'undefined' || el.checked;
       })
-      .filter(function (el) { return !!el.name; }) //Nameless elements die.
-      .filter(function (el) { return !el.disabled; }) //Disabled elements die.
+      .filter(function (el) { return !!el.name; })
+      .filter(function (el) { return !el.disabled; })
       .map(function (el) {
-        //Map each field into a name=value string, make sure to properly escape!
         return encodeURIComponent(el.name) + '=' + encodeURIComponent(el.value);
-      }).join('&'); //Then join all the strings by &
+      }).join('&');
 
-      xhr.open(form.method, url);
-
+      if(form.method == 'get')
+        xhr.open(form.method, url + '?' + params);
+      else
+        xhr.open(form.method, url);
+      
       var contentTypes = ['x-form-urlencoded', 'json'].map(type => {
         return 'application/' + type
       }).join(';')
       xhr.setRequestHeader("Content-type", contentTypes);
 
       xhr.onloadend = this.onload.bind(this)
-      xhr.send(params);
+      
+      if(form.method == 'get')
+        xhr.send();
+      else
+        xhr.send(params);
     }
 
-    ['submit'].forEach(e => {
-      form.addEventListener(e, _)
-    })
+    form.addEventListener('submit', _)
   }
 
   get nature() {
