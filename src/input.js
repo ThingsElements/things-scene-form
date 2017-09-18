@@ -31,12 +31,14 @@ export default class Input extends HTMLElement {
     }
   }
 
-  setElementProperties() {
+  setElementProperties(element) {
     var {
-      type
+      type = '',
+      name = ''
     } = this.model.htmlConfig
 
     this.element.type = type
+    this.element.name = name
   }
 
   onchange(after, before) {

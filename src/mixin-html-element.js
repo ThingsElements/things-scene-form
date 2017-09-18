@@ -24,7 +24,7 @@ export default (superclass) => {
     }
   
     // Overidable
-    setElementProperties() {
+    setElementProperties(element) {
       throw new Error('Not Implemented Yet')    
     }
   
@@ -34,14 +34,16 @@ export default (superclass) => {
       if(!this._element)
         return;
   
-      this.setElementProperties();
+      this.setElementProperties(this._element);
       
       if(this.parent.isHTMLElement && this.parent.isHTMLElement())
         this.parent.element.appendChild(this._element)
       else
         this.root.model_layer.overlay.appendChild(this._element);
 
-      reposition(this);        
+      reposition(this);
+
+      this.oncreate_element && this.oncreate_element(this._element)
     }
   
     // Overidable

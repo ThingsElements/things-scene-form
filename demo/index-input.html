@@ -95,14 +95,16 @@ Copyright © HatioLab Inc. All rights reserved.
           left: 50,
           width: 700,
           height: 450,
-          method: 'POST',
-          action: 'http://hatiolab.com/rest',
-          name: 'search',
           backgroundColor: 'transparent',
           fillStyle: '#00ff00',
           fontColor: '#FF0000',
           strokeStyle: '#000',
           lineWidth: 5,
+          htmlConfig: {
+            method: 'GET',
+            action: '/demo/service.json',
+            name: 'search',
+          },
           components: [{
             type: 'input',
             id: 'input-01',
@@ -118,6 +120,7 @@ Copyright © HatioLab Inc. All rights reserved.
             lineWidth: 5,
             value: 40,
             htmlConfig: {
+              name: 'text',
               type: 'text'
             }
           }, {
@@ -133,6 +136,7 @@ Copyright © HatioLab Inc. All rights reserved.
             lineWidth: 5,
             value: '1234567890',
             htmlConfig: {
+              name: 'password',
               type: 'password'
             }
           }, {
@@ -148,6 +152,7 @@ Copyright © HatioLab Inc. All rights reserved.
             lineWidth: 5,
             value: 'heartyoh@hatiolab.com',
             htmlConfig: {
+              name: 'email',
               type: 'email'
             }
           }, {
@@ -163,6 +168,7 @@ Copyright © HatioLab Inc. All rights reserved.
             lineWidth: 5,
             value: 'form',
             htmlConfig: {
+              name: 'search',
               type: 'search'
             }
           }, {
@@ -177,6 +183,7 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 5,
             htmlConfig: {
+              name: 'datetime',
               type: 'datetime'
             }
           }, {
@@ -207,6 +214,7 @@ Copyright © HatioLab Inc. All rights reserved.
             lineWidth: 5,
             value: 2017,
             htmlConfig: {
+              name: 'number',
               type: 'number'
             }
           }, {
@@ -222,6 +230,7 @@ Copyright © HatioLab Inc. All rights reserved.
             lineWidth: 5,
             value: '#FF0000',
             htmlConfig: {
+              name: 'color',
               type: 'color'
             }
           }, {
@@ -237,6 +246,7 @@ Copyright © HatioLab Inc. All rights reserved.
             lineWidth: 5,
             value: 34,
             htmlConfig: {
+              name: 'range',
               type: 'range'
             }
           }, {
@@ -252,6 +262,7 @@ Copyright © HatioLab Inc. All rights reserved.
             lineWidth: 5,
             value: '04:56',
             htmlConfig: {
+              name: 'time',
               type: 'time'
             }
           }, {
@@ -266,6 +277,7 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 5,
             htmlConfig: {
+              name: 'datetime-local',
               type: 'datetime-local'
             }
           }, {
@@ -280,6 +292,7 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 5,
             htmlConfig: {
+              name: 'date',
               type: 'date'
             }
           }, {
@@ -294,6 +307,7 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 5,
             htmlConfig: {
+              name: 'month',
               type: 'month'
             }
           }, {
@@ -308,6 +322,7 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 5,
             htmlConfig: {
+              name: 'week',
               type: 'week'
             }
           }]
