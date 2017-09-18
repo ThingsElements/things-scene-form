@@ -35,7 +35,7 @@ export default class Input extends HTMLElement {
     var {
       type = '',
       name = ''
-    } = this.model.htmlConfig
+    } = this.model.htmlConfig || {}
 
     this.element.type = type
     this.element.name = name

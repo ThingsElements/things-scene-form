@@ -36,8 +36,12 @@ export default class Select extends HTMLElement {
     super.createElement();
 
     var {
+      htmlConfig = {}
+    } = this.model
+
+    var {
       options = []
-    } = this.model.htmlConfig
+    } = htmlConfig
 
     options.forEach(option => {
       var el = document.createElement('option')
@@ -56,7 +60,7 @@ export default class Select extends HTMLElement {
     var {
       size,
       name
-    } = this.model.htmlConfig
+    } = this.model.htmlConfig || {}
 
     this.element.size = size
     this.element.name = name
@@ -64,7 +68,7 @@ export default class Select extends HTMLElement {
 
   onchange(after, before) {
     super.onchange(after, before)
-    
+
     if (after.hasOwnProperty('value') && this.element) {
       this.element.value = after.value;
     }

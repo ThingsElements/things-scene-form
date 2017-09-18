@@ -35,7 +35,7 @@ export default class Form extends MixinHTMLElement(Container) {
       action = '',
       method = 'POST',
       name = ''
-    } = this.model.htmlConfig
+    } = this.model.htmlConfig || {}
 
     form.action = action
     form.method = method

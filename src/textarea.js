@@ -41,7 +41,12 @@ export default class TextArea extends HTMLElement {
     }
   }
 
-  setElementProperties() {
+  setElementProperties(element) {
+    var {
+      name = ''
+    } = this.model.htmlConfig || {}
+
+    this.element.name = name
   }
 
   onchange(after, before) {
