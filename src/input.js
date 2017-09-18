@@ -40,6 +40,8 @@ export default class Input extends HTMLElement {
   }
 
   onchange(after, before) {
+    super.onchange(after, before)
+    
     if (after.hasOwnProperty('value') && this._element) {
       this._element.value = after.value;
     }

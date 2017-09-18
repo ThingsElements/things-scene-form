@@ -5,6 +5,9 @@
 /**
  * Mixin HTMLElement
  */
+
+import reposition from './reposition'
+
 export default (superclass) => {
   var A = class extends superclass {
     isHTMLElement() {
@@ -37,6 +40,8 @@ export default (superclass) => {
         this.parent.element.appendChild(this._element)
       else
         this.root.model_layer.overlay.appendChild(this._element);
+
+      reposition(this);        
     }
   
     // Overidable
@@ -52,14 +57,14 @@ export default (superclass) => {
     added() {
       if(!this._element) {
         return
-        // this.createElement()
-        // return
       }
   
       if(this.parent.isHTMLElement && this.parent.isHTMLElement())
         this.parent.element.appendChild(this._element)
       else
         this.root.model_layer.overlay.appendChild(this._element);
+
+      reposition(this);
     }
   
     dispose() {
@@ -72,9 +77,11 @@ export default (superclass) => {
     }
   
     onchange(after, before) {
-      if (after.hasOwnProperty('htmlConfig') && this._element) {
+      if(after.hasOwnProperty('htmlConfig') && this._element) {
         this.setElementProperties()
       }
+
+      reposition(this);
     }
   }
 

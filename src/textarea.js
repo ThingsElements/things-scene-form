@@ -45,6 +45,8 @@ export default class TextArea extends HTMLElement {
   }
 
   onchange(after, before) {
+    super.onchange(after, before)
+    
     if (after.hasOwnProperty('value') && this.element) {
       this.element.value = after.value;
     }
