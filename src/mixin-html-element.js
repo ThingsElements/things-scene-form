@@ -47,7 +47,8 @@ export default (superclass) => {
   
     // Overidable
     disposeElement() {
-      this._element && this._element.parentElement && this._element.parentElement.removeChild(element);
+      var element = this._element
+      element && element.parentElement && element.parentElement.removeChild(element);
       delete this._element
     }
   
@@ -69,7 +70,7 @@ export default (superclass) => {
     }
   
     dispose() {
-      disposeElement(this);
+      this.disposeElement(this);
       super.dispose()
     }
   

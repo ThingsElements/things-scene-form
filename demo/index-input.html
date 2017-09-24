@@ -29,7 +29,7 @@ Copyright © HatioLab Inc. All rights reserved.
     }
 
     input {
-      background-color: lightgray;
+      background-color: white;
     }
   </style>
 </head>
@@ -40,17 +40,30 @@ Copyright © HatioLab Inc. All rights reserved.
     <p>An example of <code>&lt;form&gt;</code>:</p>
 
     <things-scene-viewer id='scene' scene='{{scene}}' selected='{{selected}}' model='[[model]]' mode="1" fit="ratio">
-      <things-scene-layer type="selection-layer"></things-scene-layer>
+      <!-- <things-scene-layer type="selection-layer"></things-scene-layer>
       <things-scene-layer type="modeling-layer"></things-scene-layer>
       <things-scene-layer type="guide-layer"></things-scene-layer>
       <things-scene-layer type="tag-layer"></things-scene-layer>
       <things-scene-handler type="text-editor"></things-scene-handler>
-      <things-scene-handler type="move-handler"></things-scene-handler>
+      <things-scene-handler type="move-handler"></things-scene-handler> -->
     </things-scene-viewer>
 
     <p>Properties</p>
     <things-editor-properties id='props' target="{{props}}" props="[[selected.0.nature.properties]]">
     </things-editor-properties>
+
+    <p>
+      <button onClick="create()">Create</button>
+      <button onClick="dispose()">Dispose</button>
+      <button onClick="change()">change</button>
+      <button onClick="undo()">undo</button>
+      <button onClick="redo()">redo</button>
+      <button onClick="fullscreen()">Full-Screen</button>
+      <button onClick="grouping()">grouping</button>
+      <button onClick="ungrouping()">ungrouping</button>
+      <button onClick="distribute_horizontal()">distribute_horizontal</button>
+      <button onClick="distribute_vertical()">distribute_vertical</button>
+    </p>
 
   </template>
 
@@ -122,7 +135,7 @@ Copyright © HatioLab Inc. All rights reserved.
             width: 280,
             height: 40,
             fontSize: 20,
-            backgroundColor: 'transparent',
+            backgroundColor: 'red',
             fillStyle: '#00ff00',
             fontColor: '#FF0000',
             strokeStyle: '#000',
@@ -340,6 +353,36 @@ Copyright © HatioLab Inc. All rights reserved.
         }]
       }
     });
+
+    function undo() {
+      app.scene.undo()
+    }
+
+    function redo() {
+      app.scene.redo()
+    }
+
+    function change() {
+      app.scene.target_element.addEventListener('click', function(e) {
+        app.scene.change('barcode', {
+          text: '0987654321',
+          alttext: '123456789012345'
+        })
+      });
+    }
+
+    function fullscreen() {
+      app.scene.fullscreen('ratio')
+    }
+
+    function distribute_horizontal(){
+      app.scene.distribute('HORIZONTAL')
+    }
+
+    function distribute_vertical(){
+      app.scene.distribute('VERTICAL')
+    }
+    
   </script>
 </body>
 
