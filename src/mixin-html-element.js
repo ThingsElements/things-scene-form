@@ -16,6 +16,10 @@ export default (superclass) => {
     get element() {
       return this._element
     }
+
+    set element(element) {
+      this._element = element
+    }
   
     // Overidable
     get tag() {
@@ -29,42 +33,42 @@ export default (superclass) => {
   
     // Overidable
     createElement() {
-      this._element = document.createElement(this.tag)
-      if(!this._element)
+      this.element = document.createElement(this.tag)
+      if(!this.element)
         return;
   
-      this.setElementProperties(this._element);
+      this.setElementProperties(this.element);
       
       if(this.parent.isHTMLElement && this.parent.isHTMLElement())
-        this.parent.element.appendChild(this._element)
+        this.parent.element.appendChild(this.element)
       else
-        this.root.model_layer.overlay.appendChild(this._element);
+        this.root.model_layer.overlay.appendChild(this.element);
 
       reposition(this);
 
-      this.oncreate_element && this.oncreate_element(this._element)
+      this.oncreate_element && this.oncreate_element(this.element)
     }
   
     // Overidable
     disposeElement() {
-      var element = this._element
+      var element = this.element
       element && element.parentElement && element.parentElement.removeChild(element);
-      delete this._element
+      this.element = null
     }
   
     ready() {
-      !this._element && this.createElement();
+      !this.element && this.createElement();
     }
   
     added() {
-      if(!this._element) {
+      if(!this.element) {
         return
       }
   
       if(this.parent.isHTMLElement && this.parent.isHTMLElement())
-        this.parent.element.appendChild(this._element)
+        this.parent.element.appendChild(this.element)
       else
-        this.root.model_layer.overlay.appendChild(this._element);
+        this.root.model_layer.overlay.appendChild(this.element);
 
       reposition(this);
     }
@@ -79,9 +83,7 @@ export default (superclass) => {
     }
   
     onchange(after, before) {
-      if(after.hasOwnProperty('htmlConfig') && this._element) {
-        this.setElementProperties()
-      }
+      this.setElementProperties(this.element)
 
       reposition(this);
     }

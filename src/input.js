@@ -22,6 +22,10 @@ export default class Input extends HTMLElement {
     return NATURE;
   }
 
+  get inputType() {
+    return this.get('inputType') || 'text'
+  }
+
   createElement() {
     super.createElement();
 
@@ -32,20 +36,15 @@ export default class Input extends HTMLElement {
   }
 
   setElementProperties(element) {
-    var {
-      type = '',
-      name = ''
-    } = this.model.htmlConfig || {}
-
-    this.element.type = type
-    this.element.name = name
+    element.type = this.inputType
+    element.name = this.get('name')
   }
 
   onchange(after, before) {
     super.onchange(after, before)
     
-    if (after.hasOwnProperty('value') && this._element) {
-      this._element.value = after.value;
+    if (after.hasOwnProperty('value') && this.element) {
+      this.element.value = after.value;
     }
   }
 }

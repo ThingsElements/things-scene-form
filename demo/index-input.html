@@ -116,17 +116,15 @@ Copyright © HatioLab Inc. All rights reserved.
           top: 100,
           left: 50,
           width: 700,
-          height: 450,
+          height: 480,
           backgroundColor: 'transparent',
           fillStyle: '#00ff00',
           fontColor: '#FF0000',
           strokeStyle: '#000',
           lineWidth: 5,
-          htmlConfig: {
-            method: 'GET',
-            action: '/demo/service.json',
-            name: 'search',
-          },
+          method: 'GET',
+          action: '/demo/service.json',
+          name: 'search',
           components: [{
             type: 'input',
             id: 'input-01',
@@ -142,10 +140,8 @@ Copyright © HatioLab Inc. All rights reserved.
             lineWidth: 5,
             value: 40,
             textAlign: 'left',
-            htmlConfig: {
-              name: 'text',
-              type: 'text'
-            }
+            name: 'text',
+            inputType: 'text'
           }, {
             type: 'input',
             top: 50,
@@ -158,10 +154,8 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 5,
             value: '1234567890',
-            htmlConfig: {
-              name: 'password',
-              type: 'password'
-            }
+            name: 'password',
+            inputType: 'password'
           }, {
             type: 'input',
             top: 100,
@@ -174,10 +168,8 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 5,
             value: 'heartyoh@hatiolab.com',
-            htmlConfig: {
-              name: 'email',
-              type: 'email'
-            }
+            name: 'email',
+            inputType: 'email'
           }, {
             type: 'input',
             top: 100,
@@ -191,10 +183,8 @@ Copyright © HatioLab Inc. All rights reserved.
             lineWidth: 5,
             rotation: 0.5,
             value: 'form',
-            htmlConfig: {
-              name: 'search',
-              type: 'search'
-            }
+            name: 'search',
+            inputType: 'search'
           }, {
             type: 'input',
             top: 150,
@@ -206,10 +196,8 @@ Copyright © HatioLab Inc. All rights reserved.
             fontColor: 'navy',
             strokeStyle: '#000',
             lineWidth: 5,
-            htmlConfig: {
-              name: 'datetime',
-              type: 'datetime'
-            }
+            name: 'datetime',
+            inputType: 'datetime'
           }, {
             type: 'input',
             top: 150,
@@ -222,9 +210,7 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 5,
             value: 'SUBMIT',
-            htmlConfig: {
-              type: 'submit'
-            }
+            inputType: 'submit'
           }, {
             type: 'input',
             top: 200,
@@ -237,10 +223,8 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 5,
             value: 2017,
-            htmlConfig: {
-              name: 'number',
-              type: 'number'
-            }
+            name: 'number',
+            inputType: 'number'
           }, {
             type: 'input',
             top: 200,
@@ -253,10 +237,8 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 5,
             value: '#FF0000',
-            htmlConfig: {
-              name: 'color',
-              type: 'color'
-            }
+            name: 'color',
+            inputType: 'color'
           }, {
             type: 'input',
             top: 250,
@@ -269,10 +251,8 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 5,
             value: 34,
-            htmlConfig: {
-              name: 'range',
-              type: 'range'
-            }
+            name: 'range',
+            inputType: 'range'
           }, {
             type: 'input',
             top: 250,
@@ -285,10 +265,8 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 5,
             value: '04:56',
-            htmlConfig: {
-              name: 'time',
-              type: 'time'
-            }
+            name: 'time',
+            inputType: 'time'
           }, {
             type: 'input',
             top: 300,
@@ -300,10 +278,8 @@ Copyright © HatioLab Inc. All rights reserved.
             fontColor: 'navy',
             strokeStyle: '#000',
             lineWidth: 5,
-            htmlConfig: {
-              name: 'datetime-local',
-              type: 'datetime-local'
-            }
+            name: 'datetime-local',
+            inputType: 'datetime-local'
           }, {
             type: 'input',
             top: 300,
@@ -315,10 +291,8 @@ Copyright © HatioLab Inc. All rights reserved.
             fontColor: 'navy',
             strokeStyle: '#000',
             lineWidth: 5,
-            htmlConfig: {
-              name: 'date',
-              type: 'date'
-            }
+            name: 'date',
+            inputType: 'date'
           }, {
             type: 'input',
             top: 350,
@@ -330,10 +304,8 @@ Copyright © HatioLab Inc. All rights reserved.
             fontColor: 'navy',
             strokeStyle: '#000',
             lineWidth: 5,
-            htmlConfig: {
-              name: 'month',
-              type: 'month'
-            }
+            name: 'month',
+            inputType: 'month'
           }, {
             type: 'input',
             top: 350,
@@ -345,10 +317,106 @@ Copyright © HatioLab Inc. All rights reserved.
             fontColor: 'navy',
             strokeStyle: '#000',
             lineWidth: 5,
-            htmlConfig: {
-              name: 'week',
-              type: 'week'
-            }
+            name: 'week',
+            inputType: 'week'
+          }, {
+            type: 'input-checkbox',
+            text: 'CA',
+            top: 400,
+            left: 50,
+            width: 80,
+            height: 40,
+            fontSize: 20,
+            fillStyle: '#00ff00',
+            fontColor: 'navy',
+            strokeStyle: '#000',
+            lineWidth: 5,
+            name: 'xx',
+            value: true
+          }, {
+            type: 'input-checkbox',
+            text: 'CB',
+            top: 400,
+            left: 150,
+            width: 80,
+            height: 40,
+            fontSize: 20,
+            fillStyle: '#00ff00',
+            fontColor: 'navy',
+            strokeStyle: '#000',
+            lineWidth: 5,
+            name: 'yy',
+            value: true
+          }, {
+            type: 'input-checkbox',
+            text: 'CC',
+            top: 400,
+            left: 250,
+            width: 80,
+            height: 40,
+            fontSize: 20,
+            fillStyle: '#00ff00',
+            fontColor: 'navy',
+            strokeStyle: '#000',
+            lineWidth: 5,
+            name: 'zz',
+            value: true
+          }, {
+            type: 'input-radio',
+            text: 'A',
+            top: 400,
+            left: 350,
+            width: 40,
+            height: 40,
+            fontSize: 20,
+            fillStyle: '#00ff00',
+            fontColor: 'navy',
+            strokeStyle: '#000',
+            lineWidth: 5,
+            name: 'radio-group-01',
+            value: true
+          }, {
+            type: 'input-radio',
+            text: 'B',
+            top: 400,
+            left: 400,
+            width: 40,
+            height: 40,
+            fontSize: 20,
+            fillStyle: '#00ff00',
+            fontColor: 'navy',
+            strokeStyle: '#000',
+            lineWidth: 5,
+            name: 'radio-group-01',
+            value: true
+          }, {
+            type: 'input-radio',
+            text: 'C',
+            top: 400,
+            left: 500,
+            width: 40,
+            height: 40,
+            fontSize: 20,
+            fillStyle: '#00ff00',
+            fontColor: 'navy',
+            strokeStyle: '#000',
+            lineWidth: 5,
+            name: 'radio-group-02',
+            value: true
+          }, {
+            type: 'input-radio',
+            text: 'D',
+            top: 400,
+            left: 550,
+            width: 40,
+            height: 40,
+            fontSize: 20,
+            fillStyle: '#00ff00',
+            fontColor: 'navy',
+            strokeStyle: '#000',
+            lineWidth: 5,
+            name: 'radio-group-02',
+            value: true
           }]
         }]
       }

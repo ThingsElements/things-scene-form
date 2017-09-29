@@ -36,12 +36,8 @@ export default class Select extends HTMLElement {
     super.createElement();
 
     var {
-      htmlConfig = {}
-    } = this.model
-
-    var {
       options = []
-    } = htmlConfig
+    } = this.model
 
     options.forEach(option => {
       var el = document.createElement('option')
@@ -60,7 +56,7 @@ export default class Select extends HTMLElement {
     var {
       size,
       name
-    } = this.model.htmlConfig || {}
+    } = this.model
 
     this.element.size = size
     this.element.name = name
