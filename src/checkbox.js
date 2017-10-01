@@ -41,6 +41,10 @@ export default class CheckBox extends Input {
     return 'checkbox'
   }
 
+  get hasTextProperty() {
+    return true
+  }
+
   createElement() {
     this.element = document.createElement('label')
     if(!this.element)

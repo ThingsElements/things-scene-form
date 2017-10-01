@@ -81,6 +81,9 @@ export default (superclass) => {
     get hasTextProperty() {
       return false
     }
+
+    drawText(context) {
+    }      
   
     onchange(after, before) {
       this.element && this.setElementProperties(this.element)

@@ -8,6 +8,11 @@ const NATURE = {
   rotatable: true,
   properties: [{
     type: 'string',
+    label: 'name',
+    name: 'name',
+    property: 'name'
+  }, {
+    type: 'string',
     label: 'value',
     name: 'value',
     property: 'value'
