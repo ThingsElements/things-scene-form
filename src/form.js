@@ -21,6 +21,16 @@ const NATURE = {
     label: 'name',
     name: 'name',
     property: 'name'
+  }, {
+    type: 'string',
+    label: 'authorization',
+    name: 'authorization',
+    property: 'authorization'
+  }, {
+    type: 'string',
+    label: 'accessor',
+    name: 'accessor',
+    property: 'accessor'
   }]
 }
 
@@ -44,10 +54,11 @@ export default class Form extends MixinHTMLElement(Container) {
 
   onload(e) {
     var result = JSON.parse(e.target.response)
-    console.log(result)
 
+    
     Object.keys(result).forEach(id => {
       console.log(id, result[id])
+      this.data = 
       this.root.variable(id, result[id])
     })
   }
@@ -62,8 +73,7 @@ export default class Form extends MixinHTMLElement(Container) {
       xhr.withCredentials = true;
 
       var params = [].filter.call(form.elements, function (el) {
-        return true;
-        // return typeof(el.checked) === 'undefined' || el.checked;
+        return typeof(el.checked) === 'undefined' || el.checked;
       })
       .filter(function (el) { return !!el.name; })
       .filter(function (el) { return !el.disabled; })
@@ -76,10 +86,12 @@ export default class Form extends MixinHTMLElement(Container) {
       else
         xhr.open(form.method, url);
       
-      var contentTypes = ['x-form-urlencoded', 'json'].map(type => {
+      xhr.setRequestHeader("Content-Type", ['x-form-urlencoded', 'json'].map(type => {
         return 'application/' + type
-      }).join(';')
-      xhr.setRequestHeader("Content-type", contentTypes);
+      }).join(';'));
+
+      if(this.get('authorization'))
+        xhr.setRequestHeader('Authorization', this.get('authorization'));
 
       xhr.onloadend = this.onload.bind(this)
       
