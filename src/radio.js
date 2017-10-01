@@ -41,10 +41,6 @@ export default class Radio extends Input {
     return 'radio'
   }
 
-  get hasTextProperty() {
-    return true
-  }
-
   createElement() {
     this.element = document.createElement('label')
     if(!this.element)

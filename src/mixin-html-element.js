@@ -77,13 +77,14 @@ export default (superclass) => {
       this.disposeElement(this);
       super.dispose()
     }
-  
+
     get hasTextProperty() {
-      return false
+      return true
     }
 
-    drawText(context) {
-    }      
+    get textHidden() {
+      return true
+    }
   
     onchange(after, before) {
       this.element && this.setElementProperties(this.element)
