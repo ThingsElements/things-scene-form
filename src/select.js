@@ -52,14 +52,14 @@ export default class Select extends HTMLElement {
     }
   }
 
-  setElementProperties() {
+  setElementProperties(element) {
     var {
       size,
       name
     } = this.model
 
-    this.element.size = size
-    this.element.name = name
+    element.size = size
+    element.name = name
   }
 
   onchange(after, before) {

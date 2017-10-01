@@ -1,6 +1,6 @@
 {
   "name": "things-scene-form",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": [
     "Hatio Lab. <heartyoh@hatiolab.com>"
   ],
@@ -25,7 +25,7 @@
     "polymer": "Polymer/polymer#^1.2.0",
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
     "web-component-tester": "^4.0.0",
-    "things-scene-viewer": "ThingsElements/things-scene-viewer",
+    "things-scene-viewer": "ThingsElements/things-scene-viewer#^2.0.0",
     "things-designer-elements": "ThingsElements/things-designer-elements"
   }
 }

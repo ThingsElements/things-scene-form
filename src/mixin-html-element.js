@@ -83,9 +83,9 @@ export default (superclass) => {
     }
   
     onchange(after, before) {
-      this.setElementProperties(this.element)
+      this.element && this.setElementProperties(this.element)
 
-      reposition(this);
+      this.element && reposition(this);
     }
   }
 

@@ -55,12 +55,7 @@ export default class Form extends MixinHTMLElement(Container) {
   onload(e) {
     var result = JSON.parse(e.target.response)
 
-    
-    Object.keys(result).forEach(id => {
-      console.log(id, result[id])
-      this.data = 
-      this.root.variable(id, result[id])
-    })
+    this.data = result
   }
 
   oncreate_element(form) {
