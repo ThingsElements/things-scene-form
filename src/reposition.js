@@ -43,7 +43,10 @@ export default function reposition(component) {
     paddingRight = 0,
 
     fontSize = DEFAULT.FONT_SIZE,
-    backgroundColor
+    fillStyle,
+    lineWidth = 10,
+    strokeStyle = '#999',
+    lineDash = 'solid'
   } = component.model;
 
   var {
@@ -54,52 +57,63 @@ export default function reposition(component) {
   } = component.bounds
 
   // element의 기본 속성을 설정한다.
-  var element = component.element;
+  var style = component.element.style;
 
-  var border_x = 3;
-  var border_y = 3;
+  // var border_x = 3;
+  // var border_y = 3;
   
-  element.style.fontFamily = fontFamily
-  element.style.fontSize = fontSize + 'px';
-  element.style.position = 'absolute';
-  element.style.left = left + 'px';
-  element.style.top = top + 'px';
-  element.style.width = (width - border_x * 2) + 'px';
-  element.style.height = (height - border_y * 2) + 'px';
-  element.style.outline = 'none';
-  // element.style.margin = '0px';
-  // element.style.border = 0;
-  element.style.backgroundColor = backgroundColor;
-  element.style.display = 'inline-block';
+  style.fontFamily = fontFamily
+  style.fontSize = fontSize + 'px';
+  style.position = 'absolute';
+  style.left = left + 'px';
+  style.top = top + 'px';
+  style.width = (width - lineWidth * 2 - paddingLeft - paddingRight) + 'px';
+  style.height = (height - lineWidth * 2 - paddingTop - paddingBottom) + 'px';
+  style.outline = 'none';
+  style.paddingTop = paddingTop + 'px';
+  style.paddingRight = paddingRight + 'px';
+  style.paddingBottom = paddingBottom + 'px';
+  style.paddingLeft = paddingLeft + 'px';
+  style.border = lineWidth + 'px';
+  style.borderColor = strokeStyle;
+  style.borderStyle = lineDash;
+  // style.margin = '0px';
+  // style.border = 0;
+  style.backgroundColor = fillStyle;
+  style.display = 'inline-block';
 
-  element.style.color = fontColor;
+  style.color = fontColor;
 
   if(bold)
-    element.style.fontWeight = 'bold';
+    style.fontWeight = 'bold';
   if(italic)
-    element.style.fontStyle = 'italic';
+    style.fontStyle = 'italic';
 
   switch(textAlign) {
     case 'right':
     case 'end':
-      element.style.textAlign = 'right';
+      style.textAlign = 'right';
       break;
 
     case 'justify':
+      style.textAlign = 'justify';
+      break;
+
     case 'left':
     case 'start':
-      element.style.textAlign = 'left';
+      style.textAlign = 'left';
       break;
 
     case 'center':
     default:
-      element.style.textAlign = 'center';
+      style.textAlign = 'center';
       break;
   }
 
+  // var transform = `rotate(${rotation}rad) translate(-${pLineWidth}, -${pLineWidth}) scale(${scale.x}, ${scale.y})`;
   var transform = `rotate(${rotation}rad) scale(${scale.x}, ${scale.y})`;
   
   ['-webkit-', '-moz-', '-ms-', '-o-', ''].forEach(prefix => {
-    element.style[prefix + 'transform'] = transform;
+    style[prefix + 'transform'] = transform;
   })
 }
