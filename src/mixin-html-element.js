@@ -22,7 +22,7 @@ export default (superclass) => {
     }
   
     // Overidable
-    get tag() {
+    get tagName() {
       return this.get('type')
     }
   
@@ -33,7 +33,7 @@ export default (superclass) => {
   
     // Overidable
     createElement() {
-      this.element = document.createElement(this.tag)
+      this.element = document.createElement(this.tagName)
       if(!this.element)
         return;
   
@@ -90,6 +90,10 @@ export default (superclass) => {
       this.element && this.setElementProperties(this.element)
 
       this.element && reposition(this);
+    }
+
+    _draw(context) {
+      // Draw nothing..
     }
   }
 

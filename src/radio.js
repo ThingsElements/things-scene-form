@@ -33,7 +33,7 @@ export default class Radio extends Input {
     return NATURE;
   }
 
-  get tag() {
+  get tagName() {
     return 'input'
   }
 

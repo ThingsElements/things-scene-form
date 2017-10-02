@@ -33,7 +33,7 @@ export default class CheckBox extends Input {
     return NATURE;
   }
 
-  get tag() {
+  get tagName() {
     return 'input'
   }
 

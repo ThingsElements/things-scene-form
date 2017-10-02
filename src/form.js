@@ -34,11 +34,11 @@ const NATURE = {
   }]
 }
 
-import MixinHTMLElement from './mixin-html-element'
+import HTMLContainer from './html-container'
 
 var { Container } = scene
 
-export default class Form extends MixinHTMLElement(Container) {
+export default class Form extends HTMLContainer {
 
   setElementProperties(form) {
     var {
