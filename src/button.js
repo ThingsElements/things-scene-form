@@ -19,9 +19,9 @@ const NATURE = {
   }]
 }
 
-import HTMLElement from './html-element'
+var { HTMLOverlayElement } = scene
 
-export default class Button extends HTMLElement {
+export default class Button extends HTMLOverlayElement {
 
   get nature() {
     return NATURE;

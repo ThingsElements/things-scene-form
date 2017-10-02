@@ -25,7 +25,7 @@ const NATURE = {
 }
 
 import Input from './input'
-import reposition from './reposition'
+var { Component } = scene
 
 export default class CheckBox extends Input {
 
@@ -63,7 +63,7 @@ export default class CheckBox extends Input {
     else
       this.root.model_layer.overlay.appendChild(this.element);
 
-    reposition(this);
+    Component.reposition(this);
 
     this.oncreate_element && this.oncreate_element(this.element)    
   }

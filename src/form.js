@@ -34,11 +34,9 @@ const NATURE = {
   }]
 }
 
-import HTMLContainer from './html-container'
+var { HTMLOverlayContainer } = scene
 
-var { Container } = scene
-
-export default class Form extends HTMLContainer {
+export default class Form extends HTMLOverlayContainer {
 
   setElementProperties(form) {
     var {

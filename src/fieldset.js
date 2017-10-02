@@ -14,11 +14,9 @@ const NATURE = {
   }]
 }
 
-import HTMLContainer from './html-container'
+var { HTMLOverlayContainer } = scene
 
-var { Container } = scene
-
-export default class FieldSet extends HTMLContainer {
+export default class FieldSet extends HTMLOverlayContainer {
 
   setElementProperties(fieldset) {
     var {

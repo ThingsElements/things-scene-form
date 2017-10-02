@@ -24,9 +24,9 @@ const NATURE = {
   }]
 }
 
-import HTMLElement from './html-element'
+var { HTMLOverlayElement } = scene
 
-export default class TextArea extends HTMLElement {
+export default class TextArea extends HTMLOverlayElement {
 
   get nature() {
     return NATURE;
