@@ -23,10 +23,23 @@ export default class FieldSet extends HTMLOverlayContainer {
       legend = '',
     } = this.model
 
-    // fieldset.legend = legend
+    if(legend) {
+      this.legendElement.textContent = legend
+    } else {
+      this._legendElement && this.element.removeChild(this._legendElement)
+      delete this._legendElement
+    }
   }
 
-  oncreate_element(form) {
+  get legendElement() {
+    if(!this._legendElement) {
+      var legend = document.createElement('legend')
+      this.element.appendChild(legend)
+      
+      this._legendElement = legend
+    }
+
+    return this._legendElement
   }
 
   get nature() {

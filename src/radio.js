@@ -21,6 +21,11 @@ const NATURE = {
     label: 'name',
     name: 'name',
     property: 'name'
+  }, {
+    type: 'checkbox',
+    label: 'checked',
+    name: 'checked',
+    property: 'checked'
   }]
 }
 
@@ -66,13 +71,29 @@ export default class Radio extends Input {
   }
 
   setElementProperties(element) {
-    var text = this.element.querySelector('text')
-    var input = this.element.querySelector('input')
+    var eText = this.element.querySelector('text')
+    var eInput = this.element.querySelector('input')
 
-    if(text)
-      text.textContent = this.get('text')
+    var {
+      text,
+      checked,
+      value
+    } = this.model
 
-    super.setElementProperties(input)
+    if(eText) {
+      eText.textContent = text
+    }
+
+    if(eInput) {
+      if(checked)
+        eInput.setAttribute('checked', 'checked');
+      else
+        eInput.removeAttribute('checked');
+
+      eInput.setAttribute('value', value)
+    }
+
+    super.setElementProperties(eInput)
   }
 }
 

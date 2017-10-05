@@ -38,10 +38,12 @@ export default class Button extends HTMLOverlayElement {
 
   setElementProperties(element) {
     var {
-      name = ''
+      name = '',
+      value
     } = this.model
 
     this.element.name = name
+    this.element.textContent = value
   }
 
   onchange(after, before) {
