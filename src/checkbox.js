@@ -88,12 +88,8 @@ export default class CheckBox extends Input {
     }
 
     if(eInput) {
-      if(checked)
-        eInput.setAttribute('checked', 'checked');
-      else
-        eInput.removeAttribute('checked');
-
-      eInput.setAttribute('value', value)
+      eInput.checked = checked
+      eInput.value = value
     }
 
     super.setElementProperties(eInput)
