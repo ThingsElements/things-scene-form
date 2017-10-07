@@ -14,16 +14,17 @@ const NATURE = {
   }]
 }
 
-var { HTMLOverlayContainer } = scene
+var { HTMLOverlayElement } = scene
 
-export default class IFrame extends HTMLOverlayContainer {
+export default class IFrame extends HTMLOverlayElement {
 
   setElementProperties(iframe) {
     var {
       src = ''
     } = this.model
 
-    iframe.src = src
+    if(iframe.src != src)
+      iframe.src = src
   }
 
   get nature() {
