@@ -1,0 +1,159 @@
+<!--
+@license
+Copyright © HatioLab Inc. All rights reserved.
+-->
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>form Demo</title>
+  <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+
+  <link rel="import" href="../../things-scene-viewer/things-scene-viewer.html">
+  <link rel="import" href="../../things-scene-viewer/things-scene-layer.html">
+  <link rel="import" href="../../things-scene-viewer/things-scene-handler.html">
+
+  <link rel="import" href="../../things-designer-elements/things-editor-properties.html">
+
+  <link rel="import" href="./things-scene-form.html">
+
+  <link rel="import" href="./things-theme.html">
+
+  <style is="custom-style" include="things-theme">
+    things-scene-viewer {
+      display: block;
+      width: 1200px;
+      height: 600px;
+    }
+
+    input {
+      background-color: white;
+    }
+  </style>
+</head>
+
+<body unresolved>
+
+  <template is="dom-bind" id="app">
+    <p>An example of <code>&lt;form&gt;</code>:</p>
+
+    <things-scene-viewer id='scene' scene='{{scene}}' selected='{{selected}}' model='[[model]]' mode="1" fit="ratio">
+      <things-scene-layer type="selection-layer"></things-scene-layer>
+      <things-scene-layer type="modeling-layer"></things-scene-layer>
+      <things-scene-layer type="guide-layer"></things-scene-layer>
+      <things-scene-layer type="tag-layer"></things-scene-layer>
+      <things-scene-handler type="text-editor"></things-scene-handler>
+      <things-scene-handler type="move-handler"></things-scene-handler>
+    </things-scene-viewer>
+
+    <p>Properties</p>
+    <things-editor-properties id='props' target="{{props}}" props="[[selected.0.nature.properties]]">
+    </things-editor-properties>
+
+    <p>
+      <button onClick="create()">Create</button>
+      <button onClick="dispose()">Dispose</button>
+      <button onClick="change()">change</button>
+      <button onClick="undo()">undo</button>
+      <button onClick="redo()">redo</button>
+      <button onClick="fullscreen()">Full-Screen</button>
+      <button onClick="grouping()">grouping</button>
+      <button onClick="ungrouping()">ungrouping</button>
+      <button onClick="distribute_horizontal()">distribute_horizontal</button>
+      <button onClick="distribute_vertical()">distribute_vertical</button>
+    </p>
+
+  </template>
+
+  <script>
+    window.addEventListener('WebComponentsReady', function (e) {
+      var app = document.querySelector('#app')
+
+      app.props = {}
+
+      setTimeout(function () {
+        app.scene.on('selected', function (after) {
+          var target = after[0]
+          var props = {}
+          if (target) {
+            target.nature.properties.forEach(function (prop) {
+              var property = prop.property
+              props[property] = target.model[property]
+            })
+          }
+          app.props = props
+        });
+      });
+
+      app.$.props.addEventListener('change', function () {
+        app.selected[0].set(app.props)
+      });
+
+      app.model = {
+        width: 800,
+        height: 600,
+        scale: {
+          x: 2,
+          y: 3
+        },
+        components: [{
+          type: 'rect',
+          id: 'a',
+          top: 50,
+          left: 50,
+          width: 280,
+          height: 30,
+          fontSize: 20,
+          text: '#{data}',
+          fillStyle: 'lightgray',
+          fontColor: '#FF0000',
+          strokeStyle: '#000',
+          lineWidth: 1
+        }, {
+          type: 'iframe',
+          id: 'iframe',
+          top: 100,
+          left: 50,
+          width: 700,
+          height: 480,
+          fillStyle: 'lightgray',
+          fontColor: '#FF0000',
+          strokeStyle: '#000',
+          lineWidth: 10,
+          src: 'https://www.youtube.com/embed/XGSy3_Czz8k'
+        }]
+      }
+    });
+
+    function undo() {
+      app.scene.undo()
+    }
+
+    function redo() {
+      app.scene.redo()
+    }
+
+    function change() {
+      app.scene.change('iframe', {
+        src: 'http://daum.net'
+      })
+    }
+
+    function fullscreen() {
+      app.scene.fullscreen('ratio')
+    }
+
+    function distribute_horizontal(){
+      app.scene.distribute('HORIZONTAL')
+    }
+
+    function distribute_vertical(){
+      app.scene.distribute('VERTICAL')
+    }
+    
+  </script>
+</body>
+
+</html>
