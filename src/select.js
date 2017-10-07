@@ -21,6 +21,11 @@ const NATURE = {
     label: 'name',
     name: 'name',
     property: 'name'
+  }, {
+    type: 'options',
+    label: 'options',
+    name: 'options',
+    property: 'options'
   }]
 }
 
@@ -32,12 +37,21 @@ export default class Select extends HTMLOverlayElement {
     return NATURE;
   }
 
-  createElement() {
-    super.createElement();
-
+  buildOptions() {
     var {
       options = []
     } = this.model
+
+    if(!options instanceof Array)
+      options = []
+      
+    this.element.textContent = ''
+
+    options = options.map(option => {
+      return typeof(option) == 'string' ?
+        {value: option, text: option}
+        : option
+    })
 
     options.forEach(option => {
       var el = document.createElement('option')
@@ -45,6 +59,12 @@ export default class Select extends HTMLOverlayElement {
       el.text = option.text
       this.element.appendChild(el)
     })
+  }
+
+  createElement() {
+    super.createElement();
+
+    this.buildOptions()
 
     this.element.value = this.get('value') || ''
     this.element.onchange = e => {
@@ -65,9 +85,12 @@ export default class Select extends HTMLOverlayElement {
   onchange(after, before) {
     super.onchange(after, before)
 
-    if (after.hasOwnProperty('value') && this.element) {
+    if(after.hasOwnProperty('value') && this.element) {
       this.element.value = after.value;
     }
+
+    if(after.hasOwnProperty('options'))
+      this.buildOptions()
   }
 }
 

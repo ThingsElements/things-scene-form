@@ -98,8 +98,7 @@ Copyright © HatioLab Inc. All rights reserved.
           method: 'POST',
           action: 'http://hatiolab.com/rest',
           name: 'search',
-          backgroundColor: 'transparent',
-          fillStyle: '#00ff00',
+          fillStyle: 'transparent',
           fontColor: '#FF0000',
           strokeStyle: '#000',
           lineWidth: 5,
@@ -111,9 +110,8 @@ Copyright © HatioLab Inc. All rights reserved.
             width: 280,
             height: 40,
             fontSize: 20,
-            backgroundColor: 'transparent',
-            fillStyle: '#00ff00',
-            fontColor: '#FF0000',
+            fillStyle: '#999999',
+            fontColor: 'navy',
             strokeStyle: '#000',
             lineWidth: 5,
             value: 40,
@@ -125,7 +123,7 @@ Copyright © HatioLab Inc. All rights reserved.
             width: 280,
             height: 40,
             fontSize: 20,
-            fillStyle: '#00ff00',
+            fillStyle: '#999999',
             fontColor: 'navy',
             strokeStyle: '#000',
             lineWidth: 5,
@@ -142,18 +140,36 @@ Copyright © HatioLab Inc. All rights reserved.
               value: 3
             }]
           }, {
-            type: 'textarea',
+            type: 'select',
             top: 150,
+            left: 50,
+            width: 280,
+            height: 40,
+            fontSize: 20,
+            fillStyle: '#999999',
+            fontColor: 'navy',
+            strokeStyle: '#000',
+            lineWidth: 5,
+            value: 'Tokyo',
+            name: 'capital',
+            options: [
+              'Seoul',
+              'Beijing',
+              'Tokyo'
+            ]
+          }, {
+            type: 'textarea',
+            top: 250,
             left: 50,
             width: 600,
             height: 100,
             fontSize: 20,
-            fillStyle: '#00ff00',
+            fillStyle: '#999999',
             fontColor: 'navy',
             strokeStyle: '#000',
             lineWidth: 5,
             value: 'hay hay hay',
-            name: 'hahaha'
+            name: 'longtext'
           }]
         }]
       }
