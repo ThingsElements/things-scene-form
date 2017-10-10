@@ -27,8 +27,12 @@ export default class Input extends HTMLOverlayElement {
     return NATURE;
   }
 
+  get tagName() {
+    return 'input'
+  }
+
   get inputType() {
-    return this.get('inputType') || 'text'
+    return this.get('type').substr(6)
   }
 
   createElement() {
@@ -54,4 +58,17 @@ export default class Input extends HTMLOverlayElement {
   }
 }
 
-scene.Component.register('input', Input);
+[
+  'input-text',
+  'input-password',
+  'input-email',
+  'input-search',
+  'input-number',
+  'input-range',
+  'input-color',
+  'input-file',
+  'input-date',
+
+  'input-submit',
+  'input-reset'
+].forEach(input => scene.Component.register(input, Input))
