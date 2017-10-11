@@ -16,6 +16,26 @@ const NATURE = {
     label: 'value',
     name: 'value',
     property: 'value'
+  }, {
+    type: 'string',
+    label: 'placeholder',
+    name: 'placeholder',
+    property: 'placeholder'
+  }, {
+    type: 'checkbox',
+    label: 'readonly',
+    name: 'readonly',
+    property: 'readonly'
+  }, {
+    type: 'checkbox',
+    label: 'disabled',
+    name: 'disabled',
+    property: 'disabled'
+  }, {
+    type: 'number',
+    label: 'maxlength',
+    name: 'maxlength',
+    property: 'maxlength'
   }]
 }
 
@@ -45,13 +65,25 @@ export default class Input extends HTMLOverlayElement {
   }
 
   setElementProperties(element) {
+    var {
+      name,
+      placeholder,
+      disabled,
+      readonly,
+      maxlength
+    } = this.model
+
     element.type = this.inputType
-    element.name = this.get('name')
+    element.name = name
+    element.placeholder = placeholder
+    element.disabled = disabled
+    element.readonly = readonly
+    element.maxlength = maxlength
   }
 
   onchange(after, before) {
     super.onchange(after, before)
-    
+
     if (after.hasOwnProperty('value') && this.element) {
       this.element.value = after.value;
     }
@@ -62,13 +94,5 @@ export default class Input extends HTMLOverlayElement {
   'input-text',
   'input-password',
   'input-email',
-  'input-search',
-  'input-number',
-  'input-range',
-  'input-color',
-  'input-file',
-  'input-date',
-
-  'input-submit',
-  'input-reset'
+  'input-search'
 ].forEach(input => scene.Component.register(input, Input))

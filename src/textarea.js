@@ -17,14 +17,17 @@ const NATURE = {
     name: 'name',
     property: 'name'
   }, {
+    type: 'string',
+    label: 'placeholder',
+    name: 'placeholder',
+    property: 'placeholder'
+  }, {
     type: 'number',
     label: 'max-length',
     name: 'max-length',
-    property: 'maxLength'
+    property: 'maxlength'
   }]
 }
-
-// cols/rows(?), wrap(hard, soft), readonly, disabled, maxlength
 
 var { HTMLOverlayElement } = scene
 
@@ -48,19 +51,22 @@ export default class TextArea extends HTMLOverlayElement {
   setElementProperties(element) {
     var {
       name = '',
+      placeholder,
       maxLength
     } = this.model
 
     this.element.name = name
     if(maxLength)
-      this.element.maxlength = maxLength
+      this.element.maxlength = maxlength
     else
       delete this.element.maxlength
+
+    this.element.placeholder = placeholder
   }
 
   onchange(after, before) {
     super.onchange(after, before)
-    
+
     if (after.hasOwnProperty('value') && this.element) {
       this.element.value = after.value;
     }
