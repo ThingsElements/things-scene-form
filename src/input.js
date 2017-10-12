@@ -33,7 +33,7 @@ const NATURE = {
     property: 'disabled'
   }, {
     type: 'number',
-    label: 'maxlength',
+    label: 'max-length',
     name: 'maxlength',
     property: 'maxlength'
   }]
