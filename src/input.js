@@ -66,8 +66,8 @@ export default class Input extends HTMLOverlayElement {
 
   setElementProperties(element) {
     var {
-      name,
-      placeholder,
+      name = '',
+      placeholder = '',
       disabled,
       readonly,
       maxlength

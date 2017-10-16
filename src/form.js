@@ -7,10 +7,18 @@ const NATURE = {
   resizable: true,
   rotatable: true,
   properties: [{
-    type: 'string',
+    type: 'select',
     label: 'method',
     name: 'method',
-    property: 'method'
+    property: {
+      options: [{
+        display: 'GET',
+        value: 'GET'
+      }, {
+        display: 'POST',
+        value: 'POST'
+      }]
+    }
   }, {
     type: 'string',
     label: 'action',
@@ -31,6 +39,24 @@ const NATURE = {
     label: 'accessor',
     name: 'accessor',
     property: 'accessor'
+  }, {
+    type: 'select',
+    label: 'format',
+    name: 'format',
+    property: {
+      options: [{
+        display: 'JSON',
+        value: 'JSON'
+      }, {
+        display: 'TEXT',
+        value: 'TEXT'
+      }]
+    }
+  }, {
+    type: 'checkbox',
+    label: 'withCredentials',
+    name: 'withCredentials',
+    property: 'withCredentials'
   }]
 }
 
@@ -51,9 +77,13 @@ export default class Form extends HTMLOverlayContainer {
   }
 
   onload(e) {
-    var result = JSON.parse(e.target.response)
-
-    this.data = result
+    var result = e.target.response
+    try {
+      this.data = this.get('format') == 'JSON' ?
+      JSON.parse(result) : result
+    } catch(e) {
+      console.error(e)
+    }
   }
 
   oncreate_element(form) {
@@ -62,11 +92,11 @@ export default class Form extends HTMLOverlayContainer {
 
       var url = form.action;
       var xhr = new XMLHttpRequest();
-      
-      xhr.withCredentials = true;
 
       var params = [].filter.call(form.elements, function (el) {
-        return typeof(el.checked) === 'undefined' || el.checked;
+        if(el.type == 'radio' || el.type == 'checkbox')
+          return el.checked;
+        return true
       })
       .filter(function (el) { return !!el.name; })
       .filter(function (el) { return !el.disabled; })
@@ -74,20 +104,23 @@ export default class Form extends HTMLOverlayContainer {
         return encodeURIComponent(el.name) + '=' + encodeURIComponent(el.value);
       }).join('&');
 
+      xhr.onloadend = this.onload.bind(this)
+
       if(form.method == 'get')
         xhr.open(form.method, url + '?' + params);
       else
         xhr.open(form.method, url);
-      
-      xhr.setRequestHeader("Content-Type", ['x-form-urlencoded', 'json'].map(type => {
+
+      xhr.setRequestHeader("Content-Type", ['x-www-form-urlencoded' , 'json'].map(type => {
         return 'application/' + type
-      }).join(';'));
+      }).concat('text/plain').join(';'));
 
       if(this.get('authorization'))
         xhr.setRequestHeader('Authorization', this.get('authorization'));
 
-      xhr.onloadend = this.onload.bind(this)
-      
+      if(this.get('withCredentials'))
+        xhr.withCredentials = true;
+
       if(form.method == 'get')
         xhr.send();
       else

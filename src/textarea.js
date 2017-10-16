@@ -51,7 +51,7 @@ export default class TextArea extends HTMLOverlayElement {
   setElementProperties(element) {
     var {
       name = '',
-      placeholder,
+      placeholder = '',
       maxLength
     } = this.model
 
