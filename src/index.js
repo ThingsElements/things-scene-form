@@ -11,6 +11,7 @@ export { default as Radio } from './radio'
 export { default as CheckBox } from './checkbox'
 export { default as IFrame } from './iframe'
 export { default as Img } from './img'
+export { default as Link } from './link'
 
 export { default as Input } from './input'
 export { default as InputNumber } from './input-number'
