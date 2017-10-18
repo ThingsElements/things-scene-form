@@ -11,12 +11,35 @@ const NATURE = {
     label: 'href',
     name: 'href',
     property: 'href'
+  }, {
+    type: 'select',
+    label: 'target',
+    name: 'target',
+    property: {
+      options: [{
+        display: 'self',
+        value: '_self'
+      }, {
+        display: 'blank',
+        value: '_blank'
+      }, {
+        display: 'parent',
+        value: '_parent'
+      }, {
+        display: 'top',
+        value: '_top'
+      }]
+    }
   }]
 }
 
 var { HTMLOverlayContainer } = scene
 
 export default class Link extends HTMLOverlayContainer {
+
+  get tagName() {
+    return 'a'
+  }
 
   get value() {
     this.get('href')
@@ -28,11 +51,14 @@ export default class Link extends HTMLOverlayContainer {
 
   setElementProperties(link) {
     var {
-      href = ''
+      href = '',
+      target
     } = this.model
 
     if(link.href != href)
       link.href = href
+
+    link.target = target
 
     if(this.components.length == 0)
       this.element.textContent = this.text || href
