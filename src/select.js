@@ -22,6 +22,11 @@ const NATURE = {
     name: 'name',
     property: 'name'
   }, {
+    type: 'checkbox',
+    label: 'submit-on-change',
+    name: 'submitOnChange',
+    property: 'submitOnChange'
+  }, {
     type: 'options',
     label: 'options',
     name: 'options',
@@ -44,7 +49,7 @@ export default class Select extends HTMLOverlayElement {
 
     if(!options instanceof Array)
       options = []
-      
+
     this.element.textContent = ''
 
     options = options.map(option => {
@@ -66,9 +71,13 @@ export default class Select extends HTMLOverlayElement {
 
     this.buildOptions()
 
-    this.element.value = this.get('value') || ''
-    this.element.onchange = e => {
-      this.set('value', this.element.value);
+    var element = this.element
+
+    element.value = this.get('value') || ''
+    element.onchange = e => {
+      this.set('value', element.value);
+      if(this.get('submitOnChange') && element.form)
+        element.form.dispatchEvent(new Event('submit'));
     }
   }
 

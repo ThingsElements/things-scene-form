@@ -57,6 +57,11 @@ const NATURE = {
     label: 'withCredentials',
     name: 'withCredentials',
     property: 'withCredentials'
+  }, {
+    type: 'checkbox',
+    label: 'submit-on-load',
+    name: 'submitOnLoad',
+    property: 'submitOnLoad'
   }]
 }
 
@@ -76,7 +81,7 @@ export default class Form extends HTMLOverlayContainer {
     form.name = name
   }
 
-  onload(e) {
+  _onload(e) {
     var result = e.target.response
     try {
       this.data = this.get('format') == 'JSON' ?
@@ -87,8 +92,10 @@ export default class Form extends HTMLOverlayContainer {
   }
 
   oncreate_element(form) {
+    if(!this.app.isViewMode)
+      return
+
     var _ = e => {
-      e.preventDefault();
 
       var url = form.action;
       var xhr = new XMLHttpRequest();
@@ -104,7 +111,7 @@ export default class Form extends HTMLOverlayContainer {
         return encodeURIComponent(el.name) + '=' + encodeURIComponent(el.value);
       }).join('&');
 
-      xhr.onloadend = this.onload.bind(this)
+      xhr.onloadend = this._onload.bind(this)
 
       if(form.method == 'get')
         xhr.open(form.method, url + '?' + params);
@@ -125,9 +132,17 @@ export default class Form extends HTMLOverlayContainer {
         xhr.send();
       else
         xhr.send(params);
+
+      e.preventDefault();
+
+      return false;
     }
 
-    form.addEventListener('submit', _)
+    form.onsubmit = _
+
+    if(this.get('submitOnLoad')) {
+      setTimeout(() => form.dispatchEvent(new Event('submit')), 100)
+    }
   }
 
   get nature() {
