@@ -26,7 +26,8 @@ const NATURE = {
     label: 'max-length',
     name: 'max-length',
     property: 'maxlength'
-  }]
+  }],
+  'value-property': 'value'
 }
 
 var { HTMLOverlayElement } = scene

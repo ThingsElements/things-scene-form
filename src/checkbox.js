@@ -26,7 +26,8 @@ const NATURE = {
     label: 'checked',
     name: 'checked',
     property: 'checked'
-  }]
+  }],
+  'value-property': 'value'
 }
 
 import Input from './input'

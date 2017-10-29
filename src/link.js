@@ -30,7 +30,8 @@ const NATURE = {
         value: '_top'
       }]
     }
-  }]
+  }],
+  'value-property': 'href'
 }
 
 var { HTMLOverlayContainer } = scene
@@ -41,12 +42,12 @@ export default class Link extends HTMLOverlayContainer {
     return 'a'
   }
 
-  get value() {
-    this.get('href')
+  get href() {
+    return this.get('href')
   }
-
-  set value(v) {
-    this.set('href', v)
+  
+  set href(href) {
+    this.set('href', href)
   }
 
   setElementProperties(link) {

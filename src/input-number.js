@@ -31,7 +31,8 @@ const NATURE = {
     label: 'step',
     name: 'step',
     property: 'step'
-  }]
+  }],
+  'value-property': 'value'
 }
 
 import Input from './input'

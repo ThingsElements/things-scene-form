@@ -62,7 +62,8 @@ const NATURE = {
     label: 'submit-on-load',
     name: 'submitOnLoad',
     property: 'submitOnLoad'
-  }]
+  }],
+  'value-property': 'action'
 }
 
 var { HTMLOverlayContainer } = scene
@@ -79,6 +80,14 @@ export default class Form extends HTMLOverlayContainer {
     form.action = action
     form.method = method
     form.name = name
+  }
+
+  get action() {
+    return this.get('action')
+  }
+
+  set action(action) {
+    this.set('action', action)
   }
 
   _onload(e) {

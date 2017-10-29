@@ -26,7 +26,8 @@ const NATURE = {
     label: 'max',
     name: 'max',
     property: 'max'
-  }]
+  }],
+  'value-property': 'value'
 }
 
 import Input from './input'

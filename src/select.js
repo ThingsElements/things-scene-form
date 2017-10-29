@@ -31,7 +31,8 @@ const NATURE = {
     label: 'options',
     name: 'options',
     property: 'options'
-  }]
+  }],
+  'value-property': 'value'
 }
 
 var { HTMLOverlayElement } = scene

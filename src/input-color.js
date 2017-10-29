@@ -16,7 +16,8 @@ const NATURE = {
     label: 'value',
     name: 'value',
     property: 'value'
-  }]
+  }],
+  'value-property': 'value'
 }
 
 import Input from './input'

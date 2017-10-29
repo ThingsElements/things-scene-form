@@ -16,7 +16,8 @@ const NATURE = {
     label: 'name',
     name: 'name',
     property: 'name'
-  }]
+  }],
+  'value-property': 'value'
 }
 
 var { HTMLOverlayElement } = scene

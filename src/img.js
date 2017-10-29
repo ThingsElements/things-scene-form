@@ -11,20 +11,13 @@ const NATURE = {
     label: 'src',
     name: 'src',
     property: 'src'
-  }]
+  }],
+  'value-property': 'src'
 }
 
 var { HTMLOverlayElement } = scene
 
 export default class Img extends HTMLOverlayElement {
-
-  get value() {
-    this.get('src')
-  }
-
-  set value(v) {
-    this.set('src', v)
-  }
 
   setElementProperties(img) {
     var {
@@ -33,6 +26,14 @@ export default class Img extends HTMLOverlayElement {
 
     if(img.src != src)
       img.src = src
+  }
+
+  get src() {
+    return this.get('src')
+  }
+
+  set src(src) {
+    this.set('src', src)
   }
 
   get nature() {

@@ -21,7 +21,8 @@ const NATURE = {
     label: 'multiple',
     name: 'multiple',
     property: 'multiple'
-  }]
+  }],
+  'value-property': 'value'
 }
 
 import Input from './input'
