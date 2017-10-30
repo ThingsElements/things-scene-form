@@ -1,6 +1,6 @@
 {
   "name": "things-scene-form",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "authors": [
     "Hatio Lab. <heartyoh@hatiolab.com>"
   ],
@@ -23,6 +23,7 @@
     "src",
     "docs",
     "samples",
+    "demo",
     "lib",
     "DEPLOYMENT.md",
     "DEVELOPMENT.md",
