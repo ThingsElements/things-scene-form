@@ -54,7 +54,7 @@ const NATURE = {
     }
   }, {
     type: 'checkbox',
-    label: 'withCredentials',
+    label: 'with-credentials',
     name: 'withCredentials',
     property: 'withCredentials'
   }, {
