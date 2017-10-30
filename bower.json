@@ -1,6 +1,6 @@
 {
   "name": "things-scene-form",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "authors": [
     "Hatio Lab. <heartyoh@hatiolab.com>"
   ],
@@ -15,8 +15,18 @@
   "license": "http://things-scene.hatiolab.com/EULA/",
   "homepage": "https://github.com/ThingsElements/things-scene-form/",
   "ignore": [
-    "/.*",
-    "/test/"
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "src",
+    "docs",
+    "samples",
+    "lib",
+    "DEPLOYMENT.md",
+    "DEVELOPMENT.md",
+    "things-scene-form.js"
   ],
   "dependencies": {
     "things-scene-core": "ThingsElements/things-scene-core#^2.0.0"
