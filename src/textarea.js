@@ -22,6 +22,10 @@ const NATURE = {
     name: 'placeholder',
     property: 'placeholder'
   }, {
+    type: 'checkbox',
+    label: 'copy-value-to-data',
+    name: 'copyValueToData'
+  }, {
     type: 'number',
     label: 'max-length',
     name: 'max-length',
@@ -46,6 +50,8 @@ export default class TextArea extends HTMLOverlayElement {
     this.element.value = this.get('value') || ''
     this.element.onchange = e => {
       this.set('value', this.element.value);
+      if(this.get('copyValueToData'))
+        this.data = after.value
     }
   }
 

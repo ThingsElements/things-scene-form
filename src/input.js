@@ -9,33 +9,31 @@ const NATURE = {
   properties: [{
     type: 'string',
     label: 'name',
-    name: 'name',
-    property: 'name'
+    name: 'name'
   }, {
     type: 'string',
     label: 'value',
-    name: 'value',
-    property: 'value'
+    name: 'value'
   }, {
     type: 'string',
     label: 'placeholder',
-    name: 'placeholder',
-    property: 'placeholder'
+    name: 'placeholder'
   }, {
     type: 'checkbox',
     label: 'readonly',
-    name: 'readonly',
-    property: 'readonly'
+    name: 'readonly'
   }, {
     type: 'checkbox',
     label: 'disabled',
-    name: 'disabled',
-    property: 'disabled'
+    name: 'disabled'
+  }, {
+    type: 'checkbox',
+    label: 'copy-value-to-data',
+    name: 'copyValueToData'
   }, {
     type: 'number',
     label: 'max-length',
-    name: 'maxlength',
-    property: 'maxlength'
+    name: 'maxlength'
   }],
   'value-property': 'value'
 }
@@ -87,6 +85,8 @@ export default class Input extends HTMLOverlayElement {
 
     if (after.hasOwnProperty('value') && this.element) {
       this.element.value = after.value;
+      if(this.get('copyValueToData'))
+        this.data = after.value
     }
   }
 }

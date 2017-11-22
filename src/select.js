@@ -9,28 +9,27 @@ const NATURE = {
   properties: [{
     type: 'string',
     label: 'value',
-    name: 'value',
-    property: 'value'
+    name: 'value'
   }, {
     type: 'number',
     label: 'size',
-    name: 'size',
-    property: 'size'
+    name: 'size'
   }, {
     type: 'string',
     label: 'name',
-    name: 'name',
-    property: 'name'
+    name: 'name'
   }, {
     type: 'checkbox',
     label: 'submit-on-change',
-    name: 'submitOnChange',
-    property: 'submitOnChange'
+    name: 'submitOnChange'
+  }, {
+    type: 'checkbox',
+    label: 'copy-value-to-data',
+    name: 'copyValueToData'
   }, {
     type: 'options',
     label: 'options',
-    name: 'options',
-    property: 'options'
+    name: 'options'
   }],
   'value-property': 'value'
 }
@@ -98,6 +97,8 @@ export default class Select extends HTMLOverlayElement {
 
     if(after.hasOwnProperty('value') && this.element) {
       this.element.value = after.value;
+      if(this.get('copyValueToData'))
+        this.data = after.value
       if(this.get('submitOnChange') && this.element.form)
         this.element.form.dispatchEvent(new Event('submit'));
     }
