@@ -45,7 +45,7 @@ export default class Link extends HTMLOverlayContainer {
   get href() {
     return this.get('href')
   }
-  
+
   set href(href) {
     this.set('href', href)
   }
@@ -54,7 +54,7 @@ export default class Link extends HTMLOverlayContainer {
     var {
       href = '',
       target
-    } = this.model
+    } = this.state
 
     if(link.href != href)
       link.href = href

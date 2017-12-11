@@ -21,7 +21,7 @@ export default class FieldSet extends HTMLOverlayContainer {
   setElementProperties(fieldset) {
     var {
       legend = '',
-    } = this.model
+    } = this.state
 
     if(legend) {
       this.legendElement.textContent = legend
@@ -35,7 +35,7 @@ export default class FieldSet extends HTMLOverlayContainer {
     if(!this._legendElement) {
       var legend = document.createElement('legend')
       this.element.appendChild(legend)
-      
+
       this._legendElement = legend
     }
 

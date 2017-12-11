@@ -27,10 +27,6 @@ const NATURE = {
     label: 'disabled',
     name: 'disabled'
   }, {
-    type: 'checkbox',
-    label: 'copy-value-to-data',
-    name: 'copyValueToData'
-  }, {
     type: 'number',
     label: 'max-length',
     name: 'maxlength'
@@ -57,20 +53,22 @@ export default class Input extends HTMLOverlayElement {
   createElement() {
     super.createElement();
 
-    this.element.value = this.get('value') || '';
+    /* element.property => component.property */
     this.element.onchange = e => {
-      this.set('value', this.element.value);
+      this.setState('value', this.element.value);
     }
   }
 
+  /* component.property => element.property */
   setElementProperties(element) {
     var {
       name = '',
       placeholder = '',
       disabled,
       readonly,
-      maxlength
-    } = this.model
+      maxlength,
+      value
+    } = this.state
 
     element.type = this.inputType
     element.name = name
@@ -78,22 +76,20 @@ export default class Input extends HTMLOverlayElement {
     element.disabled = disabled
     element.readonly = readonly
     element.maxlength = maxlength
-  }
+    element.value = value
 
-  onchange(after, before) {
-    super.onchange(after, before)
-
-    if (after.hasOwnProperty('value') && this.element) {
-      this.element.value = after.value;
-      if(this.get('copyValueToData'))
-        this.data = after.value
-    }
+    this.data = this.value
   }
 }
 
 [
+  'input',
   'input-text',
   'input-password',
   'input-email',
-  'input-search'
+  'input-search',
+  'input-time',
+  'input-datetime-local',
+  'input-month',
+  'input-week'
 ].forEach(input => scene.Component.register(input, Input))

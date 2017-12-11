@@ -60,7 +60,7 @@ export default class TextArea extends HTMLOverlayElement {
       name = '',
       placeholder = '',
       maxLength
-    } = this.model
+    } = this.state
 
     this.element.name = name
     if(maxLength)

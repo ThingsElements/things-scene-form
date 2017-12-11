@@ -22,8 +22,6 @@ const NATURE = {
 
 import Input from './input'
 
-var { HTMLOverlayElement } = scene
-
 export default class InputColor extends Input {
 
   get nature() {

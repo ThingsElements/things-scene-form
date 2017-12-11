@@ -13,6 +13,11 @@ var { HTMLOverlayContainer } = scene
 export default class Div extends HTMLOverlayContainer {
 
   setElementProperties(div) {
+    div.textContent = this.text
+  }
+
+  get tagName() {
+    return 'div'
   }
 
   get nature() {

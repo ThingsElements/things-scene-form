@@ -75,7 +75,7 @@ export default class Form extends HTMLOverlayContainer {
       action = '',
       method = 'POST',
       name = ''
-    } = this.model
+    } = this.state
 
     form.action = action
     form.method = method

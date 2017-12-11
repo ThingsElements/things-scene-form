@@ -12,6 +12,7 @@ export { default as CheckBox } from './checkbox'
 export { default as IFrame } from './iframe'
 export { default as Img } from './img'
 export { default as Link } from './link'
+export { default as Div } from './div'
 
 export { default as Input } from './input'
 export { default as InputNumber } from './input-number'
@@ -19,3 +20,5 @@ export { default as InputDate } from './input-date'
 export { default as InputFile } from './input-file'
 export { default as InputColor } from './input-color'
 export { default as InputSubmit } from './input-submit'
+
+export { default as Template } from './template'

@@ -22,8 +22,6 @@ const NATURE = {
 
 import Input from './input'
 
-var { HTMLOverlayElement } = scene
-
 export default class InputSubmit extends Input {
 
   get nature() {
@@ -35,5 +33,6 @@ export default class InputSubmit extends Input {
   }
 }
 
+scene.Component.register('input-button', InputSubmit);
 scene.Component.register('input-submit', InputSubmit);
 scene.Component.register('input-reset', InputSubmit);

@@ -45,7 +45,7 @@ export default class Select extends HTMLOverlayElement {
   buildOptions() {
     var {
       options = []
-    } = this.model
+    } = this.state
 
     if(!options instanceof Array)
       options = []
@@ -86,7 +86,7 @@ export default class Select extends HTMLOverlayElement {
     var {
       size,
       name
-    } = this.model
+    } = this.state
 
     element.size = size
     element.name = name

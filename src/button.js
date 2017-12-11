@@ -7,15 +7,10 @@ const NATURE = {
   resizable: true,
   rotatable: true,
   properties: [{
-    type: 'string',
+      type: 'string',
     label: 'value',
     name: 'value',
     property: 'value'
-  }, {
-    type: 'string',
-    label: 'name',
-    name: 'name',
-    property: 'name'
   }],
   'value-property': 'value'
 }
@@ -24,35 +19,20 @@ var { HTMLOverlayElement } = scene
 
 export default class Button extends HTMLOverlayElement {
 
+  get tagName() {
+    return 'button'
+  }
+
   get nature() {
     return NATURE;
   }
 
-  createElement() {
-    super.createElement();
-
-    this.element.value = this.get('value') || ''
-    this.element.onchange = e => {
-      this.set('value', this.element.value);
-    }
-  }
-
-  setElementProperties(element) {
+  setElementProperties(button) {
     var {
-      name = '',
       value
-    } = this.model
+    } = this.state
 
-    this.element.name = name
-    this.element.textContent = value
-  }
-
-  onchange(after, before) {
-    super.onchange(after, before)
-    
-    if (after.hasOwnProperty('value') && this.element) {
-      this.element.value = after.value;
-    }
+    this.element.textContent = this.value
   }
 }
 

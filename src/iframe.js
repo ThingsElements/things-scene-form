@@ -22,7 +22,7 @@ export default class IFrame extends HTMLOverlayElement {
   setElementProperties(iframe) {
     var {
       src = ''
-    } = this.model
+    } = this.state
 
     if(iframe.src != src)
       iframe.src = src

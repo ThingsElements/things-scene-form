@@ -27,8 +27,6 @@ const NATURE = {
 
 import Input from './input'
 
-var { HTMLOverlayElement } = scene
-
 export default class InputFile extends Input {
 
   get nature() {
@@ -37,7 +35,8 @@ export default class InputFile extends Input {
 
   setElementProperties(element) {
     super.setElementProperties(element)
-    element.multiple = !!this.get('multiple')
+
+    element.multiple = !!this.state.multiple
   }
 }
 

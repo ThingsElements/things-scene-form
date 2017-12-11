@@ -32,8 +32,6 @@ const NATURE = {
 
 import Input from './input'
 
-var { HTMLOverlayElement } = scene
-
 export default class InputDate extends Input {
 
   get nature() {
@@ -41,12 +39,12 @@ export default class InputDate extends Input {
   }
 
   setElementProperties(element) {
+    super.setElementProperties(element)
+
     var {
       min,
       max
-    } = this.model
-
-    super.setElementProperties(element)
+    } = this.state
 
     element.min = min
     element.max = max

@@ -126,7 +126,7 @@ Copyright © HatioLab Inc. All rights reserved.
           name: 'search',
           authorization: 'Bearer HXXXXXXXX',
           components: [{
-            type: 'input',
+            type: 'input-text',
             id: 'input-01',
             top: 50,
             left: 50,
@@ -139,10 +139,9 @@ Copyright © HatioLab Inc. All rights reserved.
             lineWidth: 1,
             value: 40,
             textAlign: 'left',
-            name: 'text',
-            inputType: 'text'
+            name: 'text'
           }, {
-            type: 'input',
+            type: 'input-password',
             top: 50,
             left: 350,
             width: 280,
@@ -153,10 +152,9 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 1,
             value: '1234567890',
-            name: 'password',
-            inputType: 'password'
+            name: 'password'
           }, {
-            type: 'input',
+            type: 'input-email',
             top: 100,
             left: 50,
             width: 280,
@@ -167,10 +165,9 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 1,
             value: 'heartyoh@hatiolab.com',
-            name: 'email',
-            inputType: 'email'
+            name: 'email'
           }, {
-            type: 'input',
+            type: 'input-search',
             top: 100,
             left: 350,
             width: 280,
@@ -182,10 +179,9 @@ Copyright © HatioLab Inc. All rights reserved.
             lineWidth: 1,
             rotation: 0.5,
             value: 'form',
-            name: 'search',
-            inputType: 'search'
+            name: 'search'
           }, {
-            type: 'input',
+            type: 'input-date',
             top: 150,
             left: 50,
             width: 280,
@@ -195,10 +191,9 @@ Copyright © HatioLab Inc. All rights reserved.
             fontColor: 'navy',
             strokeStyle: '#000',
             lineWidth: 1,
-            name: 'datetime',
-            inputType: 'datetime'
+            name: 'datetime'
           }, {
-            type: 'input',
+            type: 'input-submit',
             top: 150,
             left: 350,
             width: 100,
@@ -208,10 +203,9 @@ Copyright © HatioLab Inc. All rights reserved.
             fontColor: 'navy',
             strokeStyle: '#000',
             lineWidth: 1,
-            value: 'SUBMIT',
-            inputType: 'submit'
+            value: 'SUBMIT'
           }, {
-            type: 'input',
+            type: 'input-number',
             top: 200,
             left: 50,
             width: 280,
@@ -222,10 +216,9 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 1,
             value: 2017,
-            name: 'number',
-            inputType: 'number'
+            name: 'number'
           }, {
-            type: 'input',
+            type: 'input-color',
             top: 200,
             left: 350,
             width: 100,
@@ -236,10 +229,9 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 1,
             value: '#FF0000',
-            name: 'color',
-            inputType: 'color'
+            name: 'color'
           }, {
-            type: 'input',
+            type: 'input-range',
             top: 250,
             left: 50,
             width: 280,
@@ -250,10 +242,9 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 1,
             value: 34,
-            name: 'range',
-            inputType: 'range'
+            name: 'range'
           }, {
-            type: 'input',
+            type: 'input-time',
             top: 250,
             left: 350,
             width: 280,
@@ -264,10 +255,9 @@ Copyright © HatioLab Inc. All rights reserved.
             strokeStyle: '#000',
             lineWidth: 1,
             value: '04:56',
-            name: 'time',
-            inputType: 'time'
+            name: 'time'
           }, {
-            type: 'input',
+            type: 'input-datetime-local',
             top: 300,
             left: 50,
             width: 280,
@@ -277,10 +267,9 @@ Copyright © HatioLab Inc. All rights reserved.
             fontColor: 'navy',
             strokeStyle: '#000',
             lineWidth: 1,
-            name: 'datetime-local',
-            inputType: 'datetime-local'
+            name: 'datetime-local'
           }, {
-            type: 'input',
+            type: 'input-date',
             top: 300,
             left: 350,
             width: 280,
@@ -290,10 +279,9 @@ Copyright © HatioLab Inc. All rights reserved.
             fontColor: 'navy',
             strokeStyle: '#000',
             lineWidth: 1,
-            name: 'date',
-            inputType: 'date'
+            name: 'date'
           }, {
-            type: 'input',
+            type: 'input-month',
             top: 350,
             left: 50,
             width: 280,
@@ -303,10 +291,9 @@ Copyright © HatioLab Inc. All rights reserved.
             fontColor: 'navy',
             strokeStyle: '#000',
             lineWidth: 1,
-            name: 'month',
-            inputType: 'month'
+            name: 'month'
           }, {
-            type: 'input',
+            type: 'input-week',
             top: 350,
             left: 350,
             width: 280,
@@ -316,8 +303,7 @@ Copyright © HatioLab Inc. All rights reserved.
             fontColor: 'navy',
             strokeStyle: '#000',
             lineWidth: 1,
-            name: 'week',
-            inputType: 'week'
+            name: 'week'
           }, {
             type: 'fieldset',
             top: 400,
@@ -453,7 +439,7 @@ Copyright © HatioLab Inc. All rights reserved.
     function distribute_vertical(){
       app.scene.distribute('VERTICAL')
     }
-    
+
   </script>
 </body>
 

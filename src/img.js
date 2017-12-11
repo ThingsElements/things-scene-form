@@ -22,7 +22,7 @@ export default class Img extends HTMLOverlayElement {
   setElementProperties(img) {
     var {
       src = ''
-    } = this.model
+    } = this.state
 
     if(img.src != src)
       img.src = src

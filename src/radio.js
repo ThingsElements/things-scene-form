@@ -55,12 +55,12 @@ export default class Radio extends Input {
 
     var input = document.createElement('input');
     this.element.appendChild(input);
-    
+
     var text = document.createTextNode(this.get('text'));
     this.element.appendChild(text);
 
     this.setElementProperties(this.element);
-    
+
     if(this.parent.isHTMLElement && this.parent.isHTMLElement())
       this.parent.element.appendChild(this.element)
     else
@@ -68,7 +68,7 @@ export default class Radio extends Input {
 
     Component.reposition(this);
 
-    this.oncreate_element && this.oncreate_element(this.element)    
+    this.oncreate_element && this.oncreate_element(this.element)
   }
 
   setElementProperties(element) {
@@ -79,7 +79,7 @@ export default class Radio extends Input {
       text,
       checked,
       value
-    } = this.model
+    } = this.state
 
     if(eText) {
       eText.textContent = text
