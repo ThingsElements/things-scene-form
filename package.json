@@ -1,5 +1,5 @@
 {
-  "name": "@ThingsElements/things-scene-form",
+  "name": "@things-elements/things-scene-form",
   "flat": true,
   "version": "0.1.16",
   "description": "An element providing a starting point for your own reusable Polymer elements.",
@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/ThingsElements/things-scene-form.git"
   },
-  "author": "",
+  "author": "heartyoh@hatiolab.com",
   "license": "http://things-scene.hatiolab.com/EULA/",
   "bugs": {
     "url": "https://github.com/ThingsElements/things-scene-form/issues"
