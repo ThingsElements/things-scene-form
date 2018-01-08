@@ -34,7 +34,7 @@ const NATURE = {
   'value-property': 'value'
 }
 
-var { HTMLOverlayElement } = scene
+var { HTMLOverlayElement, error } = scene
 
 export default class Input extends HTMLOverlayElement {
 
@@ -70,13 +70,17 @@ export default class Input extends HTMLOverlayElement {
       value
     } = this.state
 
-    element.type = this.inputType
-    element.name = name
-    element.placeholder = placeholder
-    element.disabled = disabled
-    element.readonly = readonly
-    element.maxlength = maxlength
-    element.value = value
+    try {
+      element.type = this.inputType
+      element.name = name
+      element.placeholder = placeholder
+      element.disabled = disabled
+      element.readonly = readonly
+      element.maxlength = maxlength
+      element.value = value
+    } catch(e) {
+      error(e)
+    }
 
     this.data = this.value
   }
