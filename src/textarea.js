@@ -8,30 +8,30 @@ const NATURE = {
   rotatable: true,
   properties: [{
     type: 'string',
-    label: 'value',
-    name: 'value',
-    property: 'value'
+    label: 'name',
+    name: 'name'
   }, {
     type: 'string',
-    label: 'name',
-    name: 'name',
-    property: 'name'
+    label: 'value',
+    name: 'text'
   }, {
     type: 'string',
     label: 'placeholder',
-    name: 'placeholder',
-    property: 'placeholder'
+    name: 'placeholder'
   }, {
     type: 'checkbox',
-    label: 'copy-value-to-data',
-    name: 'copyValueToData'
+    label: 'readonly',
+    name: 'readonly'
+  }, {
+    type: 'checkbox',
+    label: 'disabled',
+    name: 'disabled'
   }, {
     type: 'number',
     label: 'max-length',
-    name: 'max-length',
-    property: 'maxlength'
+    name: 'maxlength'
   }],
-  'value-property': 'value'
+  'value-property': 'text'
 }
 
 var { HTMLOverlayElement } = scene
@@ -42,41 +42,43 @@ export default class TextArea extends HTMLOverlayElement {
     return NATURE;
   }
 
+  get tagName() {
+    return 'textarea';
+  }
+
   createElement() {
     super.createElement();
 
-    this.element.style.resize = 'none'
+    this.element.style.resize = 'none';
 
-    this.element.value = this.get('value') || ''
+    /* element.property => component.property */
     this.element.onchange = e => {
-      this.set('value', this.element.value);
-      if(this.get('copyValueToData'))
-        this.data = after.value
+      this.value = this.element.value;
     }
   }
 
+  /* component.property => element.property */
   setElementProperties(element) {
     var {
       name = '',
       placeholder = '',
-      maxLength
-    } = this.state
+      disabled,
+      readonly,
+      maxlength
+    } = this.state;
 
-    this.element.name = name
-    if(maxLength)
-      this.element.maxlength = maxlength
-    else
-      delete this.element.maxlength
-
-    this.element.placeholder = placeholder
-  }
-
-  onchange(after, before) {
-    super.onchange(after, before)
-
-    if (after.hasOwnProperty('value') && this.element) {
-      this.element.value = after.value;
+    try {
+      element.name = name
+      element.placeholder = placeholder
+      element.disabled = disabled
+      element.readonly = readonly
+      element.maxlength = maxlength
+      element.value = this.value
+    } catch(e) {
+      error(e)
     }
+
+    this.data = this.value;
   }
 }
 

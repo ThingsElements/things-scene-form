@@ -9,10 +9,9 @@ const NATURE = {
   properties: [{
       type: 'string',
     label: 'value',
-    name: 'value',
-    property: 'value'
+    name: 'text'
   }],
-  'value-property': 'value'
+  'value-property': 'text'
 }
 
 var { HTMLOverlayElement } = scene
@@ -28,9 +27,6 @@ export default class Button extends HTMLOverlayElement {
   }
 
   setElementProperties(button) {
-    var {
-      value
-    } = this.state
 
     this.element.textContent = this.value
   }

@@ -13,7 +13,7 @@ const NATURE = {
   }, {
     type: 'string',
     label: 'value',
-    name: 'value'
+    name: 'text'
   }, {
     type: 'string',
     label: 'placeholder',
@@ -31,7 +31,7 @@ const NATURE = {
     label: 'max-length',
     name: 'maxlength'
   }],
-  'value-property': 'value'
+  'value-property': 'text'
 }
 
 var { HTMLOverlayElement, error } = scene
@@ -43,11 +43,11 @@ export default class Input extends HTMLOverlayElement {
   }
 
   get tagName() {
-    return 'input'
+    return 'input';
   }
 
   get inputType() {
-    return this.get('type').substr(6)
+    return this.get('type').substr(6);
   }
 
   createElement() {
@@ -55,7 +55,7 @@ export default class Input extends HTMLOverlayElement {
 
     /* element.property => component.property */
     this.element.onchange = e => {
-      this.setState('value', this.element.value);
+      this.value = this.element.value;
     }
   }
 
@@ -66,18 +66,17 @@ export default class Input extends HTMLOverlayElement {
       placeholder = '',
       disabled,
       readonly,
-      maxlength,
-      value
+      maxlength
     } = this.state
 
     try {
-      element.type = this.inputType
+      element.type = this.inputType;
       element.name = name
       element.placeholder = placeholder
       element.disabled = disabled
       element.readonly = readonly
       element.maxlength = maxlength
-      element.value = value
+      element.value = this.value
     } catch(e) {
       error(e)
     }

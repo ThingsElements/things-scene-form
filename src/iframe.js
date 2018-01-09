@@ -9,8 +9,7 @@ const NATURE = {
   properties: [{
     type: 'string',
     label: 'src',
-    name: 'src',
-    property: 'src'
+    name: 'src'
   }],
   'value-property': 'src'
 }

@@ -9,23 +9,19 @@ const NATURE = {
   properties: [{
     type: 'string',
     label: 'value',
-    name: 'value',
-    property: 'value'
+    name: 'value'
   }, {
     type: 'number',
     label: 'size',
-    name: 'size',
-    property: 'size'
+    name: 'size'
   }, {
     type: 'string',
     label: 'name',
-    name: 'name',
-    property: 'name'
+    name: 'name'
   }, {
     type: 'checkbox',
     label: 'checked',
-    name: 'checked',
-    property: 'checked'
+    name: 'checked'
   }],
   'value-property': 'value'
 }

@@ -9,30 +9,25 @@ const NATURE = {
   properties: [{
     type: 'string',
     label: 'name',
-    name: 'name',
-    property: 'name'
+    name: 'name'
   }, {
-    type: 'string',
+    type: 'number',
     label: 'value',
-    name: 'value',
-    property: 'value'
+    name: 'text'
   }, {
     type: 'number',
     label: 'min',
-    name: 'min',
-    property: 'min'
+    name: 'min'
   }, {
     type: 'number',
     label: 'max',
-    name: 'max',
-    property: 'max'
+    name: 'max'
   }, {
     type: 'number',
     label: 'step',
-    name: 'step',
-    property: 'step'
+    name: 'step'
   }],
-  'value-property': 'value'
+  'value-property': 'text'
 }
 
 import Input from './input'

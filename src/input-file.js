@@ -9,20 +9,17 @@ const NATURE = {
   properties: [{
     type: 'string',
     label: 'name',
-    name: 'name',
-    property: 'name'
+    name: 'name'
   }, {
     type: 'string',
     label: 'value',
-    name: 'value',
-    property: 'value'
+    name: 'text'
   }, {
     type: 'checkbox',
     label: 'multiple',
-    name: 'multiple',
-    property: 'multiple'
+    name: 'multiple'
   }],
-  'value-property': 'value'
+  'value-property': 'text'
 }
 
 import Input from './input'

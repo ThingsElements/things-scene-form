@@ -9,25 +9,21 @@ const NATURE = {
   properties: [{
     type: 'string',
     label: 'name',
-    name: 'name',
-    property: 'name'
+    name: 'name'
   }, {
     type: 'date',
     label: 'value',
-    name: 'value',
-    property: 'value'
+    name: 'text'
   }, {
     type: 'date',
     label: 'min',
-    name: 'min',
-    property: 'min'
+    name: 'min'
   }, {
     type: 'date',
     label: 'max',
-    name: 'max',
-    property: 'max'
+    name: 'max'
   }],
-  'value-property': 'value'
+  'value-property': 'text'
 }
 
 import Input from './input'

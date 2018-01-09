@@ -22,23 +22,19 @@ const NATURE = {
   }, {
     type: 'string',
     label: 'action',
-    name: 'action',
-    property: 'action'
+    name: 'action'
   }, {
     type: 'string',
     label: 'name',
-    name: 'name',
-    property: 'name'
+    name: 'name'
   }, {
     type: 'string',
     label: 'authorization',
-    name: 'authorization',
-    property: 'authorization'
+    name: 'authorization'
   }, {
     type: 'string',
     label: 'accessor',
-    name: 'accessor',
-    property: 'accessor'
+    name: 'accessor'
   }, {
     type: 'select',
     label: 'format',
@@ -55,13 +51,11 @@ const NATURE = {
   }, {
     type: 'checkbox',
     label: 'with-credentials',
-    name: 'withCredentials',
-    property: 'withCredentials'
+    name: 'withCredentials'
   }, {
     type: 'checkbox',
     label: 'submit-on-load',
-    name: 'submitOnLoad',
-    property: 'submitOnLoad'
+    name: 'submitOnLoad'
   }],
   'value-property': 'action'
 }

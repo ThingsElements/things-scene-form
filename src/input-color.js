@@ -9,15 +9,13 @@ const NATURE = {
   properties: [{
     type: 'string',
     label: 'name',
-    name: 'name',
-    property: 'name'
+    name: 'name'
   }, {
     type: 'color',
     label: 'value',
-    name: 'value',
-    property: 'value'
+    name: 'text'
   }],
-  'value-property': 'value'
+  'value-property': 'text'
 }
 
 import Input from './input'

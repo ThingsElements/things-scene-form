@@ -9,8 +9,7 @@ const NATURE = {
   properties: [{
     type: 'string',
     label: 'legend',
-    name: 'legend',
-    property: 'legend'
+    name: 'legend'
   }]
 }
 
