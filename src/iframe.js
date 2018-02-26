@@ -14,7 +14,7 @@ const NATURE = {
   'value-property': 'src'
 }
 
-import { Component, HTMLOverlayContainer } from '@hatiolab/things-scene';
+import { Component, HTMLOverlayElement } from '@hatiolab/things-scene';
 
 export default class IFrame extends HTMLOverlayElement {
 
