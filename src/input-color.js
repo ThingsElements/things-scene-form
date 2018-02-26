@@ -18,6 +18,7 @@ const NATURE = {
   'value-property': 'text'
 }
 
+import { Component } from '@hatiolab/things-scene';
 import Input from './input'
 
 export default class InputColor extends Input {
@@ -31,4 +32,4 @@ export default class InputColor extends Input {
   }
 }
 
-scene.Component.register('input-color', InputColor);
+Component.register('input-color', InputColor);

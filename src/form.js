@@ -60,7 +60,7 @@ const NATURE = {
   'value-property': 'action'
 }
 
-var { HTMLOverlayContainer } = scene
+import { Component, HTMLOverlayContainer } from '@hatiolab/things-scene';
 
 export default class Form extends HTMLOverlayContainer {
 
@@ -153,4 +153,4 @@ export default class Form extends HTMLOverlayContainer {
   }
 }
 
-scene.Component.register('form', Form);
+Component.register('form', Form);

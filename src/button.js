@@ -1,6 +1,7 @@
 /*
  * Copyright © HatioLab Inc. All rights reserved.
  */
+import { Component, HTMLOverlayElement } from '@hatiolab/things-scene';
 
 const NATURE = {
   mutable: false,
@@ -13,8 +14,6 @@ const NATURE = {
   }],
   'value-property': 'text'
 }
-
-var { HTMLOverlayElement } = scene
 
 export default class Button extends HTMLOverlayElement {
 
@@ -32,4 +31,4 @@ export default class Button extends HTMLOverlayElement {
   }
 }
 
-scene.Component.register('button', Button);
+Component.register('button', Button);

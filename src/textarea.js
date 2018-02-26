@@ -34,7 +34,7 @@ const NATURE = {
   'value-property': 'text'
 }
 
-var { HTMLOverlayElement } = scene
+import { Component, HTMLOverlayElement } from '@hatiolab/things-scene';
 
 export default class TextArea extends HTMLOverlayElement {
 
@@ -82,4 +82,4 @@ export default class TextArea extends HTMLOverlayElement {
   }
 }
 
-scene.Component.register('textarea', TextArea);
+Component.register('textarea', TextArea);

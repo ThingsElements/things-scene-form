@@ -22,6 +22,7 @@ const NATURE = {
   'value-property': 'text'
 }
 
+import { Component } from '@hatiolab/things-scene';
 import Input from './input'
 
 export default class InputFile extends Input {
@@ -37,4 +38,4 @@ export default class InputFile extends Input {
   }
 }
 
-scene.Component.register('input-file', InputFile);
+Component.register('input-file', InputFile);

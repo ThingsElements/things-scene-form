@@ -40,4 +40,4 @@ export default class Img extends HTMLOverlayElement {
   }
 }
 
-scene.Component.register('img', Img);
+Component.register('img', Img);

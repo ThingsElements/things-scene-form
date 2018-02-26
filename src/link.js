@@ -34,7 +34,7 @@ const NATURE = {
   'value-property': 'href'
 }
 
-var { HTMLOverlayContainer } = scene
+import { Component, HTMLOverlayContainer } from '@hatiolab/things-scene';
 
 export default class Link extends HTMLOverlayContainer {
 
@@ -70,4 +70,4 @@ export default class Link extends HTMLOverlayContainer {
   }
 }
 
-scene.Component.register('link', Link);
+Component.register('link', Link);

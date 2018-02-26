@@ -34,7 +34,7 @@ const NATURE = {
   'value-property': 'text'
 }
 
-var { HTMLOverlayElement, error } = scene
+import { Component, HTMLOverlayElement, error } from '@hatiolab/things-scene';
 
 export default class Input extends HTMLOverlayElement {
 
@@ -95,4 +95,4 @@ export default class Input extends HTMLOverlayElement {
   'input-datetime-local',
   'input-month',
   'input-week'
-].forEach(input => scene.Component.register(input, Input))
+].forEach(input => Component.register(input, Input))
