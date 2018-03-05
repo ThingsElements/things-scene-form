@@ -1,7 +1,55 @@
+import text from '../assets/input-text.png';
+import password from '../assets/input-password.png';
+import email from '../assets/input-email.png';
+import search from '../assets/input-search.png';
+import number from '../assets/input-number.png';
+import color from '../assets/input-color.png';
+import range from '../assets/input-range.png';
+import file from '../assets/input-file.png';
+import date from '../assets/input-date.png';
+import radio from '../assets/input-radio.png';
+import checkbox from '../assets/input-checkbox.png';
+import submit from '../assets/input-submit.png';
+import reset from '../assets/input-reset.png';
+import button from '../assets/button.png';
+import fieldset from '../assets/fieldset.png';
+import iframe from '../assets/iframe.png';
+import img from '../assets/img.png';
+import link from '../assets/link.png';
+import textarea from '../assets/textarea.png';
+import select from '../assets/select.png';
+import form from '../assets/form.png';
+
+const ICONS = {
+  text,
+  password,
+  email,
+  search,
+  number,
+  color,
+  range,
+  file,
+  date,
+  radio,
+  checkbox,
+  submit,
+  reset,
+  button,
+  fieldset,
+  iframe,
+  img,
+  link,
+  textarea,
+  select,
+  form,
+}
 
 var inputs01 = ['text', 'password', 'email', 'search', 'number', 'color', 'range', 'file', 'date'].map(function (type) {
   return {
     type: 'input-' + type,
+    description: 'html input-' + type,
+    group: 'form',
+    icon: ICONS[type],
     model: {
       type: 'input-' + type,
       top: 100,
@@ -24,6 +72,9 @@ var inputs01 = ['text', 'password', 'email', 'search', 'number', 'color', 'range
 var inputs02 = ['submit', 'reset'].map(function (type) {
   return {
     type: 'input-' + type,
+    description: 'html input-' + type,
+    group: 'form',
+    icon: ICONS[type],
     model: {
       type: 'input-' + type,
       top: 100,
@@ -41,6 +92,9 @@ var inputs02 = ['submit', 'reset'].map(function (type) {
 var button = ['button'].map(function (type) {
   return {
     type: type,
+    description: 'html ' + type,
+    group: 'form',
+    icon: ICONS[type],
     model: {
       type: type,
       top: 100,
@@ -58,6 +112,9 @@ var button = ['button'].map(function (type) {
 var textibles = ['input-radio', 'input-checkbox'].map(function (type) {
   return {
     type: type,
+    description: 'html input-' + type,
+    group: 'form',
+    icon: ICONS[type],
     model: {
       type: type,
       top: 100,
@@ -75,6 +132,9 @@ var textibles = ['input-radio', 'input-checkbox'].map(function (type) {
 var fieldset = ['fieldset', 'iframe', 'img', 'link'].map(function (type) {
   return {
     type: type,
+    description: 'html ' + type,
+    group: 'form',
+    icon: ICONS[type],
     model: {
       type: type,
       top: 100,
@@ -95,6 +155,9 @@ var fieldset = ['fieldset', 'iframe', 'img', 'link'].map(function (type) {
 var others = ['textarea', 'select'].map(function (type) {
   return {
     type: type,
+    description: 'html ' + type,
+    group: 'form',
+    icon: ICONS[type],
     model: {
       type: type,
       top: 100,
@@ -116,6 +179,9 @@ var others = ['textarea', 'select'].map(function (type) {
 
 var form = [{
   type: 'form',
+  description: 'html form',
+  group: 'form',
+  icon: ICONS['form'],
   model: {
     type: 'form',
     top: 100,
@@ -133,13 +199,5 @@ var form = [{
   }
 }];
 
-export default form.concat(inputs01, inputs02, button, textibles, fieldset, others)
-.map(template => {
-  return {
-    name: template.type,
-    description: '..',
-    icon: '..',
-    group: 'form',
-    template
-  };
-});
+export default form.concat(inputs01, inputs02, button, textibles, fieldset, others);
+
