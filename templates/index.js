@@ -89,7 +89,7 @@ var inputs02 = ['submit', 'reset'].map(function (type) {
   }
 });
 
-var button = ['button'].map(function (type) {
+var buttons = ['button'].map(function (type) {
   return {
     type: type,
     description: 'html ' + type,
@@ -129,7 +129,7 @@ var textibles = ['input-radio', 'input-checkbox'].map(function (type) {
   }
 });
 
-var fieldset = ['fieldset', 'iframe', 'img', 'link'].map(function (type) {
+var fieldsets = ['fieldset', 'iframe', 'img', 'link'].map(function (type) {
   return {
     type: type,
     description: 'html ' + type,
@@ -177,7 +177,7 @@ var others = ['textarea', 'select'].map(function (type) {
   }
 });
 
-var form = [{
+var forms = [{
   type: 'form',
   description: 'html form',
   group: 'form',
@@ -199,5 +199,5 @@ var form = [{
   }
 }];
 
-export default form.concat(inputs01, inputs02, button, textibles, fieldset, others);
+export default forms.concat(inputs01, inputs02, buttons, textibles, fieldsets, others);
 
