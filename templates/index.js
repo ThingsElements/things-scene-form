@@ -15,6 +15,7 @@ import button from '../assets/button.png';
 import fieldset from '../assets/fieldset.png';
 import iframe from '../assets/iframe.png';
 import img from '../assets/img.png';
+import video from '../assets/img.png';
 import link from '../assets/link.png';
 import textarea from '../assets/textarea.png';
 import select from '../assets/select.png';
@@ -129,7 +130,7 @@ var textibles = ['input-radio', 'input-checkbox'].map(function (type) {
   }
 });
 
-var fieldsets = ['fieldset', 'iframe', 'img', 'link'].map(function (type) {
+var fieldsets = ['fieldset', 'iframe', 'img', 'video', 'link'].map(function (type) {
   return {
     type: type,
     description: 'html ' + type,

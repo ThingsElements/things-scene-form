@@ -1,0 +1,95 @@
+{
+  "width": 1920,
+  "height": 1080,
+  "type": "model-layer",
+  "translate": {
+    "x": 0,
+    "y": 201.8125
+  },
+  "scale": {
+    "x": 0.4947916666666667,
+    "y": 0.4947916666666667
+  },
+  "components": [
+    {
+      "type": "video",
+      "xx": 0,
+      "top": 158.2500135415729,
+      "left": 683.1157894736841,
+      "width": 1024,
+      "height": 767.9999999999999,
+      "fontSize": 14,
+      "fillStyle": "white",
+      "fontColor": "#585858",
+      "strokeStyle": "rgba(0,0,0,.4)",
+      "lineWidth": 1,
+      "lineDash": "solid",
+      "textAlign": "left",
+      "rotation": -0.3261330422227866,
+      "src": "http://www.archive.org/download/MickeyMouse-RunawayTrain/Film-42.mp4",
+      "started": false,
+      "id": "video",
+      "mappings": [
+        {
+          "rule": "map",
+          "target": "(self)",
+          "property": "started",
+          "param": {
+            "true": true,
+            "default": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "rect",
+      "xx": 0,
+      "left": 129.87368421052633,
+      "top": 229.28421052631586,
+      "width": 276.35789473684207,
+      "height": 100,
+      "fillStyle": "#fff",
+      "strokeStyle": "#000",
+      "alpha": 1,
+      "hidden": false,
+      "lineWidth": 1,
+      "lineDash": "solid",
+      "lineCap": "butt",
+      "rotation": 0,
+      "text": "PLAY",
+      "fontSize": 44,
+      "event": {
+        "hover": {},
+        "tap": {
+          "target": "$video",
+          "value": "true"
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "xx": 0,
+      "left": 129.87368421052633,
+      "top": 360.6526315789474,
+      "width": 276.35789473684207,
+      "height": 100,
+      "fillStyle": "#fff",
+      "strokeStyle": "#000",
+      "alpha": 1,
+      "hidden": false,
+      "lineWidth": 1,
+      "lineDash": "solid",
+      "lineCap": "butt",
+      "rotation": 0,
+      "text": "PAUSE",
+      "fontSize": 45,
+      "event": {
+        "hover": {},
+        "tap": {
+          "target": "$video",
+          "value": "false"
+        }
+      }
+    }
+  ]
+}
