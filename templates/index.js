@@ -130,7 +130,7 @@ var textibles = ['input-radio', 'input-checkbox'].map(function (type) {
   }
 });
 
-var fieldsets = ['fieldset', 'iframe', 'img', 'video', 'link'].map(function (type) {
+var fieldsets = ['fieldset', 'iframe', 'img', 'link'].map(function (type) {
   return {
     type: type,
     description: 'html ' + type,
@@ -149,6 +149,23 @@ var fieldsets = ['fieldset', 'iframe', 'img', 'video', 'link'].map(function (typ
       lineWidth: 1,
       lineDash: 'solid',
       textAlign: 'left'
+    }
+  }
+});
+
+var multimedias = ['video'].map(type => {
+  return {
+    type,
+    description: 'html ' + type,
+    group: 'form',
+    icon: ICONS[type],
+    model: {
+      type,
+      top: 100,
+      left: 100,
+      width: 400,
+      height: 224,
+      src: 'https://player.vimeo.com/external/242538643.sd.mp4?s=42dacbec1a58f449a3fa4845801df5d446a99134&profile_id=165'
     }
   }
 });
@@ -200,5 +217,5 @@ var forms = [{
   }
 }];
 
-export default forms.concat(inputs01, inputs02, buttons, textibles, fieldsets, others);
+export default forms.concat(inputs01, inputs02, buttons, textibles, fieldsets, multimedias, others);
 

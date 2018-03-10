@@ -106,6 +106,14 @@ export default class Select extends HTMLOverlayElement {
     if(after.hasOwnProperty('options'))
       this.buildOptions()
   }
+
+  get options() {
+    return this.getState('options');
+  }
+
+  set options(options) {
+    this.setState('options', options);
+  }
 }
 
 Component.register('select', Select);

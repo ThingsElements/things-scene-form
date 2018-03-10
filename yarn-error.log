@@ -1,0 +1,66 @@
+Arguments: 
+  /Users/super/.nvm/versions/node/v9.5.0/bin/node /usr/local/Cellar/yarn/1.3.2/libexec/bin/yarn.js
+
+PATH: 
+  /Users/super/.rvm/gems/ruby-2.3.4/bin:/Users/super/.rvm/gems/ruby-2.3.4@global/bin:/Users/super/.rvm/rubies/ruby-2.3.4/bin:/Users/super/.nvm/versions/node/v9.5.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/super/.rvm/bin
+
+Yarn version: 
+  1.3.2
+
+Node version: 
+  9.5.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "@things-scene/form",
+    "version": "0.2.3",
+    "description": "An element providing a starting point for your own reusable Polymer elements.",
+    "main": "src/index.js",
+    "things-scene": true,
+    "directories": {
+      "test": "test"
+    },
+    "scripts": {
+      "serve": "watchify src/*.js -o things-scene-form.js src/index.js & polymer serve",
+      "test": "./node_modules/.bin/mocha --require should --compilers js:babel-core/register test/**/test-*.js",
+      "build": "browserify src/index.js -o things-scene-form.js && uglifyjs things-scene-form.js -o things-scene-form-min.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/ThingsElements/things-scene-form.git"
+    },
+    "author": "heartyoh@hatiolab.com",
+    "license": "http://things-scene.hatiolab.com/EULA/",
+    "bugs": {
+      "url": "https://github.com/ThingsElements/things-scene-form/issues"
+    },
+    "homepage": "https://github.com/ThingsElements/things-scene-form#readme",
+    "devDependencies": {
+      "@hatiolab/things-shell": "^0.3.0"
+    },
+    "dependencies": {
+      "@hatiolab/things-scene": "^2.2.44"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@hatiolab/things-shell/-/things-shell-0.3.7.tgz: Request failed "404 Not Found"
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.3.2/libexec/lib/cli.js:59356:26)
+      at Request.emit (events.js:160:13)
+      at Request.module.exports.Request.onRequestResponse (/usr/local/Cellar/yarn/1.3.2/libexec/lib/cli.js:123971:10)
+      at ClientRequest.emit (events.js:160:13)
+      at HTTPParser.parserOnIncomingClient (_http_client.js:539:21)
+      at HTTPParser.parserOnHeadersComplete (_http_common.js:112:17)
+      at TLSSocket.socketOnData (_http_client.js:439:20)
+      at TLSSocket.emit (events.js:160:13)
+      at addChunk (_stream_readable.js:269:12)
+      at readableAddChunk (_stream_readable.js:256:11)
