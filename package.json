@@ -1,6 +1,6 @@
 {
   "name": "@things-scene/form",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "An element providing a starting point for your own reusable Polymer elements.",
   "main": "src/index.js",
   "things-scene": true,
