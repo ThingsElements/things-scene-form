@@ -63,7 +63,7 @@ export default class Select extends HTMLOverlayElement {
     this.element.textContent = '';
     var defaultValue;
 
-    options = options.map((option, index) => {
+    options.map && options.map((option, index) => {
       let text, value;
 
       if(!textField) {
@@ -86,9 +86,7 @@ export default class Select extends HTMLOverlayElement {
         defaultValue = value;
 
       return {text, value};
-    })
-
-    options.forEach(option => {
+    }).forEach(option => {
       var el = document.createElement('option')
       el.value = option.value
       el.text = option.text
