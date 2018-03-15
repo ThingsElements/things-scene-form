@@ -27,6 +27,14 @@ const NATURE = {
     label: 'copy-value-to-data',
     name: 'copyValueToData'
   }, {
+    type: 'string',
+    label: 'text-field',
+    name: 'textField'
+  }, {
+    type: 'string',
+    label: 'value-field',
+    name: 'valueField'
+  }, {
     type: 'options',
     label: 'options',
     name: 'options'
@@ -44,18 +52,40 @@ export default class Select extends HTMLOverlayElement {
 
   buildOptions() {
     var {
-      options = []
-    } = this.state
+      options = [],
+      textField,
+      valueField
+    } = this.state;
 
     if(!options instanceof Array)
-      options = []
+      options = [];
 
-    this.element.textContent = ''
+    this.element.textContent = '';
+    var defaultValue;
 
-    options = options.map(option => {
-      return typeof(option) == 'string' ?
-        {value: option, text: option}
-        : option
+    options = options.map((option, index) => {
+      let text, value;
+
+      if(!textField) {
+        text = option && (option['text'] || option);
+      } else if(textField == '(index)') {
+        text = index;
+      } else {
+        text = option && option[textField];
+      }
+
+      if(!valueField) {
+        value = option && (option['value'] || option);
+      } else if(valueField == '(index)') {
+        value = index;
+      } else {
+        value = option && option[valueField];
+      }
+
+      if(defaultValue === undefined)
+        defaultValue = value;
+
+      return {text, value};
     })
 
     options.forEach(option => {
@@ -64,6 +94,8 @@ export default class Select extends HTMLOverlayElement {
       el.text = option.text
       this.element.appendChild(el)
     })
+
+    this.value = defaultValue;
   }
 
   createElement() {

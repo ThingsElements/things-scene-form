@@ -8,7 +8,7 @@ const NATURE = {
   resizable: true,
   rotatable: true,
   properties: [{
-      type: 'string',
+    type: 'string',
     label: 'value',
     name: 'text'
   }],
