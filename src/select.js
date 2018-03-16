@@ -27,6 +27,14 @@ const NATURE = {
     label: 'copy-value-to-data',
     name: 'copyValueToData'
   }, {
+    type: 'string',
+    label: 'text-field',
+    name: 'textField'
+  }, {
+    type: 'string',
+    label: 'value-field',
+    name: 'valueField'
+  }, {
     type: 'options',
     label: 'options',
     name: 'options'
@@ -44,26 +52,48 @@ export default class Select extends HTMLOverlayElement {
 
   buildOptions() {
     var {
-      options = []
-    } = this.state
+      options = [],
+      textField,
+      valueField
+    } = this.state;
 
-    if(!options instanceof Array)
-      options = []
+    if (!options instanceof Array)
+      options = [];
 
-    this.element.textContent = ''
+    this.element.textContent = '';
+    var defaultValue;
 
-    options = options.map(option => {
-      return typeof(option) == 'string' ?
-        {value: option, text: option}
-        : option
-    })
+    options.map && options.map((option, index) => {
+      let text, value;
 
-    options.forEach(option => {
+      if (!textField) {
+        text = option && (option['text'] || option);
+      } else if (textField == '(index)') {
+        text = index;
+      } else {
+        text = option && option[textField];
+      }
+
+      if (!valueField) {
+        value = option && (option['value'] || option);
+      } else if (valueField == '(index)') {
+        value = index;
+      } else {
+        value = option && option[valueField];
+      }
+
+      if (defaultValue === undefined)
+        defaultValue = value;
+
+      return { text, value };
+    }).forEach(option => {
       var el = document.createElement('option')
       el.value = option.value
       el.text = option.text
       this.element.appendChild(el)
     })
+
+    this.value = defaultValue;
   }
 
   createElement() {
@@ -77,7 +107,7 @@ export default class Select extends HTMLOverlayElement {
 
     element.onchange = e => {
       this.set('value', element.value);
-      if(this.get('submitOnChange') && element.form)
+      if (this.get('submitOnChange') && element.form)
         element.form.dispatchEvent(new Event('submit'));
     }
   }
@@ -95,16 +125,24 @@ export default class Select extends HTMLOverlayElement {
   onchange(after, before) {
     super.onchange(after, before)
 
-    if(after.hasOwnProperty('value') && this.element) {
+    if (after.hasOwnProperty('value') && this.element) {
       this.element.value = after.value;
-      if(this.get('copyValueToData'))
+      if (this.get('copyValueToData'))
         this.data = after.value
-      if(this.get('submitOnChange') && this.element.form)
+      if (this.get('submitOnChange') && this.element.form)
         this.element.form.dispatchEvent(new Event('submit'));
     }
 
-    if(after.hasOwnProperty('options'))
+    if (after.hasOwnProperty('options'))
       this.buildOptions()
+  }
+
+  get options() {
+    return this.getState('options');
+  }
+
+  set options(options) {
+    this.setState('options', options);
   }
 }
 
