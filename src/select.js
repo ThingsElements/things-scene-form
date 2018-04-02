@@ -42,7 +42,7 @@ const NATURE = {
   'value-property': 'value'
 }
 
-var { HTMLOverlayElement } = scene
+var { HTMLOverlayElement, error } = scene
 
 export default class Select extends HTMLOverlayElement {
 
@@ -88,12 +88,12 @@ export default class Select extends HTMLOverlayElement {
       return { text, value };
     }).forEach(option => {
       var el = document.createElement('option')
-      el.value = option.value
-      el.text = option.text
-      this.element.appendChild(el)
+      el.value = typeof (option.value) == 'string' ? option.value : JSON.stringify(option.value);
+      el.text = option.text;
+      this.element.appendChild(el);
     })
 
-    this.value = defaultValue;
+    this.value = JSON.stringify(defaultValue);
   }
 
   createElement() {
@@ -127,8 +127,15 @@ export default class Select extends HTMLOverlayElement {
 
     if (after.hasOwnProperty('value') && this.element) {
       this.element.value = after.value;
-      if (this.get('copyValueToData'))
-        this.data = after.value
+      if (this.get('copyValueToData')) {
+        try {
+          this.data = JSON.parse(after.value);
+        } catch (e) {
+          error(e);
+          this.data = after.value;
+        }
+
+      }
       if (this.get('submitOnChange') && this.element.form)
         this.element.form.dispatchEvent(new Event('submit'));
     }
