@@ -42,7 +42,7 @@ const NATURE = {
   'value-property': 'value'
 }
 
-import { Component, HTMLOverlayElement, error } from '@hatiolab/things-scene';
+import { Component, HTMLOverlayElement, warn } from '@hatiolab/things-scene';
 
 export default class Select extends HTMLOverlayElement {
 
@@ -131,7 +131,7 @@ export default class Select extends HTMLOverlayElement {
         try {
           this.data = JSON.parse(after.value);
         } catch(e) {
-          error(e);
+          warn(e);
           this.data = after.value;
         }
       }

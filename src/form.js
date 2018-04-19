@@ -24,6 +24,10 @@ const NATURE = {
     label: 'action',
     name: 'action'
   }, {
+    type: 'number',
+    label: 'period',
+    name: 'period'
+  }, {
     type: 'string',
     label: 'name',
     name: 'name'
@@ -31,10 +35,6 @@ const NATURE = {
     type: 'string',
     label: 'authorization',
     name: 'authorization'
-  }, {
-    type: 'string',
-    label: 'accessor',
-    name: 'accessor'
   }, {
     type: 'select',
     label: 'format',
@@ -60,9 +60,14 @@ const NATURE = {
   'value-property': 'action'
 }
 
-import { Component, HTMLOverlayContainer } from '@hatiolab/things-scene';
+import { Component, HTMLOverlayContainer, warn } from '@hatiolab/things-scene';
 
 export default class Form extends HTMLOverlayContainer {
+
+  dispose() {
+    super.dispose();
+    this._stopRepeater();
+  }
 
   setElementProperties(form) {
     var {
@@ -77,18 +82,44 @@ export default class Form extends HTMLOverlayContainer {
   }
 
   get action() {
-    return this.get('action')
+    return this.state.action;
   }
 
   set action(action) {
-    this.set('action', action)
+    this.setState('action', action);
+    this._startRepeater();
+  }
+
+  get period() {
+    return this.state.period * 1000
+  }
+
+  set period(period) {
+    this.setState('period', period);
+    this._startRepeater();
+  }
+
+  _startRepeater() {
+    this._stopRepeater();
+
+    if(!this.app.isViewMode)
+      return;
+
+    if(this.period) {
+      this._repeatInterval = setInterval(this._submit.bind(this), this.period);
+    }
+  }
+
+  _stopRepeater() {
+    if (this._repeatInterval)
+      clearInterval(this._repeatInterval)
   }
 
   _onload(e) {
     var result = e.target.response
     try {
-      this.data = this.get('format') == 'JSON' ?
-      JSON.parse(result) : result
+      this.setState('data', 
+        this.get('format') == 'JSON' ? JSON.parse(result) : result);
     } catch(e) {
       console.error(e)
     }
@@ -143,9 +174,15 @@ export default class Form extends HTMLOverlayContainer {
 
     form.onsubmit = _
 
-    if(this.get('submitOnLoad')) {
-      setTimeout(() => form.dispatchEvent(new Event('submit')), 100)
+    if(this.getState('submitOnLoad')) {
+      setTimeout(this._submit.bind(this), 100)
     }
+
+    this._startRepeater();
+  }
+
+  _submit() {
+    this.element.dispatchEvent(new Event('submit'))
   }
 
   get nature() {
