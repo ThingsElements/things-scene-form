@@ -1,5 +1,5 @@
 /*
- * Copyright Â© HatioLab Inc. All rights reserved.
+ * Copyright © HatioLab Inc. All rights reserved.
  */
 
 const NATURE = {
@@ -42,7 +42,7 @@ const NATURE = {
   'value-property': 'value'
 }
 
-var { HTMLOverlayElement, error } = scene
+var { Component, HTMLOverlayElement, warn } = scene
 
 export default class Select extends HTMLOverlayElement {
 
@@ -87,7 +87,7 @@ export default class Select extends HTMLOverlayElement {
 
       return { text, value };
     }).forEach(option => {
-      var el = document.createElement('option')
+      var el = document.createElement('option');
       el.value = typeof (option.value) == 'string' ? option.value : JSON.stringify(option.value);
       el.text = option.text;
       this.element.appendChild(el);
@@ -131,10 +131,9 @@ export default class Select extends HTMLOverlayElement {
         try {
           this.data = JSON.parse(after.value);
         } catch (e) {
-          error(e);
+          warn(e);
           this.data = after.value;
         }
-
       }
       if (this.get('submitOnChange') && this.element.form)
         this.element.form.dispatchEvent(new Event('submit'));
@@ -153,4 +152,4 @@ export default class Select extends HTMLOverlayElement {
   }
 }
 
-scene.Component.register('select', Select);
+Component.register('select', Select);

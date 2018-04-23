@@ -1,5 +1,5 @@
 /*
- * Copyright Â© HatioLab Inc. All rights reserved.
+ * Copyright © HatioLab Inc. All rights reserved.
  */
 
 const NATURE = {
@@ -24,6 +24,10 @@ const NATURE = {
     label: 'action',
     name: 'action'
   }, {
+    type: 'number',
+    label: 'period',
+    name: 'period'
+  }, {
     type: 'string',
     label: 'name',
     name: 'name'
@@ -31,10 +35,6 @@ const NATURE = {
     type: 'string',
     label: 'authorization',
     name: 'authorization'
-  }, {
-    type: 'string',
-    label: 'accessor',
-    name: 'accessor'
   }, {
     type: 'select',
     label: 'format',
@@ -60,9 +60,14 @@ const NATURE = {
   'value-property': 'action'
 }
 
-var { HTMLOverlayContainer } = scene
+var { Component, HTMLOverlayContainer, warn } = scene
 
 export default class Form extends HTMLOverlayContainer {
+
+  dispose() {
+    super.dispose();
+    this._stopRepeater();
+  }
 
   setElementProperties(form) {
     var {
@@ -77,25 +82,51 @@ export default class Form extends HTMLOverlayContainer {
   }
 
   get action() {
-    return this.get('action')
+    return this.state.action;
   }
 
   set action(action) {
-    this.set('action', action)
+    this.setState('action', action);
+    this._startRepeater();
+  }
+
+  get period() {
+    return this.state.period * 1000
+  }
+
+  set period(period) {
+    this.setState('period', period);
+    this._startRepeater();
+  }
+
+  _startRepeater() {
+    this._stopRepeater();
+
+    if (!this.app.isViewMode)
+      return;
+
+    if (this.period) {
+      this._repeatInterval = setInterval(this._submit.bind(this), this.period);
+    }
+  }
+
+  _stopRepeater() {
+    if (this._repeatInterval)
+      clearInterval(this._repeatInterval)
   }
 
   _onload(e) {
     var result = e.target.response
     try {
-      this.data = this.get('format') == 'JSON' ?
-      JSON.parse(result) : result
-    } catch(e) {
+      this.setState('data',
+        this.get('format') == 'JSON' ? JSON.parse(result) : result);
+    } catch (e) {
       console.error(e)
     }
   }
 
   oncreate_element(form) {
-    if(!this.app.isViewMode)
+    if (!this.app.isViewMode)
       return
 
     var _ = e => {
@@ -104,34 +135,34 @@ export default class Form extends HTMLOverlayContainer {
       var xhr = new XMLHttpRequest();
 
       var params = [].filter.call(form.elements, function (el) {
-        if(el.type == 'radio' || el.type == 'checkbox')
+        if (el.type == 'radio' || el.type == 'checkbox')
           return el.checked;
         return true
       })
-      .filter(function (el) { return !!el.name; })
-      .filter(function (el) { return !el.disabled; })
-      .map(function (el) {
-        return encodeURIComponent(el.name) + '=' + encodeURIComponent(el.value);
-      }).join('&');
+        .filter(function (el) { return !!el.name; })
+        .filter(function (el) { return !el.disabled; })
+        .map(function (el) {
+          return encodeURIComponent(el.name) + '=' + encodeURIComponent(el.value);
+        }).join('&');
 
       xhr.onloadend = this._onload.bind(this)
 
-      if(form.method == 'get')
+      if (form.method == 'get')
         xhr.open(form.method, url + '?' + params);
       else
         xhr.open(form.method, url);
 
-      xhr.setRequestHeader("Content-Type", ['x-www-form-urlencoded' , 'json'].map(type => {
+      xhr.setRequestHeader("Content-Type", ['x-www-form-urlencoded', 'json'].map(type => {
         return 'application/' + type
       }).concat('text/plain').join(';'));
 
-      if(this.get('authorization'))
+      if (this.get('authorization'))
         xhr.setRequestHeader('Authorization', this.get('authorization'));
 
-      if(this.get('withCredentials'))
+      if (this.get('withCredentials'))
         xhr.withCredentials = true;
 
-      if(form.method == 'get')
+      if (form.method == 'get')
         xhr.send();
       else
         xhr.send(params);
@@ -143,9 +174,15 @@ export default class Form extends HTMLOverlayContainer {
 
     form.onsubmit = _
 
-    if(this.get('submitOnLoad')) {
-      setTimeout(() => form.dispatchEvent(new Event('submit')), 100)
+    if (this.getState('submitOnLoad')) {
+      setTimeout(this._submit.bind(this), 100)
     }
+
+    this._startRepeater();
+  }
+
+  _submit() {
+    this.element.dispatchEvent(new Event('submit'))
   }
 
   get nature() {
@@ -153,4 +190,4 @@ export default class Form extends HTMLOverlayContainer {
   }
 }
 
-scene.Component.register('form', Form);
+Component.register('form', Form);
