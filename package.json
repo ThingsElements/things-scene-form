@@ -1,6 +1,6 @@
 {
   "name": "@things-scene/form",
-  "version": "0.2.13",
+  "version": "0.3.0",
   "description": "The HTML Element component for things-scene.",
   "main": "src/index.js",
   "things-scene": true,
@@ -10,6 +10,7 @@
   "scripts": {
     "serve": "things-shell",
     "serve:dev": "things-shell-dev",
+    "build:client": "webpack --config node_modules/@hatiolab/things-shell/webpack.config.dev.js && webpack",
     "build": "webpack",
     "prepublish": "webpack"
   },
