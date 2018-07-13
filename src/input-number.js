@@ -51,6 +51,7 @@ export default class InputNumber extends Input {
     element.min = min
     element.max = max
     element.step = step
+    element.value = this.value
   }
 }
 
