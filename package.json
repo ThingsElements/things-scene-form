@@ -28,6 +28,6 @@
     "@hatiolab/things-shell": "*"
   },
   "dependencies": {
-    "@hatiolab/things-scene": "*"
+    "@hatiolab/things-scene": "^2.2.68"
   }
 }
