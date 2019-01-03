@@ -17,11 +17,7 @@ const NATURE = {
   }]
 }
 
-var {
-  HTMLOverlayContainer,
-  ScriptLoader,
-  error
-} = scene
+import { Component, HTMLOverlayContainer, ScriptLoader, error } from '@hatiolab/things-scene';
 
 const FILLSTYLE = {
   type: 'pattern',
@@ -96,4 +92,4 @@ export default class Template extends HTMLOverlayContainer {
   }
 }
 
-scene.Component.register('template', Template);
+Component.register('template', Template);

@@ -18,6 +18,7 @@ const NATURE = {
   'value-property': 'text'
 }
 
+import { Component } from '@hatiolab/things-scene';
 import Input from './input'
 
 export default class InputSubmit extends Input {
@@ -31,6 +32,6 @@ export default class InputSubmit extends Input {
   }
 }
 
-scene.Component.register('input-button', InputSubmit);
-scene.Component.register('input-submit', InputSubmit);
-scene.Component.register('input-reset', InputSubmit);
+Component.register('input-button', InputSubmit);
+Component.register('input-submit', InputSubmit);
+Component.register('input-reset', InputSubmit);

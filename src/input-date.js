@@ -26,6 +26,7 @@ const NATURE = {
   'value-property': 'text'
 }
 
+import { Component } from '@hatiolab/things-scene';
 import Input from './input'
 
 export default class InputDate extends Input {
@@ -47,4 +48,4 @@ export default class InputDate extends Input {
   }
 }
 
-scene.Component.register('input-date', InputDate);
+Component.register('input-date', InputDate);

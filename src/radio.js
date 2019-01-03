@@ -28,7 +28,7 @@ const NATURE = {
 
 import Input from './input'
 
-var { Component } = scene
+import { Component } from '@hatiolab/things-scene';
 
 export default class Radio extends Input {
 
@@ -90,4 +90,4 @@ export default class Radio extends Input {
   }
 }
 
-scene.Component.register('input-radio', Radio);
+Component.register('input-radio', Radio);

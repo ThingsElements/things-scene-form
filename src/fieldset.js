@@ -13,7 +13,7 @@ const NATURE = {
   }]
 }
 
-var { HTMLOverlayContainer } = scene
+import { Component, HTMLOverlayContainer } from '@hatiolab/things-scene';
 
 export default class FieldSet extends HTMLOverlayContainer {
 
@@ -46,4 +46,4 @@ export default class FieldSet extends HTMLOverlayContainer {
   }
 }
 
-scene.Component.register('fieldset', FieldSet);
+Component.register('fieldset', FieldSet);

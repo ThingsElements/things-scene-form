@@ -14,7 +14,7 @@ const NATURE = {
   'value-property': 'src'
 }
 
-var { HTMLOverlayElement } = scene
+import { Component, HTMLOverlayElement } from '@hatiolab/things-scene';
 
 export default class Img extends HTMLOverlayElement {
 
@@ -40,4 +40,4 @@ export default class Img extends HTMLOverlayElement {
   }
 }
 
-scene.Component.register('img', Img);
+Component.register('img', Img);

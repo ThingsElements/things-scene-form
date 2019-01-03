@@ -26,8 +26,8 @@ const NATURE = {
   'value-property': 'value'
 }
 
-import Input from './input'
-var { Component } = scene
+import Input from './input';
+import { Component } from '@hatiolab/things-scene';
 
 export default class CheckBox extends Input {
 
@@ -93,4 +93,4 @@ export default class CheckBox extends Input {
   }
 }
 
-scene.Component.register('input-checkbox', CheckBox);
+Component.register('input-checkbox', CheckBox);

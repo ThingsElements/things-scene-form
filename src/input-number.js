@@ -30,6 +30,7 @@ const NATURE = {
   'value-property': 'text'
 }
 
+import { Component } from '@hatiolab/things-scene';
 import Input from './input'
 
 export default class InputNumber extends Input {
@@ -50,8 +51,9 @@ export default class InputNumber extends Input {
     element.min = min
     element.max = max
     element.step = step
+    element.value = this.value
   }
 }
 
-scene.Component.register('input-number', InputNumber);
-scene.Component.register('input-range', InputNumber);
+Component.register('input-number', InputNumber);
+Component.register('input-range', InputNumber);

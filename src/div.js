@@ -8,7 +8,7 @@ const NATURE = {
   rotatable: true
 }
 
-var { HTMLOverlayContainer } = scene
+import { Component, HTMLOverlayContainer } from '@hatiolab/things-scene';
 
 export default class Div extends HTMLOverlayContainer {
 
@@ -25,4 +25,4 @@ export default class Div extends HTMLOverlayContainer {
   }
 }
 
-scene.Component.register('div', Div);
+Component.register('div', Div);
