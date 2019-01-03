@@ -6,35 +6,33 @@ const NATURE = {
   mutable: false,
   resizable: true,
   rotatable: true,
-  properties: [{
-    type: 'string',
-    label: 'src',
-    name: 'src'
-  }, {
-    type: 'checkbox',
-    label: 'started',
-    name: 'started'
-  }],
+  properties: [
+    {
+      type: 'string',
+      label: 'src',
+      name: 'src'
+    },
+    {
+      type: 'checkbox',
+      label: 'started',
+      name: 'started'
+    }
+  ],
   'value-property': 'src'
 }
 
-import { Component, HTMLOverlayElement } from '@hatiolab/things-scene';
+import { Component, HTMLOverlayElement } from '@hatiolab/things-scene'
 
 export default class Video extends HTMLOverlayElement {
-
   setElementProperties(video) {
-    var {
-      src = '',
-      started
-    } = this.state
+    var { src = '', started } = this.state
 
-    if(video.src != src)
-      video.src = src
+    if (video.src != src) video.src = src
 
-    if(started) {
-      video.play();
+    if (started) {
+      video.play()
     } else {
-      video.pause();
+      video.pause()
     }
   }
 
@@ -55,8 +53,8 @@ export default class Video extends HTMLOverlayElement {
   }
 
   get nature() {
-    return NATURE;
+    return NATURE
   }
 }
 
-Component.register('video', Video);
+Component.register('video', Video)

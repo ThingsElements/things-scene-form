@@ -6,40 +6,43 @@ const NATURE = {
   mutable: false,
   resizable: true,
   rotatable: true,
-  properties : [{
-    type: 'textarea',
-    label: 'template',
-    name: 'template'
-  }, {
-    type: 'string',
-    label: 'apply-to',
-    name: 'applyTo'
-  }]
+  properties: [
+    {
+      type: 'textarea',
+      label: 'template',
+      name: 'template'
+    },
+    {
+      type: 'string',
+      label: 'apply-to',
+      name: 'applyTo'
+    }
+  ]
 }
 
-import { Component, HTMLOverlayContainer, ScriptLoader, error } from '@hatiolab/things-scene';
+import { Component, HTMLOverlayContainer, ScriptLoader, error } from '@hatiolab/things-scene'
 
 const FILLSTYLE = {
   type: 'pattern',
   fitPattern: true,
-  image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAMFBMVEUAAAAdHR0AAAAAAAAAAAAREREODg4AAAATExMAAAAAAAAAAAAAAAAAAAAWFhYAAABtUS6TAAAAD3RSTlMArnboZDwVtVUHmMTU9CygGbkuAAABBklEQVR42u3Vy47DMAgFUMbE78f9/7+dqpVKFNUzwKqLnD0RvjGYbrdvF8tK9JBWieTRAO6tdQYyeWS8DfIYeONEdmlCLE+GOClkV3ASyC7gpPn+ouiODAdOeJkjHMAZF2OCE1eHK0BfkLXho5yU8XVsjKWKj7E1iya/44kvpcdLJa3LOdg3zIIr2fg7qEd4umYQXpJqiPZyVbQwsMXJtoq889CwkUknMT6ai5QOfBRcb4oY1fMmiBnV1TFk+YDooST6T30UM7a4h5hoS4r/wjnEusleLeiusPFKFwhXCx0GXHUjZBmrDJNRfQ2IYthDYv/grwmrqG1AtV0ShKuF+ONQ6Hb7Hr9EkkNRgwrYbAAAAABJRU5ErkJggg=='
+  image:
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAMFBMVEUAAAAdHR0AAAAAAAAAAAAREREODg4AAAATExMAAAAAAAAAAAAAAAAAAAAWFhYAAABtUS6TAAAAD3RSTlMArnboZDwVtVUHmMTU9CygGbkuAAABBklEQVR42u3Vy47DMAgFUMbE78f9/7+dqpVKFNUzwKqLnD0RvjGYbrdvF8tK9JBWieTRAO6tdQYyeWS8DfIYeONEdmlCLE+GOClkV3ASyC7gpPn+ouiODAdOeJkjHMAZF2OCE1eHK0BfkLXho5yU8XVsjKWKj7E1iya/44kvpcdLJa3LOdg3zIIr2fg7qEd4umYQXpJqiPZyVbQwsMXJtoq889CwkUknMT6ai5QOfBRcb4oY1fMmiBnV1TFk+YDooST6T30UM7a4h5hoS4r/wjnEusleLeiusPFKFwhXCx0GXHUjZBmrDJNRfQ2IYthDYv/grwmrqG1AtV0ShKuF+ONQ6Hb7Hr9EkkNRgwrYbAAAAABJRU5ErkJggg=='
 }
 
 export default class Template extends HTMLOverlayContainer {
-
   createElement() {
-    super.createElement();
+    super.createElement()
 
     this.element.value = this.get('value') || ''
     this.element.onchange = e => {
-      this.set('value', this.element.value);
+      this.set('value', this.element.value)
     }
   }
 
   dispose() {
-    super.dispose();
+    super.dispose()
 
-    this.targets && this.targets.forEach(target => target.shadowRoot.innerHTML = '<slot></slot>')
+    this.targets && this.targets.forEach(target => (target.shadowRoot.innerHTML = '<slot></slot>'))
     delete this.targets
   }
 
@@ -59,22 +62,23 @@ export default class Template extends HTMLOverlayContainer {
     super.reposition()
 
     var old_targets = this.targets || []
-    var targets = this.rootModel && Array.prototype.slice.call(this.rootModel.overlay.querySelectorAll(this.state.applyTo))
+    var targets =
+      this.rootModel && Array.prototype.slice.call(this.rootModel.overlay.querySelectorAll(this.state.applyTo))
 
-    targets && targets.forEach(target => {
-      try {
-        !target.shadowRoot && target.attachShadow({mode: 'open'})
-        target.shadowRoot.innerHTML = this.state.template
-      } catch(e) {
-        error(e)
-      }
+    targets &&
+      targets.forEach(target => {
+        try {
+          !target.shadowRoot && target.attachShadow({ mode: 'open' })
+          target.shadowRoot.innerHTML = this.state.template
+        } catch (e) {
+          error(e)
+        }
 
-      let idx = old_targets.indexOf(target)
-      if(idx >= 0)
-        old_targets.splice(idx, 1)
-    })
+        let idx = old_targets.indexOf(target)
+        if (idx >= 0) old_targets.splice(idx, 1)
+      })
 
-    old_targets.forEach(target => target.shadowRoot.innerHTML = '<slot></slot>')
+    old_targets.forEach(target => (target.shadowRoot.innerHTML = '<slot></slot>'))
 
     this.targets = targets
   }
@@ -87,9 +91,9 @@ export default class Template extends HTMLOverlayContainer {
     return FILLSTYLE
   }
 
-  get nature(){
-    return NATURE;
+  get nature() {
+    return NATURE
   }
 }
 
-Component.register('template', Template);
+Component.register('template', Template)

@@ -6,30 +6,28 @@ const NATURE = {
   mutable: false,
   resizable: true,
   rotatable: true,
-  properties: [{
-    type: 'string',
-    label: 'src',
-    name: 'src'
-  }],
+  properties: [
+    {
+      type: 'string',
+      label: 'src',
+      name: 'src'
+    }
+  ],
   'value-property': 'src'
 }
 
-import { Component, HTMLOverlayElement } from '@hatiolab/things-scene';
+import { Component, HTMLOverlayElement } from '@hatiolab/things-scene'
 
 export default class IFrame extends HTMLOverlayElement {
-
   setElementProperties(iframe) {
-    var {
-      src = ''
-    } = this.state
+    var { src = '' } = this.state
 
-    if(iframe.src != src)
-      iframe.src = src
+    if (iframe.src != src) iframe.src = src
   }
 
   get nature() {
-    return NATURE;
+    return NATURE
   }
 }
 
-Component.register('iframe', IFrame);
+Component.register('iframe', IFrame)

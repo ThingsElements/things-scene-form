@@ -8,10 +8,9 @@ const NATURE = {
   rotatable: true
 }
 
-import { Component, HTMLOverlayContainer } from '@hatiolab/things-scene';
+import { Component, HTMLOverlayContainer } from '@hatiolab/things-scene'
 
 export default class Div extends HTMLOverlayContainer {
-
   setElementProperties(div) {
     div.textContent = this.text
   }
@@ -21,8 +20,8 @@ export default class Div extends HTMLOverlayContainer {
   }
 
   get nature() {
-    return NATURE;
+    return NATURE
   }
 }
 
-Component.register('div', Div);
+Component.register('div', Div)

@@ -6,33 +6,37 @@ const NATURE = {
   mutable: false,
   resizable: true,
   rotatable: true,
-  properties: [{
-    type: 'string',
-    label: 'value',
-    name: 'value'
-  }, {
-    type: 'number',
-    label: 'size',
-    name: 'size'
-  }, {
-    type: 'string',
-    label: 'name',
-    name: 'name'
-  }, {
-    type: 'checkbox',
-    label: 'checked',
-    name: 'checked'
-  }],
+  properties: [
+    {
+      type: 'string',
+      label: 'value',
+      name: 'value'
+    },
+    {
+      type: 'number',
+      label: 'size',
+      name: 'size'
+    },
+    {
+      type: 'string',
+      label: 'name',
+      name: 'name'
+    },
+    {
+      type: 'checkbox',
+      label: 'checked',
+      name: 'checked'
+    }
+  ],
   'value-property': 'value'
 }
 
-import Input from './input';
-import { Component } from '@hatiolab/things-scene';
+import Input from './input'
+import { Component } from '@hatiolab/things-scene'
 
 export default class CheckBox extends Input {
-
   get nature() {
-    return NATURE;
+    return NATURE
   }
 
   get tagName() {
@@ -49,23 +53,20 @@ export default class CheckBox extends Input {
 
   createElement() {
     this.element = document.createElement('label')
-    if(!this.element)
-      return;
+    if (!this.element) return
 
-    var input = document.createElement('input');
-    this.element.appendChild(input);
+    var input = document.createElement('input')
+    this.element.appendChild(input)
 
-    var text = document.createTextNode(this.get('text'));
-    this.element.appendChild(text);
+    var text = document.createTextNode(this.get('text'))
+    this.element.appendChild(text)
 
-    this.setElementProperties(this.element);
+    this.setElementProperties(this.element)
 
-    if(this.parent.isHTMLElement && this.parent.isHTMLElement())
-      this.parent.element.appendChild(this.element)
-    else
-      this.root.model_layer.overlay.appendChild(this.element);
+    if (this.parent.isHTMLElement && this.parent.isHTMLElement()) this.parent.element.appendChild(this.element)
+    else this.root.model_layer.overlay.appendChild(this.element)
 
-    Component.reposition(this);
+    Component.reposition(this)
 
     this.oncreate_element && this.oncreate_element(this.element)
   }
@@ -74,17 +75,13 @@ export default class CheckBox extends Input {
     var eText = this.element.querySelector('text')
     var eInput = this.element.querySelector('input')
 
-    var {
-      text,
-      checked,
-      value
-    } = this.state
+    var { text, checked, value } = this.state
 
-    if(eText) {
+    if (eText) {
       eText.textContent = text
     }
 
-    if(eInput) {
+    if (eInput) {
       eInput.checked = checked
       eInput.value = value
     }
@@ -93,4 +90,4 @@ export default class CheckBox extends Input {
   }
 }
 
-Component.register('input-checkbox', CheckBox);
+Component.register('input-checkbox', CheckBox)

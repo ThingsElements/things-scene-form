@@ -6,38 +6,45 @@ const NATURE = {
   mutable: false,
   resizable: true,
   rotatable: true,
-  properties: [{
-    type: 'string',
-    label: 'href',
-    name: 'href',
-    property: 'href'
-  }, {
-    type: 'select',
-    label: 'target',
-    name: 'target',
-    property: {
-      options: [{
-        display: 'self',
-        value: '_self'
-      }, {
-        display: 'blank',
-        value: '_blank'
-      }, {
-        display: 'parent',
-        value: '_parent'
-      }, {
-        display: 'top',
-        value: '_top'
-      }]
+  properties: [
+    {
+      type: 'string',
+      label: 'href',
+      name: 'href',
+      property: 'href'
+    },
+    {
+      type: 'select',
+      label: 'target',
+      name: 'target',
+      property: {
+        options: [
+          {
+            display: 'self',
+            value: '_self'
+          },
+          {
+            display: 'blank',
+            value: '_blank'
+          },
+          {
+            display: 'parent',
+            value: '_parent'
+          },
+          {
+            display: 'top',
+            value: '_top'
+          }
+        ]
+      }
     }
-  }],
+  ],
   'value-property': 'href'
 }
 
-import { Component, HTMLOverlayContainer } from '@hatiolab/things-scene';
+import { Component, HTMLOverlayContainer } from '@hatiolab/things-scene'
 
 export default class Link extends HTMLOverlayContainer {
-
   get tagName() {
     return 'a'
   }
@@ -51,23 +58,18 @@ export default class Link extends HTMLOverlayContainer {
   }
 
   setElementProperties(link) {
-    var {
-      href = '',
-      target
-    } = this.state
+    var { href = '', target } = this.state
 
-    if(link.href != href)
-      link.href = href
+    if (link.href != href) link.href = href
 
     link.target = target
 
-    if(this.components.length == 0)
-      this.element.textContent = this.text || href
+    if (this.components.length == 0) this.element.textContent = this.text || href
   }
 
   get nature() {
-    return NATURE;
+    return NATURE
   }
 }
 
-Component.register('link', Link);
+Component.register('link', Link)

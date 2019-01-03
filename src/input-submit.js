@@ -6,25 +6,27 @@ const NATURE = {
   mutable: false,
   resizable: true,
   rotatable: true,
-  properties: [{
-    type: 'string',
-    label: 'name',
-    name: 'name'
-  }, {
-    type: 'string',
-    label: 'value',
-    name: 'text'
-  }],
+  properties: [
+    {
+      type: 'string',
+      label: 'name',
+      name: 'name'
+    },
+    {
+      type: 'string',
+      label: 'value',
+      name: 'text'
+    }
+  ],
   'value-property': 'text'
 }
 
-import { Component } from '@hatiolab/things-scene';
+import { Component } from '@hatiolab/things-scene'
 import Input from './input'
 
 export default class InputSubmit extends Input {
-
   get nature() {
-    return NATURE;
+    return NATURE
   }
 
   setElementProperties(element) {
@@ -32,6 +34,6 @@ export default class InputSubmit extends Input {
   }
 }
 
-Component.register('input-button', InputSubmit);
-Component.register('input-submit', InputSubmit);
-Component.register('input-reset', InputSubmit);
+Component.register('input-button', InputSubmit)
+Component.register('input-submit', InputSubmit)
+Component.register('input-reset', InputSubmit)

@@ -9,25 +9,25 @@ import { expect } from 'chai'
 import '../../bower_components/things-scene-core/things-scene-min'
 import { Form } from '../../src/index'
 
-describe('Form', function () {
+describe('Form', function() {
+  var board
 
-  var board;
-
-  beforeEach(function () {
+  beforeEach(function() {
     board = scene.create({
       model: {
-        components: [{
-          id: 'form',
-          type: 'form'
-        }]
+        components: [
+          {
+            id: 'form',
+            type: 'form'
+          }
+        ]
       }
     })
-  });
+  })
 
-  it('component should be found by its id.', function () {
-
+  it('component should be found by its id.', function() {
     var component = board.findById('form')
 
-    expect(!!component).not.to.equal(false);
-  });
-});
+    expect(!!component).not.to.equal(false)
+  })
+})

@@ -12,7 +12,8 @@
     "serve:dev": "things-shell-dev",
     "build:client": "webpack --config node_modules/@hatiolab/things-shell/webpack.config.js",
     "build": "webpack",
-    "prepublish": "webpack"
+    "prepublish": "webpack",
+    "prettify": "prettier --write \"{src,templates,test,locales}/**/*.{js,css,html}\""
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,8 @@
   },
   "homepage": "https://github.com/ThingsElements/things-scene-form#readme",
   "devDependencies": {
-    "@hatiolab/things-shell": "*"
+    "@hatiolab/things-shell": "*",
+    "prettier": "^1.15.3"
   },
   "dependencies": {
     "@hatiolab/things-scene": "^2.2.68"

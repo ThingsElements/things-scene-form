@@ -6,29 +6,32 @@ const NATURE = {
   mutable: false,
   resizable: true,
   rotatable: true,
-  properties: [{
-    type: 'string',
-    label: 'name',
-    name: 'name'
-  }, {
-    type: 'string',
-    label: 'value',
-    name: 'text'
-  }, {
-    type: 'checkbox',
-    label: 'multiple',
-    name: 'multiple'
-  }],
+  properties: [
+    {
+      type: 'string',
+      label: 'name',
+      name: 'name'
+    },
+    {
+      type: 'string',
+      label: 'value',
+      name: 'text'
+    },
+    {
+      type: 'checkbox',
+      label: 'multiple',
+      name: 'multiple'
+    }
+  ],
   'value-property': 'text'
 }
 
-import { Component } from '@hatiolab/things-scene';
+import { Component } from '@hatiolab/things-scene'
 import Input from './input'
 
 export default class InputFile extends Input {
-
   get nature() {
-    return NATURE;
+    return NATURE
   }
 
   setElementProperties(element) {
@@ -38,4 +41,4 @@ export default class InputFile extends Input {
   }
 }
 
-Component.register('input-file', InputFile);
+Component.register('input-file', InputFile)
