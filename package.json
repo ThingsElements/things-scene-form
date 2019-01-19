@@ -30,7 +30,7 @@
     "prettier": "^1.15.3"
   },
   "dependencies": {
-    "@hatiolab/things-scene": "^2.2.68",
+    "@hatiolab/things-scene": "^2.5.0-rc.9",
     "hls.js": "^0.12.2"
   }
 }
