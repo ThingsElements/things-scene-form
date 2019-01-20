@@ -27,6 +27,7 @@
   "homepage": "https://github.com/ThingsElements/things-scene-form#readme",
   "devDependencies": {
     "@hatiolab/things-shell": "*",
+    "@things-scene/random": "^0.3.4",
     "prettier": "^1.15.3"
   },
   "dependencies": {

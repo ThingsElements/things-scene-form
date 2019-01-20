@@ -26,6 +26,11 @@ const NATURE = {
       type: 'date',
       label: 'max',
       name: 'max'
+    },
+    {
+      type: 'checkbox',
+      label: 'submit-on-change',
+      name: 'submitOnChange'
     }
   ],
   'value-property': 'text'

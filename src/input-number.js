@@ -31,6 +31,11 @@ const NATURE = {
       type: 'number',
       label: 'step',
       name: 'step'
+    },
+    {
+      type: 'checkbox',
+      label: 'submit-on-change',
+      name: 'submitOnChange'
     }
   ],
   'value-property': 'text'
@@ -52,7 +57,6 @@ export default class InputNumber extends Input {
     element.min = min
     element.max = max
     element.step = step
-    element.value = this.value
   }
 }
 

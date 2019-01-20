@@ -26,6 +26,11 @@ const NATURE = {
       type: 'checkbox',
       label: 'checked',
       name: 'checked'
+    },
+    {
+      type: 'checkbox',
+      label: 'submit-on-change',
+      name: 'submitOnChange'
     }
   ],
   'value-property': 'value'

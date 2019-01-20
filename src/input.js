@@ -36,6 +36,11 @@ const NATURE = {
       type: 'number',
       label: 'max-length',
       name: 'maxlength'
+    },
+    {
+      type: 'checkbox',
+      label: 'submit-on-change',
+      name: 'submitOnChange'
     }
   ],
   'value-property': 'text'
@@ -82,6 +87,16 @@ export default class Input extends HTMLOverlayElement {
     }
 
     this.data = this.value
+  }
+
+  onchange(after, before) {
+    super.onchange(after, before)
+
+    var valueProperty = this.nature['value-property']
+    if (valueProperty && valueProperty in after && this.element) {
+      this.element.value = after.text
+      if (this.get('submitOnChange') && this.element.form) this.element.form.dispatchEvent(new Event('submit'))
+    }
   }
 }
 
