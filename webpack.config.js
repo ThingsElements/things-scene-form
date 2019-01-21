@@ -1,16 +1,16 @@
-const path = require('path');
+const path = require('path')
 
-const webpack = require('webpack');
+const webpack = require('webpack')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   mode: 'production',
   entry: {
-    "things-scene-form": ['./src/index.js']
+    'things-scene-form': ['./src/index.js']
   },
   output: {
     path: path.resolve('./dist'),
-    filename: '[name].js',
+    filename: '[name].js'
   },
   resolve: {
     modules: ['./node_modules']
@@ -19,30 +19,48 @@ module.exports = {
     modules: ['./node_modules']
   },
   externals: {
-    "@hatiolab/things-scene": "scene"
+    '@hatiolab/things-scene': 'scene'
   },
   optimization: {
-    minimize: true,
+    minimize: true
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      exclude: /(node_modules)/,
-      loader: 'babel-loader',
-    }, {
-      test: /\.(gif|jpe?g|png)$/,
-      loader: 'url-loader?limit=25000',
-      query: {
-        limit: 10000,
-        name: '[path][name].[hash:8].[ext]'
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                targets: {
+                  browsers: ['last 2 versions', 'safari >= 7']
+                }
+              }
+            ]
+          ]
+        }
+      },
+      {
+        test: /\.(gif|jpe?g|png)$/,
+        loader: 'url-loader?limit=25000',
+        query: {
+          limit: 10000,
+          name: '[path][name].[hash:8].[ext]'
+        }
+      },
+      {
+        test: /\.(obj|mtl|tga|3ds|max|dae)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
       }
-    }, {
-      test: /\.(obj|mtl|tga|3ds|max|dae)$/,
-      use: [{
-        loader: 'file-loader',
-        options: {}
-      }]
-    }]
+    ]
   },
   plugins: [
     new UglifyJsPlugin({

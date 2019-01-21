@@ -15,7 +15,11 @@ const NATURE = {
     {
       type: 'color',
       label: 'value',
-      name: 'text'
+      name: 'text',
+      property: {
+        withoutAlpha: true,
+        valueType: 'hex'
+      }
     }
   ],
   'value-property': 'text'
@@ -23,6 +27,7 @@ const NATURE = {
 
 import { Component } from '@hatiolab/things-scene'
 import Input from './input'
+import TinyColor from 'tinycolor2'
 
 export default class InputColor extends Input {
   get nature() {
@@ -30,6 +35,7 @@ export default class InputColor extends Input {
   }
 
   setElementProperties(element) {
+    this.value = TinyColor(this.value || '#000000').toHexString()
     super.setElementProperties(element)
   }
 }
