@@ -83,11 +83,6 @@ export default class Form extends HTMLOverlayContainer {
     this._stopRepeater()
   }
 
-  dispose() {
-    super.dispose()
-    this._stopRepeater()
-  }
-
   setElementProperties(form) {
     var { action = '', method = 'POST', name = '' } = this.state
 
@@ -141,6 +136,7 @@ export default class Form extends HTMLOverlayContainer {
     if (!this.app.isViewMode) return
 
     var _ = e => {
+      e.preventDefault()
       var url = form.action
       var xhr = new XMLHttpRequest()
 
@@ -181,8 +177,6 @@ export default class Form extends HTMLOverlayContainer {
 
       if (form.method == 'get') xhr.send()
       else xhr.send(params)
-
-      e.preventDefault()
 
       return false
     }

@@ -112,7 +112,12 @@ export default class Select extends HTMLOverlayElement {
 
     element.onchange = e => {
       this.set('value', element.value)
-      if (this.get('submitOnChange') && element.form) element.form.dispatchEvent(new Event('submit'))
+      if (this.get('submitOnChange') && element.form)
+        element.form.dispatchEvent(
+          new Event('submit', {
+            cancelable: true
+          })
+        )
     }
   }
 
@@ -136,7 +141,12 @@ export default class Select extends HTMLOverlayElement {
           this.data = after.value
         }
       }
-      if (this.get('submitOnChange') && this.element.form) this.element.form.dispatchEvent(new Event('submit'))
+      if (this.get('submitOnChange') && this.element.form)
+        this.element.form.dispatchEvent(
+          new Event('submit', {
+            cancelable: true
+          })
+        )
     }
 
     if (after.hasOwnProperty('options')) this.buildOptions()

@@ -95,7 +95,12 @@ export default class Input extends HTMLOverlayElement {
     var valueProperty = this.nature['value-property']
     if (valueProperty && valueProperty in after && this.element) {
       this.element.value = after.text
-      if (this.get('submitOnChange') && this.element.form) this.element.form.dispatchEvent(new Event('submit'))
+      if (this.get('submitOnChange') && this.element.form)
+        this.element.form.dispatchEvent(
+          new Event('submit', {
+            cancelable: true
+          })
+        )
     }
   }
 }
