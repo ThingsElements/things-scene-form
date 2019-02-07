@@ -59,7 +59,7 @@ export default class Select extends HTMLOverlayElement {
   }
 
   buildOptions() {
-    var { options = [], textField, valueField } = this.state
+    var { options = [], textField, valueField, value } = this.state
 
     if (!options instanceof Array) options = []
 
@@ -87,7 +87,13 @@ export default class Select extends HTMLOverlayElement {
             value = option && option[valueField]
           }
 
-          if (defaultValue === undefined) defaultValue = value
+          if (defaultValue === undefined) {
+            defaultValue = value
+          }
+
+          if (value == this.value) {
+            defaultValue = this.value
+          }
 
           return { text, value }
         })
@@ -98,7 +104,14 @@ export default class Select extends HTMLOverlayElement {
           this.element.appendChild(el)
         })
 
-    this.value = JSON.stringify(defaultValue)
+    if (defaultValue !== undefined && this.value !== defaultValue) {
+      this.value = JSON.stringify(defaultValue)
+    }
+
+    if (this.element.value != this.value) {
+      this.element.value = this.value
+      this.element.dispatchEvent(new Event('change'))
+    }
   }
 
   createElement() {
@@ -112,12 +125,14 @@ export default class Select extends HTMLOverlayElement {
 
     element.onchange = e => {
       this.set('value', element.value)
-      if (this.get('submitOnChange') && element.form)
+
+      if (this.get('submitOnChange') && element.form) {
         element.form.dispatchEvent(
           new Event('submit', {
             cancelable: true
           })
         )
+      }
     }
   }
 
@@ -141,6 +156,7 @@ export default class Select extends HTMLOverlayElement {
           this.data = after.value
         }
       }
+
       if (this.get('submitOnChange') && this.element.form)
         this.element.form.dispatchEvent(
           new Event('submit', {
