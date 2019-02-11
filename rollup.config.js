@@ -4,12 +4,8 @@ import commonjs from 'rollup-plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 import graphql from 'rollup-plugin-graphql'
 
-import path from 'path'
-
 let pkg = require('./package.json')
-let externalID = path.resolve(__dirname, '@hatiolab/things-scene')
-// let external = [externalID] // Object.keys(pkg.dependencies)
-let external = ['@hatiolab/things-scene'] // Object.keys(pkg.dependencies)
+let external = Object.keys(pkg.dependencies)
 let plugins = [
   graphql(),
   resolve(),
@@ -24,7 +20,7 @@ export default [
   {
     input: 'src/index.js',
     plugins,
-    external: Object.keys(pkg.dependencies),
+    external,
     output: [
       {
         file: pkg.main,
@@ -39,7 +35,7 @@ export default [
   {
     input: 'src/index.js',
     plugins,
-    external,
+    external: ['@hatiolab/things-scene'], // hls.js는 빌드에 포함.
     output: [
       {
         file: pkg.module,
