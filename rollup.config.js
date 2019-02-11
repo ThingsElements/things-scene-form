@@ -27,7 +27,8 @@ export default [
         name: 'things-scene-form',
         format: 'umd',
         globals: {
-          '@hatiolab/things-scene': 'scene'
+          '@hatiolab/things-scene': 'scene',
+          'hls.js': 'Hls'
         }
       }
     ]
