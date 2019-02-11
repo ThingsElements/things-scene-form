@@ -28,11 +28,11 @@
   },
   "homepage": "https://github.com/ThingsElements/things-scene-form#readme",
   "devDependencies": {
-    "@hatiolab/things-shell": "^0.6.108",
-    "@things-scene/random": "^0.3.4"
+    "@hatiolab/things-shell": "*",
+    "@things-scene/random": "*"
   },
   "dependencies": {
-    "@hatiolab/things-scene": "^2.5.0-rc.21",
+    "@hatiolab/things-scene": "*",
     "hls.js": "^0.12.2"
   }
 }
