@@ -1,6 +1,6 @@
 {
   "name": "@things-scene/form",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "description": "The HTML Element component for things-scene.",
   "main": "dist/things-scene-form.js",
   "module": "dist/things-scene-form.mjs",
@@ -13,8 +13,8 @@
     "serve": "things-shell",
     "serve:dev": "things-shell-dev",
     "build:client": "webpack --config node_modules/@hatiolab/things-shell/webpack.config.js",
-    "build": "rollup -c --environment BUILD:production",
-    "prepublish": "rollup -c --environment BUILD:production",
+    "build": "rollup -c",
+    "prepublish": "rollup -c",
     "prettify": "prettier --write \"{src,templates,test,locales}/**/*.{js,css,html}\""
   },
   "repository": {
@@ -28,18 +28,11 @@
   },
   "homepage": "https://github.com/ThingsElements/things-scene-form#readme",
   "devDependencies": {
-    "@hatiolab/things-shell": "^0.6.107",
-    "@things-scene/random": "^0.3.4",
-    "prettier": "^1.15.3",
-    "rollup": "^1.1.2",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-graphql": "^0.1.0",
-    "rollup-plugin-node-resolve": "^4.0.0",
-    "rollup-plugin-terser": "^4.0.4"
+    "@hatiolab/things-shell": "^0.6.108",
+    "@things-scene/random": "^0.3.4"
   },
   "dependencies": {
-    "@hatiolab/things-scene": "^2.5.0-rc.20",
+    "@hatiolab/things-scene": "^2.5.0-rc.21",
     "hls.js": "^0.12.2"
   }
 }
