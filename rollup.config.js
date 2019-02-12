@@ -23,7 +23,7 @@ export default [
     external,
     output: [
       {
-        file: pkg.main,
+        file: 'dist/things-scene-form.js',
         name: 'things-scene-form',
         format: 'umd',
         globals: {

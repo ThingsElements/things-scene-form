@@ -20,7 +20,7 @@ const NATURE = {
   ]
 }
 
-import { Component, HTMLOverlayContainer, ScriptLoader, error } from '@hatiolab/things-scene'
+import { Component, HTMLOverlayContainer, error } from '@hatiolab/things-scene'
 
 const FILLSTYLE = {
   type: 'pattern',
