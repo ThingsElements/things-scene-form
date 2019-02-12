@@ -1,6 +1,6 @@
 {
   "name": "@things-scene/form",
-  "version": "0.3.17",
+  "version": "0.3.18",
   "description": "The HTML Element component for things-scene.",
   "main": "src/index.js",
   "module": "dist/things-scene-form.mjs",
@@ -32,7 +32,7 @@
     "@things-scene/random": "*"
   },
   "dependencies": {
-    "@hatiolab/things-scene": "*",
+    "@hatiolab/things-scene": "^2.5.0-rc",
     "hls.js": "^0.12.2"
   }
 }
