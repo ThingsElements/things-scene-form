@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@hatiolab/things-scene": "*",
-    "hls.js": "^0.12.2"
+    "hls.js": "^0.12.2",
+    "tinycolor2": "^1.4.1"
   }
 }

@@ -28,7 +28,8 @@ export default [
         format: 'umd',
         globals: {
           '@hatiolab/things-scene': 'scene',
-          'hls.js': 'Hls'
+          'hls.js': 'Hls',
+          tinycolor2: 'tinycolor'
         }
       }
     ]
