@@ -140,8 +140,8 @@ var fieldsets = ['fieldset', 'iframe', 'img', 'link'].map(function(type) {
       type: type,
       top: 100,
       left: 100,
-      width: 280,
-      height: 30,
+      width: type !== 'link' ? 400 : 280,
+      height: type !== 'link' ? 300 : 30,
       fontSize: 14,
       fillStyle: 'white',
       fontColor: '#585858',
@@ -165,6 +165,7 @@ var multimedias = ['video'].map(type => {
       left: 100,
       width: 400,
       height: 224,
+      controls: true,
       src:
         'https://player.vimeo.com/external/242538643.sd.mp4?s=42dacbec1a58f449a3fa4845801df5d446a99134&profile_id=165'
     }
