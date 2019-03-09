@@ -76,7 +76,8 @@ export default class Select extends HTMLOverlayElement {
           } else if (textField == '(index)') {
             text = index
           } else {
-            text = option && option[textField]
+            // String.fromCharCode(160) == '&nbsp'
+            text = (option && option[textField]) || String.fromCharCode(160)
           }
 
           if (!valueField) {
@@ -146,13 +147,12 @@ export default class Select extends HTMLOverlayElement {
   onchange(after, before) {
     super.onchange(after, before)
 
-    if (after.hasOwnProperty('value') && this.element) {
+    if ('value' in after && this.element) {
       this.element.value = after.value
       if (this.get('copyValueToData')) {
         try {
           this.data = JSON.parse(after.value)
         } catch (e) {
-          warn(e)
           this.data = after.value
         }
       }
@@ -165,7 +165,7 @@ export default class Select extends HTMLOverlayElement {
         )
     }
 
-    if (after.hasOwnProperty('options')) this.buildOptions()
+    if ('options' in after) this.buildOptions()
   }
 
   get options() {
