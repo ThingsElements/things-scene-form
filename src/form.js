@@ -55,6 +55,10 @@ const NATURE = {
             value: 'JSON'
           },
           {
+            display: 'XML',
+            value: 'XML'
+          },
+          {
             display: 'TEXT',
             value: 'TEXT'
           }
@@ -70,12 +74,18 @@ const NATURE = {
       type: 'checkbox',
       label: 'submit-on-load',
       name: 'submitOnLoad'
+    },
+    {
+      type: 'checkbox',
+      label: 'debug',
+      name: 'debug'
     }
   ],
   'value-property': 'action'
 }
 
 import { Component, HTMLOverlayContainer, warn } from '@hatiolab/things-scene'
+import { xml2js } from 'xml-js'
 
 export default class Form extends HTMLOverlayContainer {
   dispose() {
@@ -126,7 +136,22 @@ export default class Form extends HTMLOverlayContainer {
   _onload(e) {
     var result = e.target.response
     try {
-      this.setState('data', this.get('format') == 'JSON' ? JSON.parse(result) : result)
+      switch(this.get('format')) {
+        case 'JSON':
+          result = JSON.parse(result)
+          break;
+        case 'XML':
+          result = xml2js(result, {
+            compact: true
+          })
+          break;
+      }
+
+      if(this.state.debug) {
+        console.log('[FORM-RESULT]', result)
+      }
+      
+      this.setState('data', result)
     } catch (e) {
       console.error(e)
     }
