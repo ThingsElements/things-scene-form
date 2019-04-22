@@ -22,4 +22,6 @@ export { default as InputFile } from './input-file'
 export { default as InputColor } from './input-color'
 export { default as InputSubmit } from './input-submit'
 
+export { default as SoapClient } from './soap-client'
+
 export { default as Template } from './template'
