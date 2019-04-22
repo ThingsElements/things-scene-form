@@ -20,6 +20,7 @@ import link from '../assets/link.png'
 import textarea from '../assets/textarea.png'
 import select from '../assets/select.png'
 import form from '../assets/form.png'
+import soapClient from '../assets/form.png'
 
 const ICONS = {
   text,
@@ -42,7 +43,8 @@ const ICONS = {
   link,
   textarea,
   select,
-  form
+  form,
+  soapClient
 }
 
 var inputs01 = ['text', 'password', 'email', 'search', 'number', 'color', 'range', 'file', 'date'].map(function(type) {
@@ -217,6 +219,26 @@ var forms = [
       name: 'search',
       authorization: '',
       format: 'TEXT'
+    }
+  },
+  {
+    type: 'soap-client',
+    description: 'soap client',
+    group: 'form',
+    icon: ICONS['soapClient'],
+    model: {
+      type: 'soap-client',
+      top: 100,
+      left: 100,
+      width: 400,
+      height: 200,
+      fontColor: '#585858',
+      strokeStyle: '#ccc',
+      lineWidth: 1,
+      action: '',
+      method: '',
+      name: 'search',
+      authorization: ''
     }
   }
 ]
