@@ -87,7 +87,7 @@
 
   <wsdl:service name="Z_PP_ORDER_STATUS_OUT">
     <wsdl:port binding="tns:SOAPEventSourceBinding" name="SOAPEventSource">
-      <soap:address location="http://172.16.5.25:7558/Processes/ONL/SAH/M_Z_PP_ORDER_STATUS_OUT"/>
+      <soap:address location="http://0.0.0.0:8000/wsdl"/>
     </wsdl:port>
   </wsdl:service>
   

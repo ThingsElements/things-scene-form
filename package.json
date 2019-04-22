@@ -29,13 +29,16 @@
   "homepage": "https://github.com/ThingsElements/things-scene-form#readme",
   "devDependencies": {
     "@hatiolab/things-shell": "*",
-    "@things-scene/random": "*"
+    "@things-scene/random": "*",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "soap": "^0.27.1"
   },
   "dependencies": {
     "@hatiolab/things-scene": "*",
     "@things-scene/restful": "*",
     "@things-scene/table": "*",
-    "easy-soap-request": "^2.5.0",
     "hls.js": "^0.12.2",
     "tinycolor2": "^1.4.1",
     "xml-js": "^1.6.11"

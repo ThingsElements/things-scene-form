@@ -9,13 +9,23 @@ const NATURE = {
   properties: [
     {
       type: 'string',
-      label: 'action',
-      name: 'action'
+      label: 'endpoint',
+      name: 'endpoint'
     },
     {
       type: 'string',
-      label: 'soap-method',
-      name: 'soapMethod'
+      label: 'soap-action',
+      name: 'soapAction'
+    },
+    {
+      type: 'string',
+      label: 'method',
+      name: 'method'
+    },
+    {
+      type: 'string',
+      label: 'namespace',
+      name: 'namespace'
     },
     {
       type: 'number',
@@ -48,7 +58,7 @@ const NATURE = {
       name: 'debug'
     }
   ],
-  'value-property': 'action'
+  'value-property': 'endpoint'
 }
 
 import { Component, HTMLOverlayContainer } from '@hatiolab/things-scene'
@@ -64,20 +74,20 @@ export default class SoapClient extends HTMLOverlayContainer {
     return 'form'
   }
 
-  setElementProperties(client) {
-    var { action = '', name = '', soapMethod } = this.state
+  setElementProperties(form) {
+    var { endpoint = '', name = '' } = this.state
 
-    client.action = action
-    client.soapMethod = soapMethod
-    client.name = name
+    form.action = endpoint
+    form.method = 'POST'
+    form.name = name
   }
 
-  get action() {
-    return this.state.action
+  get endpoint() {
+    return this.state.endpoint
   }
 
-  set action(action) {
-    this.setState('action', action)
+  set endpoint(endpoint) {
+    this.setState('endpoint', endpoint)
     this._startRepeater()
   }
 
@@ -111,29 +121,28 @@ export default class SoapClient extends HTMLOverlayContainer {
         compact: true
       })
 
-      if(this.state.debug) {
+      if (this.state.debug) {
         console.log('[SOAP-RESULT]', result)
       }
-      
+
       this.setState('data', result)
     } catch (e) {
       console.error(e)
     }
   }
 
-  oncreate_element(client) {
+  oncreate_element(form) {
     if (!this.app.isViewMode) return
 
     var _ = e => {
       e.preventDefault()
 
-      var action = client.action
-      var soapMethod = client.soapMethod
+      var { endpoint, soapAction, method, namespace, debug } = this.state
 
       var xhr = new XMLHttpRequest()
 
       var params = [].filter
-        .call(client.elements, el => {
+        .call(form.elements, el => {
           if (el.type == 'radio' || el.type == 'checkbox') return el.checked
           return true
         })
@@ -145,35 +154,41 @@ export default class SoapClient extends HTMLOverlayContainer {
         })
         .map(el => {
           return `<${el.name}>${el.value}</${el.name}>`
-        }).join('\n')
+        })
+        .join('\n      ')
 
       xhr.onloadend = this._onload.bind(this)
 
-      xhr.open('POST', action)
+      xhr.open('POST', endpoint)
 
-      xhr.setRequestHeader('Content-Type', 'text/xml')
-      xhr.setRequestHeader('SOAPAction', `${soapMethod}#Method`)
+      xhr.setRequestHeader('Content-Type', 'text/xml;charset=UTF-8')
+      xhr.setRequestHeader('SOAPAction', `${endpoint}#${soapAction}`)
 
       if (this.get('authorization')) xhr.setRequestHeader('Authorization', this.get('authorization'))
       if (this.get('withCredentials')) xhr.withCredentials = true
 
-
       let soapEnvelope = `
-<s:Envelope xmlns:s='http://schemas.xmlsoap.org/soap/envelope/'>
+<s:Envelope 
+  xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
   <s:Header/>
   <s:Body>
-    <m:Method xmlns:m='${soapMethod}' />
-    ${params}
+    <ns0:${method} xmlns:ns0="${namespace}">
+      ${params}
+    </ns0:${method}>
   </s:Body>
 </s:Envelope>
 `
-      console.log('soapEnvelope', soapEnvelope)
+
+      if (debug) {
+        console.log('[SOAP-REQUEST-ENVELOPE]', soapEnvelope)
+      }
+
       xhr.send(soapEnvelope)
 
       return false
     }
 
-    client.onsubmit = _
+    form.onsubmit = _
 
     if (this.getState('submitOnLoad')) {
       setTimeout(this._submit.bind(this), 100)
