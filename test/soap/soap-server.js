@@ -1,6 +1,6 @@
 var service = {
   Z_PP_ORDER_STATUS_OUT: {
-    Z_PP_ORDER_STATUS_OUTPort: {
+    SOAPEventSource: {
       Z_PP_ORDER_STATUS_OUTOP: function(args) {
         return {
           GSTRP: args.I_GSTRP,

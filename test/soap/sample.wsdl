@@ -75,7 +75,7 @@
 <wsdl:binding name="SOAPEventSourceBinding" type="tns:Z_PP_ORDER_STATUS_OUTPort">
   <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
   <wsdl:operation name="Z_PP_ORDER_STATUS_OUTOP">
-    <soap:operation soapAction="/Processes/ONL/SAH/M_Z_PP_ORDER_STATUS_OUT" style="document"/>
+    <soap:operation soapAction="/wsdl" style="document"/>
       <wsdl:input>
         <soap:body parts="part1" use="literal"/>
       </wsdl:input>
