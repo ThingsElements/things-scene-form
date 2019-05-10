@@ -126,14 +126,6 @@ export default class Select extends HTMLOverlayElement {
 
     element.onchange = e => {
       this.set('value', element.value)
-
-      if (this.get('submitOnChange') && element.form) {
-        element.form.dispatchEvent(
-          new Event('submit', {
-            cancelable: true
-          })
-        )
-      }
     }
   }
 
