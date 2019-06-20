@@ -1,6 +1,6 @@
 {
   "name": "@things-scene/form",
-  "version": "0.3.25",
+  "version": "0.3.26",
   "description": "The HTML Element component for things-scene.",
   "main": "src/index.js",
   "things-scene": true,
@@ -28,6 +28,8 @@
   "devDependencies": {
     "@hatiolab/things-shell": "*",
     "@things-scene/random": "*",
+    "@things-scene/restful": "*",
+    "@things-scene/table": "*",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
@@ -36,8 +38,6 @@
   },
   "dependencies": {
     "@hatiolab/things-scene": "*",
-    "@things-scene/restful": "*",
-    "@things-scene/table": "*",
     "hls.js": "^0.12.2",
     "tinycolor2": "^1.4.1",
     "xml-js": "^1.6.11"
