@@ -27,7 +27,7 @@ const NATURE = {
 }
 
 import { Component, HTMLOverlayElement } from '@hatiolab/things-scene'
-import Hls from 'hls.js'
+import Hls from '!hls.js'
 
 export default class Video extends HTMLOverlayElement {
   async oncreate_element(video) {
@@ -69,7 +69,7 @@ export default class Video extends HTMLOverlayElement {
     var video = this.element
 
     if (started) {
-      /* 
+      /*
         [ video.readyState ]
         0 = HAVE_NOTHING - no information whether or not the audio/video is ready
         1 = HAVE_METADATA - metadata for the audio/video is ready
