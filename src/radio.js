@@ -55,7 +55,9 @@ export default class Radio extends Input {
     var input = document.createElement('input')
     this.element.appendChild(input)
 
-    var text = document.createTextNode(this.get('text'))
+    var text = document.createElement('p')
+    text.style.display = 'inline'
+    text.innerHTML = this.get('text')
     this.element.appendChild(text)
 
     this.setElementProperties(this.element)
@@ -64,7 +66,6 @@ export default class Radio extends Input {
     else this.root.model_layer.overlay.appendChild(this.element)
 
     Component.reposition(this)
-
     this.oncreate_element && this.oncreate_element(this.element)
   }
 
@@ -84,6 +85,17 @@ export default class Radio extends Input {
     }
 
     super.setElementProperties(eInput)
+  }
+  postrender(context) {
+    /* postrender() 함수는 거의 상속하지 않는다.
+     * 텍스트, 효과, 애니메이션 등 컴포넌트 공통 기능에 대한 표현을 담당한다.
+     */
+    this.changeText(context)
+  }
+  changeText(context) {
+    if (this.text && this.hasTextProperty && this.element.querySelector('p')) {
+      this.element.querySelector('p').innerText = this.text
+    }
   }
 }
 

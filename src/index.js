@@ -21,5 +21,6 @@ export { default as InputDate } from './input-date'
 export { default as InputFile } from './input-file'
 export { default as InputColor } from './input-color'
 export { default as InputSubmit } from './input-submit'
+export { default as RadioGroup } from './radio-group'
 
 export { default as Template } from './template'

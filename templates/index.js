@@ -44,7 +44,8 @@ const ICONS = {
   textarea,
   select,
   form,
-  soapClient
+  soapClient,
+  radioGroup
 }
 
 var inputs01 = ['text', 'password', 'email', 'search', 'number', 'color', 'range', 'file', 'date'].map(function(type) {
@@ -198,6 +199,22 @@ var others = ['textarea', 'select'].map(function(type) {
     }
   }
 })
+var radioGroup = [
+  {
+    type: 'radio-group',
+    description: 'radio-group',
+    group: 'form',
+    icon: ICONS['form'],
+    model: {
+      type: 'radio-group',
+      top: 100,
+      left: 100,
+      width: 200,
+      height: 140,
+      lineWidth: 1
+    }
+  }
+]
 
 var forms = [
   {
@@ -243,4 +260,4 @@ var forms = [
   }
 ]
 
-export default forms.concat(inputs01, inputs02, buttons, textibles, fieldsets, multimedias, others)
+export default forms.concat(inputs01, inputs02, buttons, textibles, fieldsets, multimedias, others, radioGroup)
