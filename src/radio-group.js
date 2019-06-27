@@ -6,7 +6,18 @@ const NATURE = {
   mutable: false,
   resizable: true,
   rotatable: true,
-  properties: [],
+  properties: [
+    {
+      type: 'checkbox',
+      label: 'submit-on-change',
+      name: 'submitOnChange'
+    },
+    {
+      type: 'checkbox',
+      label: 'copy-value-to-data',
+      name: 'copyValueToData'
+    }
+  ],
   'value-property': 'value'
 }
 
@@ -18,17 +29,37 @@ export default class RadioGroup extends HTMLOverlayContainer {
 
   setElementProperties(element) {
     element.onchange = () => {
-      this.changeChecked(element)
+      this.changeChecked()
     }
   }
 
-  changeChecked(element) {
+  onchange(after, before) {
+    super.onchange(after, before)
+    if ('value' in after && this.element) {
+      this.element.value = after.value
+      if (this.get('copyValueToData')) {
+        try {
+          this.data = JSON.parse(after.value)
+        } catch (e) {
+          this.data = after.value
+        }
+      }
+      if (this.get('submitOnChange') && this.element.parentElement.tagName == 'FORM')
+        this.element.parentElement.dispatchEvent(
+          new Event('submit', {
+            cancelable: true
+          })
+        )
+    }
+  }
+
+  changeChecked() {
     if (this.element.querySelector('input') && this.element.querySelector('input').type == 'radio') {
       var allRadioList = this.element.querySelectorAll('input')
       var specificList = Array.prototype.slice.call(allRadioList).filter(e => e.name == this.element.id)
       if (specificList.length) {
         var checkedValue = specificList.filter(e => e.checked == true)
-        this.set('data', checkedValue[0].value)
+        this.set('value', checkedValue[0].value)
       }
     }
   }
