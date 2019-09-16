@@ -1,6 +1,6 @@
 {
   "name": "@things-scene/form",
-  "version": "0.3.31",
+  "version": "0.3.33",
   "description": "The HTML Element component for things-scene.",
   "main": "src/index.js",
   "things-scene": true,
