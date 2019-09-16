@@ -73,7 +73,7 @@ const NATURE = {
         options: [
           {
             display: 'JSON',
-            value: 'application/xml'
+            value: 'application/json'
           },
           {
             display: 'FORM',
@@ -207,17 +207,7 @@ export default class Form extends HTMLOverlayContainer {
       if (form.method == 'get') xhr.open(form.method, url + '?' + params)
       else xhr.open(form.method, url)
 
-      if (!this.model.contentType)
-        xhr.setRequestHeader(
-          'Content-Type',
-          ['x-www-form-urlencoded', 'json']
-            .map(type => {
-              return 'application/' + type
-            })
-            .concat('text/plain')
-            .join(';')
-        )
-      else xhr.setRequestHeader('Content-Type', this.model.contentType)
+      if (this.model.contentType) xhr.setRequestHeader('content-type', this.model.contentType)
 
       if (this.get('authorization')) xhr.setRequestHeader('Authorization', this.get('authorization'))
 

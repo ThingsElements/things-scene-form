@@ -233,7 +233,7 @@ var forms = [
       lineWidth: 1,
       method: 'GET',
       action: '',
-      contentType: 'JSON',
+      contentType: 'application/json',
       name: 'search',
       authorization: '',
       format: 'TEXT'
