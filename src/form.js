@@ -66,6 +66,27 @@ const NATURE = {
       }
     },
     {
+      type: 'select',
+      label: 'content-type',
+      name: 'contentType',
+      property: {
+        options: [
+          {
+            display: 'JSON',
+            value: 'application/xml'
+          },
+          {
+            display: 'FORM',
+            value: 'application/x-www-form-urlencoded'
+          },
+          {
+            display: 'TEXT',
+            value: 'text/plain'
+          }
+        ]
+      }
+    },
+    {
       type: 'checkbox',
       label: 'with-credentials',
       name: 'withCredentials'
@@ -136,21 +157,21 @@ export default class Form extends HTMLOverlayContainer {
   _onload(e) {
     var result = e.target.response
     try {
-      switch(this.get('format')) {
+      switch (this.get('format')) {
         case 'JSON':
           result = JSON.parse(result)
-          break;
+          break
         case 'XML':
           result = xml2js(result, {
             compact: true
           })
-          break;
+          break
       }
 
-      if(this.state.debug) {
+      if (this.state.debug) {
         console.log('[FORM-RESULT]', result)
       }
-      
+
       this.setState('data', result)
     } catch (e) {
       console.error(e)
@@ -186,15 +207,17 @@ export default class Form extends HTMLOverlayContainer {
       if (form.method == 'get') xhr.open(form.method, url + '?' + params)
       else xhr.open(form.method, url)
 
-      xhr.setRequestHeader(
-        'Content-Type',
-        ['x-www-form-urlencoded', 'json']
-          .map(type => {
-            return 'application/' + type
-          })
-          .concat('text/plain')
-          .join(';')
-      )
+      if (!this.model.contentType)
+        xhr.setRequestHeader(
+          'Content-Type',
+          ['x-www-form-urlencoded', 'json']
+            .map(type => {
+              return 'application/' + type
+            })
+            .concat('text/plain')
+            .join(';')
+        )
+      else xhr.setRequestHeader('Content-Type', this.model.contentType)
 
       if (this.get('authorization')) xhr.setRequestHeader('Authorization', this.get('authorization'))
 
