@@ -9,7 +9,7 @@ dist
 bower_components
 *.report.html
 licenses/*.js
-
 yarn.lock
 yarn-error.log
 package-lock.json
+db.sqlite
