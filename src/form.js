@@ -115,10 +115,11 @@ export default class Form extends HTMLOverlayContainer {
   }
 
   setElementProperties(form) {
-    var { action = '', method = 'POST', name = '' } = this.state
+    var { action = '', method = 'POST', name = '', contentType = '', contentType = '' } = this.state
 
     form.action = action
     form.method = method
+    form.contentType = contentType
     form.name = name
   }
 
@@ -207,7 +208,7 @@ export default class Form extends HTMLOverlayContainer {
       if (form.method == 'get') xhr.open(form.method, url + '?' + params)
       else xhr.open(form.method, url)
 
-      if (this.model.contentType) xhr.setRequestHeader('Content-Type', this.model.contentType)
+      if (form.contentType) xhr.setRequestHeader('Content-Type', form.contentType)
 
       if (this.get('authorization')) xhr.setRequestHeader('Authorization', this.get('authorization'))
 
