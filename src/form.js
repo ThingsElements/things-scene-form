@@ -207,7 +207,7 @@ export default class Form extends HTMLOverlayContainer {
       if (form.method == 'get') xhr.open(form.method, url + '?' + params)
       else xhr.open(form.method, url)
 
-      if (this.model.contentType) xhr.setRequestHeader('content-type', this.model.contentType)
+      if (this.model.contentType) xhr.setRequestHeader('Content-Type', this.model.contentType)
 
       if (this.get('authorization')) xhr.setRequestHeader('Authorization', this.get('authorization'))
 
