@@ -115,7 +115,7 @@ export default class Form extends HTMLOverlayContainer {
   }
 
   setElementProperties(form) {
-    var { action = '', method = 'POST', name = '', contentType = '', contentType = '' } = this.state
+    var { action = '', method = 'POST', name = '', contentType = '' } = this.state
 
     form.action = action
     form.method = method
