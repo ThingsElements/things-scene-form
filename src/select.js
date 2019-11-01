@@ -61,7 +61,7 @@ export default class Select extends HTMLOverlayElement {
   buildOptions() {
     var { options = [], textField, valueField, value } = this.state
 
-    if (!options instanceof Array) options = []
+    if (!(options instanceof Array)) options = []
 
     this.element.textContent = ''
     var defaultValue
