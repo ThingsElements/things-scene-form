@@ -21,6 +21,7 @@ import textarea from '../assets/textarea.png'
 import select from '../assets/select.png'
 import form from '../assets/form.png'
 import soapClient from '../assets/form.png'
+import radioGroup from '../assets/icon-radio-group.png'
 
 const ICONS = {
   text,
@@ -175,14 +176,14 @@ var multimedias = ['video'].map(type => {
   }
 })
 
-var others = ['textarea', 'select'].map(function(type) {
+var others = ['textarea', 'select', 'radioGroup'].map(function(type) {
   return {
-    type: type,
+    type: type == 'radioGroup' ? 'radio-group' : type,
     description: 'html ' + type,
     group: 'form',
     icon: ICONS[type],
     model: {
-      type: type,
+      type: type == 'radioGroup' ? 'radio-group' : type,
       top: 100,
       left: 100,
       width: 280,
@@ -199,22 +200,6 @@ var others = ['textarea', 'select'].map(function(type) {
     }
   }
 })
-var radioGroup = [
-  {
-    type: 'radio-group',
-    description: 'radio-group',
-    group: 'form',
-    icon: ICONS['form'],
-    model: {
-      type: 'radio-group',
-      top: 100,
-      left: 100,
-      width: 200,
-      height: 140,
-      lineWidth: 1
-    }
-  }
-]
 
 var forms = [
   {
@@ -261,4 +246,4 @@ var forms = [
   }
 ]
 
-export default forms.concat(inputs01, inputs02, buttons, textibles, fieldsets, multimedias, others, radioGroup)
+export default forms.concat(inputs01, inputs02, buttons, textibles, fieldsets, multimedias, others)
