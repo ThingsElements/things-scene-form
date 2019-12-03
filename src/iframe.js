@@ -19,6 +19,14 @@ const NATURE = {
 import { Component, HTMLOverlayElement } from '@hatiolab/things-scene'
 
 export default class IFrame extends HTMLOverlayElement {
+  get src() {
+    return this.getState('src')
+  }
+
+  set src(src) {
+    this.setState('src', src)
+  }
+
   setElementProperties(iframe) {
     var { src = '' } = this.state
 
