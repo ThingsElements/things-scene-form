@@ -27,6 +27,10 @@ export default class RadioGroup extends HTMLOverlayContainer {
     return NATURE
   }
 
+  containable(component) {
+    return component.model.type == 'input-radio'
+  }
+
   setElementProperties(element) {
     element.onchange = () => {
       this.changeChecked()
@@ -54,13 +58,11 @@ export default class RadioGroup extends HTMLOverlayContainer {
   }
 
   changeChecked() {
-    if (this.element.querySelector('input') && this.element.querySelector('input').type == 'radio') {
-      var allRadioList = this.element.querySelectorAll('input')
-      var specificList = Array.prototype.slice.call(allRadioList).filter(e => e.name == this.element.id)
-      if (specificList.length) {
-        var checkedValue = specificList.filter(e => e.checked == true)
-        this.set('value', checkedValue[0].value)
-      }
+    var allRadioList = this.element.querySelectorAll('input')
+    var specificList = Array.prototype.slice.call(allRadioList).filter(e => e.name == this.element.id)
+    if (specificList.length) {
+      var checkedValue = specificList.filter(e => e.checked == true)
+      this.set('value', checkedValue[0].value)
     }
   }
 }
