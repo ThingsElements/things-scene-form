@@ -16,6 +16,7 @@ import fieldset from '../assets/fieldset.png'
 import iframe from '../assets/iframe.png'
 import img from '../assets/img.png'
 import video from '../assets/img.png'
+import embed from '../assets/img.png'
 import link from '../assets/link.png'
 import textarea from '../assets/textarea.png'
 import select from '../assets/select.png'
@@ -46,10 +47,12 @@ const ICONS = {
   select,
   form,
   soapClient,
-  radioGroup
+  radioGroup,
+  video,
+  embed,
 }
 
-var inputs01 = ['text', 'password', 'email', 'search', 'number', 'color', 'range', 'file', 'date'].map(function(type) {
+var inputs01 = ['text', 'password', 'email', 'search', 'number', 'color', 'range', 'file', 'date'].map(function (type) {
   return {
     type: 'input-' + type,
     description: 'html input-' + type,
@@ -69,12 +72,12 @@ var inputs01 = ['text', 'password', 'email', 'search', 'number', 'color', 'range
       strokeStyle: 'rgba(0,0,0,.4)',
       lineWidth: type == 'file' ? 0 : 1,
       lineDash: 'solid',
-      textAlign: 'left'
-    }
+      textAlign: 'left',
+    },
   }
 })
 
-var inputs02 = ['submit', 'reset'].map(function(type) {
+var inputs02 = ['submit', 'reset'].map(function (type) {
   return {
     type: 'input-' + type,
     description: 'html input-' + type,
@@ -89,12 +92,12 @@ var inputs02 = ['submit', 'reset'].map(function(type) {
       fontSize: 14,
       fillStyle: 'white',
       fontColor: '#585858',
-      strokeStyle: 'rgba(0,0,0,.4)'
-    }
+      strokeStyle: 'rgba(0,0,0,.4)',
+    },
   }
 })
 
-var buttons = ['button'].map(function(type) {
+var buttons = ['button'].map(function (type) {
   return {
     type: type,
     description: 'html ' + type,
@@ -109,12 +112,12 @@ var buttons = ['button'].map(function(type) {
       fontSize: 14,
       fillStyle: 'white',
       fontColor: '#585858',
-      textAlign: 'center'
-    }
+      textAlign: 'center',
+    },
   }
 })
 
-var textibles = ['input-radio', 'input-checkbox'].map(function(type) {
+var textibles = ['input-radio', 'input-checkbox'].map(function (type) {
   return {
     type: type,
     description: 'html input-' + type,
@@ -129,12 +132,12 @@ var textibles = ['input-radio', 'input-checkbox'].map(function(type) {
       text: 'noname',
       fontSize: 14,
       fontColor: '#585858',
-      textAlign: 'left'
-    }
+      textAlign: 'left',
+    },
   }
 })
 
-var fieldsets = ['fieldset', 'iframe', 'img', 'link'].map(function(type) {
+var fieldsets = ['fieldset', 'iframe', 'img', 'link'].map(function (type) {
   return {
     type: type,
     description: 'html ' + type,
@@ -152,12 +155,12 @@ var fieldsets = ['fieldset', 'iframe', 'img', 'link'].map(function(type) {
       strokeStyle: 'rgba(0,0,0,.4)',
       lineWidth: 1,
       lineDash: 'solid',
-      textAlign: 'left'
-    }
+      textAlign: 'left',
+    },
   }
 })
 
-var multimedias = ['video'].map(type => {
+var multimedias = ['video'].map((type) => {
   return {
     type,
     description: 'html ' + type,
@@ -171,12 +174,31 @@ var multimedias = ['video'].map(type => {
       height: 224,
       controls: true,
       src:
-        'https://player.vimeo.com/external/242538643.sd.mp4?s=42dacbec1a58f449a3fa4845801df5d446a99134&profile_id=165'
-    }
+        'https://player.vimeo.com/external/242538643.sd.mp4?s=42dacbec1a58f449a3fa4845801df5d446a99134&profile_id=165',
+    },
   }
 })
 
-var others = ['textarea', 'select', 'radioGroup'].map(function(type) {
+var applications = ['embed'].map((type) => {
+  return {
+    type,
+    description: 'html ' + type,
+    group: 'form',
+    icon: ICONS[type],
+    model: {
+      type,
+      top: 100,
+      left: 100,
+      width: 400,
+      height: 224,
+      mimetype: 'video/webm',
+      src:
+        'https://player.vimeo.com/external/242538643.sd.mp4?s=42dacbec1a58f449a3fa4845801df5d446a99134&profile_id=165',
+    },
+  }
+})
+
+var others = ['textarea', 'select', 'radioGroup'].map(function (type) {
   return {
     type: type == 'radioGroup' ? 'radio-group' : type,
     description: 'html ' + type,
@@ -196,8 +218,8 @@ var others = ['textarea', 'select', 'radioGroup'].map(function(type) {
       strokeStyle: 'rgba(0,0,0,.4)',
       lineWidth: 1,
       lineDash: 'solid',
-      textAlign: 'left'
-    }
+      textAlign: 'left',
+    },
   }
 })
 
@@ -221,8 +243,8 @@ var forms = [
       contentType: 'application/json',
       name: 'search',
       authorization: '',
-      format: 'TEXT'
-    }
+      format: 'TEXT',
+    },
   },
   {
     type: 'soap-client',
@@ -241,9 +263,9 @@ var forms = [
       action: '',
       method: '',
       name: 'search',
-      authorization: ''
-    }
-  }
+      authorization: '',
+    },
+  },
 ]
 
-export default forms.concat(inputs01, inputs02, buttons, textibles, fieldsets, multimedias, others)
+export default forms.concat(inputs01, inputs02, buttons, textibles, fieldsets, multimedias, applications, others)

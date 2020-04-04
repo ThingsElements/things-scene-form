@@ -6,5 +6,6 @@
   "label.endpoint": "endpoint",
   "label.namespace": "namespace",
   "label.soap-action": "SOAP Action",
-  "label.content-type": "content type"
+  "label.content-type": "content type",
+  "label.mime-type": "MIME type"
 }

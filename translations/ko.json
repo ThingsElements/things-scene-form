@@ -6,5 +6,6 @@
   "label.endpoint": "엔드포인트",
   "label.namespace": "네임스페이스",
   "label.soap-action": "SOAP 액션",
-  "label.content-type": "컨텐트 타입"
+  "label.content-type": "컨텐트 타입",
+  "label.mime-type": "MIME type"
 }

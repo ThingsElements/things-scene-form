@@ -12,6 +12,7 @@ export { default as CheckBox } from './checkbox'
 export { default as IFrame } from './iframe'
 export { default as Img } from './img'
 export { default as Video } from './video'
+export { default as Embed } from './embed'
 export { default as Link } from './link'
 export { default as Div } from './div'
 
